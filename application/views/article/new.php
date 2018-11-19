@@ -41,6 +41,10 @@
 
 <script type="text/javascript">
     tinymce.init({
+        relative_urls : false,
+        remove_script_host : false,
+        convert_urls : true,
+        document_base_url : ":<?php echo base_url() ?>",
         selector: 'textarea',
         theme: 'modern',
         plugins: [
@@ -65,6 +69,7 @@
             '//www.tinymce.com/css/codepen.min.css'
         ],
         images_upload_url : 'upload.php',
+        images_upload_base_path:'uploads',
 		automatic_uploads : true,
 
 		images_upload_handler : function(blobInfo, success, failure) {

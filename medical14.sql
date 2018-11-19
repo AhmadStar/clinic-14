@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 28, 2018 at 05:52 AM
+-- Generation Time: Nov 19, 2018 at 01:16 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -17,10 +17,38 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `clinic12`
+-- Database: `medical14`
 --
-CREATE DATABASE IF NOT EXISTS `clinic12` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `clinic12`;
+CREATE DATABASE IF NOT EXISTS `medical14` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `medical14`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `articles`
+--
+
+CREATE TABLE IF NOT EXISTS `articles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` mediumtext,
+  `body` mediumtext,
+  `author_id` int(11) DEFAULT NULL,
+  `created_date` date DEFAULT NULL,
+  `image` mediumtext,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `articles`
+--
+
+INSERT INTO `articles` (`id`, `title`, `body`, `author_id`, `created_date`, `image`) VALUES
+(3, 'Canon G3', '<p >best camera&nbsp;<em>ever</em></p>', NULL, '2018-11-18', NULL),
+(4, 'Nikon coolpix 4300', '<ol>\r\n<li>title&nbsp;</li>\r\n</ol>', NULL, '2018-11-18', NULL),
+(5, 'dasd', '<p><img src="http://localhost/clinic-14/uploads/DOBN16zXUAAM4yI.jpg" alt="sa" width="855" height="1200" /></p>', NULL, '2018-11-09', NULL),
+(6, '?????', '<p >??? ??? ??????? ?? ????? ??? ??? ????? ?????? ???????</p>\r\n <p ><img src="http://localhost/clinic-14/uploads/DM8US6GWsAAmR3p.jpg" alt="??? ??????" width="261" height="189" /></p>\r\n <p >???? ??? ??? ???? ????? ?? ????? ????? ???? ??????</p>\r\n <p ><img src="http://localhost/clinic-14/uploads/DN-yBJcW0AEYCJC.jpg" alt="" width="466" height="316" /></p>', NULL, '2018-11-15', NULL),
+(7, '?????? ?????', '<p><img src="http://localhost/clinic-14/uploads/DMHcrF6W4AAuhBJ.jpg" alt="" width="1024" height="982" /></p>', NULL, '2018-11-23', NULL),
+(8, '?????', '<p><img src="../../../uploads/DM8US6GWsAAmR3p.jpg" alt="" width="261" height="189" /></p>\n<p>&nbsp;</p>\n<p>نضع صورة</p>\n<p>&nbsp;</p>\n<p><img src="../../../uploads/DM8US6GWsAAmR3p.jpg" alt="" width="261" height="189" /></p>\n<p>&nbsp;</p>\n<p>نضع صورة</p>\n<p>&nbsp;</p>\n<p><img src="../../../uploads/DM7GNarUEAEu9qa.jpg" alt="" width="779" height="1024" /></p>\n<p>&nbsp;</p>\n<p>???? ????</p>', NULL, '2018-11-09', NULL);
 
 -- --------------------------------------------------------
 
@@ -39,54 +67,65 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `oxidation` int(11) NOT NULL,
   `nbreathing` int(11) NOT NULL,
   `comment_type` smallint(6) NOT NULL DEFAULT '1' COMMENT 'for future use, 1 is default',
-  `create_date` int(11) NOT NULL,
+  `create_date` date NOT NULL,
   `last_edit_time` int(11) NOT NULL,
   PRIMARY KEY (`comment_id`),
   KEY `patient_doctor_id` (`patient_doctor_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
 
 --
 -- Dumping data for table `comments`
 --
 
 INSERT INTO `comments` (`comment_id`, `patient_doctor_id`, `comment`, `spressur`, `ppressure`, `hrate`, `heate`, `oxidation`, `nbreathing`, `comment_type`, `create_date`, `last_edit_time`) VALUES
-(1, 15, 'dsadas d', 0, 0, 0, 0, 0, 0, 1, 1539206086, 1539206086),
-(2, 15, 'ملاحظة تانية', 0, 0, 0, 0, 0, 0, 1, 1539206100, 1539206100),
-(3, 4, 'هاذ تعليق من الطبيب', 0, 0, 0, 0, 0, 0, 1, 1539239993, 1539239993),
-(4, 13, 'ystyidtyi', 0, 0, 0, 0, 0, 0, 1, 1539246131, 1539246131),
-(5, 1, 'Test', 0, 0, 0, 0, 0, 0, 1, 1539264097, 1539264097),
-(6, 1, 'asd', 0, 0, 0, 0, 0, 0, 1, 1539297053, 1539297053),
-(7, 18, 'التشخيص التهاب قصبات', 0, 0, 0, 0, 0, 0, 1, 1539344838, 1539344838),
-(8, 5, 'kjl', 0, 0, 0, 0, 0, 0, 1, 1539358706, 1539358706),
-(9, 5, 'kjl', 0, 0, 0, 0, 0, 0, 1, 1539358707, 1539358707),
-(10, 5, 'kjl', 0, 0, 0, 0, 0, 0, 1, 1539358707, 1539358707),
-(11, 7, 'dsas', 0, 0, 0, 0, 0, 0, 1, 1539469571, 1539469571),
-(12, 5, 'dsa', 0, 0, 0, 0, 0, 0, 1, 1539782613, 1539782613),
-(13, 20, 'csada', 0, 0, 0, 0, 0, 0, 1, 1539784367, 1539784367),
-(14, 13, 'dasdas', 0, 0, 0, 0, 0, 0, 1, 1539784566, 1539784566),
-(15, 10, 'بسيبسي', 0, 0, 0, 0, 0, 0, 1, 1539784856, 1539784856),
-(16, 20, 'test', 120, 60, 0, 0, 0, 0, 1, 1539786498, 1539786498),
-(17, 20, 'test', 120, 80, 0, 0, 0, 0, 1, 1539786521, 1539786521),
-(18, 20, 'test 120', 120, 80, 0, 0, 0, 0, 1, 1539786695, 1539786695),
-(19, 20, 'test harte rate', 120, 80, 85, 0, 0, 0, 1, 1539787328, 1539787328),
-(20, 20, 'heate dasdkjh sadkjsda', 120, 80, 70, 37, 0, 0, 1, 1539787552, 1539787552),
-(21, 20, 'oxidation', 100, 0, 60, 33, 17, 0, 1, 1539788244, 1539788244),
-(22, 20, 'nbreathing', 120, 80, 60, 37, 99, 12, 1, 1539788395, 1539788395),
-(23, 16, 'اختبار', 140, 90, 60, 38, 99, 14, 1, 1539790794, 1539790794),
-(24, 0, 'dasd', 3, 4, 5, 6, 7, 8, 1, 1539794233, 1539794233),
-(25, 0, 'Test', 1, 2, 3, 4, 5, 6, 1, 1539794346, 1539794346),
-(26, 19, 'تعليق', 9, 8, 7, 6, 5, 4, 1, 1539794899, 1539794899),
-(27, 19, 'تعليق اخيرااا', 1, 2, 3, 4, 5, 6, 1, 1539795117, 1539795117),
-(28, 19, 'dashdkj ahsdkja hskjdhak jsdhkjas hdkjahskdjhaskj dhkjshdkjas hdkjahdkjashdkjh', 1, 1, 2, 1, 1, 1, 1, 1539796891, 1539796891),
-(29, 6, 'تعليق', 2, 5, 5, 5, 5, 5, 1, 1539812246, 1539812246),
-(30, 20, 'هذ تعليق', 120, 80, 60, 38, 95, 12, 1, 1539863147, 1539863147),
-(31, 1, 'شس', 1, 1, 1, 1, 1, 1, 1, 1540170719, 1540170719),
-(32, 12, 'هذا تعليق من الطبيب', 120, 80, 11, 88, 31, 312, 1, 1540220941, 1540220941),
-(33, 21, 'تعليق الطبيب', 120, 80, 60, 38, 95, 12, 1, 1540310378, 1540310378),
-(34, 1, 'هذا تعليق من الطبيب .. هنا نضع تعليق الطبيب ....هنا نضع تعليق الطبيب', 120, 80, 60, 38, 97, 12, 1, 1540572053, 1540572053),
-(35, 1, '', 1, 2, 2, 2, 2, 2, 1, 1540639654, 1540639654),
-(36, 1, '', 0, 0, 0, 0, 0, 0, 1, 1540639737, 1540639737),
-(37, 1, '', 0, 0, 0, 0, 0, 0, 1, 1540639742, 1540639742);
+(1, 15, 'dsadas d', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539206086),
+(2, 15, 'ملاحظة تانية', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539206100),
+(3, 4, 'هاذ تعليق من الطبيب', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539239993),
+(4, 13, 'ystyidtyi', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539246131),
+(5, 1, 'Test', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539264097),
+(6, 1, 'asd', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539297053),
+(7, 18, 'التشخيص التهاب قصبات', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539344838),
+(8, 5, 'kjl', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539358706),
+(9, 5, 'kjl', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539358707),
+(10, 5, 'kjl', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539358707),
+(11, 7, 'dsas', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539469571),
+(12, 5, 'dsa', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539782613),
+(13, 20, 'csada', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539784367),
+(14, 13, 'dasdas', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539784566),
+(15, 10, 'بسيبسي', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539784856),
+(16, 20, 'test', 120, 60, 0, 0, 0, 0, 1, '0000-00-00', 1539786498),
+(17, 20, 'test', 120, 80, 0, 0, 0, 0, 1, '0000-00-00', 1539786521),
+(18, 20, 'test 120', 120, 80, 0, 0, 0, 0, 1, '0000-00-00', 1539786695),
+(19, 20, 'test harte rate', 120, 80, 85, 0, 0, 0, 1, '0000-00-00', 1539787328),
+(20, 20, 'heate dasdkjh sadkjsda', 120, 80, 70, 37, 0, 0, 1, '0000-00-00', 1539787552),
+(21, 20, 'oxidation', 100, 0, 60, 33, 17, 0, 1, '0000-00-00', 1539788244),
+(22, 20, 'nbreathing', 120, 80, 60, 37, 99, 12, 1, '0000-00-00', 1539788395),
+(23, 16, 'اختبار', 140, 90, 60, 38, 99, 14, 1, '0000-00-00', 1539790794),
+(24, 0, 'dasd', 3, 4, 5, 6, 7, 8, 1, '0000-00-00', 1539794233),
+(25, 0, 'Test', 1, 2, 3, 4, 5, 6, 1, '0000-00-00', 1539794346),
+(26, 19, 'تعليق', 9, 8, 7, 6, 5, 4, 1, '0000-00-00', 1539794899),
+(27, 19, 'تعليق اخيرااا', 1, 2, 3, 4, 5, 6, 1, '0000-00-00', 1539795117),
+(28, 19, 'dashdkj ahsdkja hskjdhak jsdhkjas hdkjahskdjhaskj dhkjshdkjas hdkjahdkjashdkjh', 1, 1, 2, 1, 1, 1, 1, '0000-00-00', 1539796891),
+(29, 6, 'تعليق', 2, 5, 5, 5, 5, 5, 1, '0000-00-00', 1539812246),
+(30, 20, 'هذ تعليق', 120, 80, 60, 38, 95, 12, 1, '0000-00-00', 1539863147),
+(31, 1, 'شس', 1, 1, 1, 1, 1, 1, 1, '0000-00-00', 1540170719),
+(32, 12, 'هذا تعليق من الطبيب', 120, 80, 11, 88, 31, 312, 1, '0000-00-00', 1540220941),
+(33, 21, 'تعليق الطبيب', 120, 80, 60, 38, 95, 12, 1, '0000-00-00', 1540310378),
+(34, 1, 'هذا تعليق من الطبيب .. هنا نضع تعليق الطبيب ....هنا نضع تعليق الطبيب', 120, 80, 60, 38, 97, 12, 1, '0000-00-00', 1540572053),
+(35, 1, '', 1, 2, 2, 2, 2, 2, 1, '0000-00-00', 1540639654),
+(36, 1, '', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1540639737),
+(37, 1, '', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1540639742),
+(38, 23, 'هذا تعليق من الطبيب', 12, 8, 80, 38, 95, 81, 1, '0000-00-00', 1540727194),
+(39, 25, 'يسي شي', 0, 10, 0, 0, 0, 0, 1, '0000-00-00', 1540737367),
+(40, 25, 'هذا تعليق من الطبيب', 1, 1, 1, 1, 1, 1, 1, '0000-00-00', 1540737434),
+(41, 25, '', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1540737440),
+(42, 25, 'dsad as', 1, 1, 1, 1, 1, 1, 1, '2018-10-06', 1540737495),
+(43, 25, 'sad', 1, 1, 0, 0, 0, 0, 1, '2018-10-06', 1540737562),
+(44, 25, '', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1540737631),
+(45, 25, '', 0, 0, 0, 0, 0, 0, 1, '2018-10-20', 1540737636),
+(46, 25, 'fds', 1, 1, 1, 1, 1, 1, 1, '2018-10-06', 1540742525),
+(47, 25, '', 0, 0, 0, 0, 0, 0, 1, '2018-10-28', 1540742535),
+(48, 25, 'هذا تعليق من الطبييب', 1, 1, 1, 1, 1, 1, 1, '2018-09-06', 1540744496);
 
 -- --------------------------------------------------------
 
@@ -102,14 +141,17 @@ CREATE TABLE IF NOT EXISTS `consumes` (
   `date` date NOT NULL,
   `price` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `consumes`
 --
 
 INSERT INTO `consumes` (`id`, `name`, `count`, `doctor_id`, `date`, `price`) VALUES
-(12, 'بسيب يس', 11, 5, '2018-10-13', 11);
+(12, 'بسيب يس', 11, 5, '2018-10-13', 11),
+(13, 'فاتورة ادوية', 1, 4, '2018-10-28', 5000),
+(14, 'منشار جبس', 1, 4, '2018-10-28', 300000),
+(15, 'فاتورة مياه', 1, 4, '2018-11-30', 10000);
 
 -- --------------------------------------------------------
 
@@ -268,7 +310,7 @@ CREATE TABLE IF NOT EXISTS `dailyincome` (
   `date` date NOT NULL,
   `amount` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `dailyincome`
@@ -285,7 +327,12 @@ INSERT INTO `dailyincome` (`id`, `doctor_id`, `date`, `amount`) VALUES
 (9, 5, '2018-10-21', 3000),
 (10, 4, '2019-01-29', 2000),
 (11, 5, '2018-09-29', 3000),
-(12, 7, '2018-09-29', 2000);
+(12, 7, '2018-09-29', 2000),
+(13, 0, '2018-10-28', 10000),
+(14, 0, '2018-10-28', 1000),
+(15, 0, '2018-10-05', 3000),
+(16, 0, '2018-10-28', 2000),
+(17, 0, '2019-02-02', 88888888);
 
 -- --------------------------------------------------------
 
@@ -299,7 +346,7 @@ CREATE TABLE IF NOT EXISTS `diagnoses` (
   `diagnose_name_ar` mediumtext NOT NULL,
   `description` mediumtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `diagnoses`
@@ -308,8 +355,7 @@ CREATE TABLE IF NOT EXISTS `diagnoses` (
 INSERT INTO `diagnoses` (`id`, `diagnose_name_en`, `diagnose_name_ar`, `description`) VALUES
 (7, 'Diagnose', 'تشخيص', 'هنا نضع وصف التشخيص'),
 (8, 'VXS', 'تشخيص', 'وصف التشخيص'),
-(9, 'VDT', 'في دي تي', 'وصف التشخيص.'),
-(10, 'das d', 'dsa d', 'as');
+(9, 'VDT', 'في دي تي', 'وصف التشخيص.');
 
 -- --------------------------------------------------------
 
@@ -322,41 +368,51 @@ CREATE TABLE IF NOT EXISTS `diagnose_patient` (
   `diagnose_id` int(11) NOT NULL,
   `patient_id` int(11) NOT NULL,
   `user_id_assign` int(11) NOT NULL,
-  `assign_date` int(11) NOT NULL,
+  `assign_date` date NOT NULL,
   `no_of_item` int(11) DEFAULT NULL,
-  `result` text NOT NULL,
+  `result` mediumtext NOT NULL,
   `total_cost` decimal(10,0) DEFAULT NULL,
   `user_id_discharge` int(11) DEFAULT NULL,
   `discharge_date` int(11) DEFAULT NULL,
-  `memo` text,
+  `memo` mediumtext,
   PRIMARY KEY (`diagnose_patient_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `diagnose_patient`
 --
 
 INSERT INTO `diagnose_patient` (`diagnose_patient_id`, `diagnose_id`, `patient_id`, `user_id_assign`, `assign_date`, `no_of_item`, `result`, `total_cost`, `user_id_discharge`, `discharge_date`, `memo`) VALUES
-(1, 7, 1, 1, 1540215385, 22, 'rrrr', '0', NULL, NULL, 'mmm'),
-(2, 7, 1, 1, 1540215546, 99, '99', '0', NULL, NULL, '99'),
-(3, 8, 1, 1, 1540215603, 1, '1', '0', NULL, NULL, '1'),
-(4, 7, 1, 1, 1540217458, NULL, '1', NULL, NULL, NULL, NULL),
-(5, 7, 2, 1, 1540220564, NULL, '1', NULL, NULL, NULL, NULL),
-(6, 7, 13, 1, 1540290871, NULL, '1', NULL, NULL, NULL, NULL),
-(7, 8, 13, 1, 1540290897, NULL, '1', NULL, NULL, NULL, NULL),
-(8, 8, 13, 1, 1540291005, NULL, '1', NULL, NULL, NULL, NULL),
-(9, 7, 13, 1, 1540291011, NULL, '2', NULL, NULL, NULL, NULL),
-(10, 9, 13, 1, 1540291039, NULL, '????? ???????', NULL, NULL, NULL, NULL),
-(11, 7, 21, 1, 1540291271, NULL, '??? ?????? ?? ???????', NULL, NULL, NULL, NULL),
-(12, 8, 6, 1, 1540292496, NULL, '???? ? ', NULL, NULL, NULL, NULL),
-(13, 7, 1, 1, 1540563784, NULL, '??? ??? ?', NULL, NULL, NULL, NULL),
-(14, 7, 1, 1, 1540563910, NULL, '??? ?? ????? ???????', NULL, NULL, NULL, NULL),
-(15, 7, 1, 1, 1540571660, NULL, 'fsd fnsd,mfn s,dfn ,sdmffn, smdnf,msdn,f nsd,fm nsd,fmnsd ,mfsdn ,fmsdnf,m sdnf,msd nf,msdnf,sdmn f,smnf ,sdmnf ,msdnf,msd  fm,sdf ', NULL, NULL, NULL, NULL),
-(16, 7, 19, 1, 1540572399, NULL, 'fsdm f sdf;l sdf.sd, .,sdm .,smdf. ,s', NULL, NULL, NULL, NULL),
-(17, 7, 21, 1, 1540589252, NULL, 'fsdf sdf sd', NULL, NULL, NULL, NULL),
-(18, 7, 21, 1, 1540589291, NULL, 'dasdas', NULL, NULL, NULL, NULL),
-(19, 7, 2, 1, 1540648866, NULL, '???? ?? ?? ??? ', NULL, NULL, NULL, NULL),
-(20, 7, 2, 1, 1540648894, NULL, 'dasdas', NULL, NULL, NULL, NULL);
+(1, 7, 1, 1, '0000-00-00', 22, 'rrrr', '0', NULL, NULL, 'mmm'),
+(2, 7, 1, 1, '0000-00-00', 99, '99', '0', NULL, NULL, '99'),
+(3, 8, 1, 1, '0000-00-00', 1, '1', '0', NULL, NULL, '1'),
+(4, 7, 1, 1, '0000-00-00', NULL, '1', NULL, NULL, NULL, NULL),
+(5, 7, 2, 1, '0000-00-00', NULL, '1', NULL, NULL, NULL, NULL),
+(6, 7, 13, 1, '0000-00-00', NULL, '1', NULL, NULL, NULL, NULL),
+(7, 8, 13, 1, '0000-00-00', NULL, '1', NULL, NULL, NULL, NULL),
+(8, 8, 13, 1, '0000-00-00', NULL, '1', NULL, NULL, NULL, NULL),
+(9, 7, 13, 1, '0000-00-00', NULL, '2', NULL, NULL, NULL, NULL),
+(10, 9, 13, 1, '0000-00-00', NULL, '????? ???????', NULL, NULL, NULL, NULL),
+(11, 7, 21, 1, '0000-00-00', NULL, '??? ?????? ?? ???????', NULL, NULL, NULL, NULL),
+(12, 8, 6, 1, '0000-00-00', NULL, '???? ? ', NULL, NULL, NULL, NULL),
+(13, 7, 1, 1, '0000-00-00', NULL, '??? ??? ?', NULL, NULL, NULL, NULL),
+(14, 7, 1, 1, '0000-00-00', NULL, '??? ?? ????? ???????', NULL, NULL, NULL, NULL),
+(15, 7, 1, 1, '0000-00-00', NULL, 'fsd fnsd,mfn s,dfn ,sdmffn, smdnf,msdn,f nsd,fm nsd,fmnsd ,mfsdn ,fmsdnf,m sdnf,msd nf,msdnf,sdmn f,smnf ,sdmnf ,msdnf,msd  fm,sdf ', NULL, NULL, NULL, NULL),
+(16, 7, 19, 1, '0000-00-00', NULL, 'fsdm f sdf;l sdf.sd, .,sdm .,smdf. ,s', NULL, NULL, NULL, NULL),
+(17, 7, 21, 1, '0000-00-00', NULL, 'fsdf sdf sd', NULL, NULL, NULL, NULL),
+(18, 7, 21, 1, '0000-00-00', NULL, 'dasdas', NULL, NULL, NULL, NULL),
+(19, 7, 2, 1, '0000-00-00', NULL, '???? ?? ?? ??? ', NULL, NULL, NULL, NULL),
+(20, 7, 2, 1, '0000-00-00', NULL, 'dasdas', NULL, NULL, NULL, NULL),
+(21, 8, 23, 1, '0000-00-00', NULL, '?????? ????? ???? , ', NULL, NULL, NULL, NULL),
+(22, 7, 25, 1, '0000-00-00', NULL, '??? ???? ?? ?', NULL, NULL, NULL, NULL),
+(23, 7, 25, 1, '0000-00-00', NULL, 'يشسي شسي شس', NULL, NULL, NULL, NULL),
+(24, 8, 21, 1, '0000-00-00', NULL, 'dasdas', NULL, NULL, NULL, NULL),
+(25, 9, 21, 1, '2018-10-01', NULL, 'dasdas', NULL, NULL, NULL, NULL),
+(26, 8, 21, 1, '2018-10-27', NULL, 'dasdas', NULL, NULL, NULL, NULL),
+(27, 7, 25, 1, '2018-10-04', NULL, 'يسش ي سشي شس ', NULL, NULL, NULL, NULL),
+(28, 7, 25, 1, '2018-10-31', NULL, 'يشس يشي شس', NULL, NULL, NULL, NULL),
+(29, 7, 25, 1, '2018-10-28', NULL, 'نتيجة التشخيص', NULL, NULL, NULL, NULL),
+(30, 7, 25, 1, '2018-10-28', NULL, 'التهاب قصبات حاد ', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -371,7 +427,7 @@ CREATE TABLE IF NOT EXISTS `doctors` (
   `phone` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
   `created_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `doctors`
@@ -381,7 +437,8 @@ INSERT INTO `doctors` (`id`, `name`, `address`, `phone`, `created_date`) VALUES
 (4, 'د.محمد شباط', 'التضامن', '0994364545', '2018-09-06'),
 (5, 'د.نور شماس', 'دمشق', '0964536453', '2018-10-06'),
 (6, 'د.ماهر ابو صعب', 'دمشق', '09434242342', '2018-10-06'),
-(7, 'د.احمد ابو سرور', 'حلب', '09543534534', '2018-10-20');
+(7, 'د.احمد ابو سرور', 'حلب', '09543534534', '2018-10-20'),
+(8, 'ابراهيم داوود', 'مزة', '09423423443', '2018-10-28');
 
 -- --------------------------------------------------------
 
@@ -419,7 +476,7 @@ CREATE TABLE IF NOT EXISTS `drug_patient` (
   `drug_id` int(11) NOT NULL,
   `patient_id` int(11) NOT NULL,
   `user_id_assign` int(11) NOT NULL,
-  `assign_date` int(11) NOT NULL,
+  `assign_date` date NOT NULL,
   `no_of_item` int(11) NOT NULL DEFAULT '1',
   `total_cost` decimal(10,0) NOT NULL,
   `user_id_discharge` int(11) DEFAULT NULL,
@@ -430,42 +487,46 @@ CREATE TABLE IF NOT EXISTS `drug_patient` (
   KEY `patient_id` (`patient_id`),
   KEY `user_id_assign` (`user_id_assign`),
   KEY `user_id_discharge` (`user_id_discharge`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `drug_patient`
 --
 
 INSERT INTO `drug_patient` (`drug_patient_id`, `drug_id`, `patient_id`, `user_id_assign`, `assign_date`, `no_of_item`, `total_cost`, `user_id_discharge`, `discharge_date`, `memo`) VALUES
-(1, 5, 15, 1, 1539206177, 7, '14000', 1, 1539299334, ''),
-(2, 5, 13, 1, 1539207378, 11, '22000', 1, 1539281061, ''),
-(4, 5, 11, 1, 1539241975, 4, '8000', 1, 1539429309, ''),
-(5, 5, 14, 1, 1539250386, 1, '2000', NULL, NULL, ''),
-(6, 5, 15, 1, 1539263919, 1, '2000', 1, 1539299331, ''),
-(7, 5, 15, 1, 1539263938, 33, '66000', 1, 1539299332, ''),
-(8, 5, 13, 1, 1539281076, 1, '2000', NULL, NULL, ''),
-(11, 5, 12, 1, 1539331889, 1, '2000', NULL, NULL, ''),
-(12, 5, 18, 1, 1539344894, 1, '2000', NULL, NULL, ''),
-(13, 5, 12, 1, 1539347945, 1, '2000', NULL, NULL, ''),
-(14, 5, 12, 1, 1539347945, 1, '2000', NULL, NULL, ''),
-(15, 5, 8, 1, 1539469592, 1, '2000', NULL, NULL, ''),
-(16, 5, 13, 1, 1539784574, 1, '2000', NULL, NULL, ''),
-(17, 5, 5, 1, 1539796260, 1, '2000', NULL, NULL, ''),
-(18, 5, 20, 1, 1539807836, 1, '2000', NULL, NULL, ''),
-(19, 5, 9, 1, 1539812254, 1, '2000', NULL, NULL, ''),
-(20, 5, 20, 1, 1540036257, 1, '2000', NULL, NULL, ''),
-(21, 5, 20, 1, 1540036331, 1, '2000', NULL, NULL, ''),
-(22, 5, 20, 1, 1540036375, 99, '198000', NULL, NULL, ''),
-(23, 5, 20, 1, 1540036401, 1, '2000', NULL, NULL, ''),
-(24, 5, 20, 1, 1540036424, 1, '2000', NULL, NULL, ''),
-(25, 5, 20, 1, 1540036726, 1, '2000', NULL, NULL, ''),
-(26, 5, 20, 1, 1540036867, 1, '2000', NULL, NULL, ''),
-(27, 5, 20, 1, 1540036924, 1, '2000', NULL, NULL, ''),
-(28, 5, 19, 1, 1540052768, 1, '2000', NULL, NULL, ''),
-(29, 5, 16, 1, 1540056965, 1, '2000', NULL, NULL, ''),
-(30, 5, 1, 1, 1540201109, 1, '2000', NULL, NULL, ''),
-(31, 5, 2, 1, 1540211047, 1, '2000', NULL, NULL, ''),
-(32, 5, 21, 1, 1540292075, 10, '20000', NULL, NULL, '');
+(1, 5, 15, 1, '0000-00-00', 7, '14000', 1, 1539299334, ''),
+(2, 5, 13, 1, '0000-00-00', 11, '22000', 1, 1539281061, ''),
+(4, 5, 11, 1, '0000-00-00', 4, '8000', 1, 1539429309, ''),
+(5, 5, 14, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(6, 5, 15, 1, '0000-00-00', 1, '2000', 1, 1539299331, ''),
+(7, 5, 15, 1, '0000-00-00', 33, '66000', 1, 1539299332, ''),
+(8, 5, 13, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(11, 5, 12, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(12, 5, 18, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(13, 5, 12, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(14, 5, 12, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(15, 5, 8, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(16, 5, 13, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(17, 5, 5, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(18, 5, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(19, 5, 9, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(20, 5, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(21, 5, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(22, 5, 20, 1, '0000-00-00', 99, '198000', NULL, NULL, ''),
+(23, 5, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(24, 5, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(25, 5, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(26, 5, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(27, 5, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(28, 5, 19, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(29, 5, 16, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(30, 5, 1, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(31, 5, 2, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(32, 5, 21, 1, '0000-00-00', 10, '20000', NULL, NULL, ''),
+(33, 5, 23, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
+(34, 5, 25, 1, '2018-10-01', 99, '198000', NULL, NULL, ''),
+(35, 5, 25, 1, '2018-10-03', 1, '2000', NULL, NULL, ''),
+(36, 5, 25, 1, '2018-10-28', 10, '20000', NULL, NULL, '');
 
 -- --------------------------------------------------------
 
@@ -544,7 +605,7 @@ CREATE TABLE IF NOT EXISTS `incomes` (
   `date` date NOT NULL,
   `type` enum('static','normal') COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `incomes`
@@ -577,7 +638,8 @@ INSERT INTO `incomes` (`id`, `doctor_id`, `patient_id`, `amount`, `date`, `type`
 (33, 5, 6, 2000, '2018-10-06', 'normal'),
 (34, 5, 0, 2000, '2018-10-05', 'static'),
 (35, 5, 0, 3000, '2018-10-05', 'static'),
-(36, 7, 0, 99, '2018-10-25', 'static');
+(36, 7, 0, 99, '2018-10-25', 'static'),
+(37, 4, 0, 2000, '2018-10-28', 'static');
 
 -- --------------------------------------------------------
 
@@ -593,7 +655,7 @@ CREATE TABLE IF NOT EXISTS `lab` (
   `price` decimal(10,0) NOT NULL,
   `memo` text,
   PRIMARY KEY (`test_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `lab`
@@ -605,7 +667,8 @@ INSERT INTO `lab` (`test_id`, `test_name_en`, `test_name_ar`, `category`, `price
 (8, 'ASLO', 'ASL0', 'hem', '1000', ''),
 (9, 'glocous', 'سكر', '', '1000', 'على الريق\nعشوائي'),
 (10, 'PCR', 'بي سي ار', 'صنف التحليل', '1000', ''),
-(11, 'Pcr test', 'بي سي ار', 'تحليل', '3000', '');
+(11, 'Pcr test', 'بي سي ار', 'تحليل', '3000', ''),
+(12, 'r', 'll', 'e', '1', '');
 
 -- --------------------------------------------------------
 
@@ -635,7 +698,7 @@ CREATE TABLE IF NOT EXISTS `lab_patient` (
   `patient_id` int(11) NOT NULL,
   `no_of_item` int(10) DEFAULT NULL,
   `user_id_assign` int(11) NOT NULL,
-  `assign_date` int(11) NOT NULL,
+  `assign_date` date NOT NULL,
   `total_cost` decimal(10,0) DEFAULT NULL,
   `user_id_discharge` int(11) DEFAULT NULL,
   `discharge_date` int(11) DEFAULT NULL,
@@ -646,64 +709,75 @@ CREATE TABLE IF NOT EXISTS `lab_patient` (
   KEY `patient_id` (`patient_id`),
   KEY `user_id_assign` (`user_id_assign`),
   KEY `user_id_discharge` (`user_id_discharge`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=55 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=66 ;
 
 --
 -- Dumping data for table `lab_patient`
 --
 
 INSERT INTO `lab_patient` (`lab_patient_id`, `test_id`, `patient_id`, `no_of_item`, `user_id_assign`, `assign_date`, `total_cost`, `user_id_discharge`, `discharge_date`, `memo`, `result`) VALUES
-(3, 6, 13, 1, 1, 1539279677, '2000', NULL, NULL, '', '1'),
-(4, 8, 13, 1, 1, 1539280212, '1000', 1, 1539280222, '', '1'),
-(5, 6, 10, 1, 1, 1539297138, '2000', NULL, NULL, '', '1'),
-(6, 7, 2, 1, 1, 1539299067, '1400', NULL, NULL, '', '1'),
-(8, 7, 18, 1, 1, 1539345001, '1400', NULL, NULL, '', '1'),
-(9, 8, 12, 1, 1, 1539347267, '1000', NULL, NULL, '', '1'),
-(10, 9, 12, 1, 1, 1539347521, '1000', NULL, NULL, '', '1'),
-(11, 8, 20, 1, 1, 1539784380, '1000', NULL, NULL, '', '1'),
-(12, 7, 13, 1, 1, 1539784607, '1400', NULL, NULL, '', '1'),
-(13, 6, 5, 1, 1, 1539784868, '2000', NULL, NULL, '', '1'),
-(14, 6, 20, 1, 1, 1539802012, '1000', 1, 1540036183, '', '1'),
-(15, 6, 20, 1, 1, 1539802049, '1000', NULL, NULL, '', '1'),
-(16, 6, 20, 4, 1, 1539805250, '2000', 1, 1540036181, 'dasdasda', '1'),
-(17, 6, 20, 99, 1, 1539805966, '198000', 1, 1540036181, '', '1'),
-(18, 9, 20, 1, 1, 1539807329, '1000', NULL, NULL, '', '1'),
-(19, 8, 20, 99, 1, 1539807353, '99000', 1, 1540036179, '', '1'),
-(20, 6, 20, 1, 1, 1539808921, '2000', NULL, NULL, '', '1'),
-(21, 8, 20, 1111, 1, 1539808954, '1111000', 1, 1540036175, '', '1'),
-(22, 6, 19, 1, 1, 1539810208, '2000', 1, 1539810223, '', '1'),
-(23, 7, 19, 1, 1, 1539810210, '1400', 1, 1539810224, '', '1'),
-(24, 8, 19, 1, 1, 1539810212, '1000', 1, 1539810225, '', '1'),
-(25, 7, 9, 1, 1, 1539812285, '1400', NULL, NULL, '', '1'),
-(26, 7, 20, 1, 1, 1540036999, '1400', NULL, NULL, '', '1'),
-(27, 6, 20, 1, 1, 1540037032, '2001', NULL, NULL, '', '1'),
-(28, 6, 20, 1, 1, 1540038393, '2001', NULL, NULL, '', '33'),
-(29, 6, 20, 1, 1, 1540039258, '2001', NULL, NULL, '', '99'),
-(30, 6, 20, 1, 1, 1540039355, '2001', NULL, NULL, '', 'هنا نضع نتائج التحليل'),
-(31, 6, 20, 1, 1, 1540039971, '2001', NULL, NULL, '', 'نتيجة تحليل الدم'),
-(32, 6, 20, 1, 1, 1540040668, '2001', NULL, NULL, '', 'يسشيس'),
-(33, 6, 20, 1, 1, 1540040813, '2001', NULL, NULL, '', 'يشسيشسي'),
-(34, 6, 20, 1, 1, 1540041006, '2001', NULL, NULL, '', 'تشيانشتياشسنتي اشنست اينتششنسي شستيشس نتياشسن ياشسن ياشسنتياشسن تياشسنت اي'),
-(35, 6, 20, 1, 1, 1540041207, '2001', NULL, NULL, '', ''),
-(36, 7, 20, 1, 1, 1540041265, '1400', NULL, NULL, '', ''),
-(37, 7, 19, 1, 1, 1540052793, '1400', 1, 1540052833, '', ''),
-(38, 6, 19, 1, 1, 1540052813, '2001', 1, 1540052834, '', ''),
-(39, 8, 19, 1, 1, 1540053386, '1000', NULL, NULL, '', 'النتائج المخبرية للتحليل'),
-(40, 9, 19, 1, 1, 1540053549, '1000', NULL, NULL, '', ''),
-(41, 7, 19, 1, 1, 1540053708, '1400', NULL, NULL, '', ''),
-(42, 6, 19, 1, 1, 1540054649, '2001', NULL, NULL, '', ''),
-(43, 7, 19, 1, 1, 1540054707, '1400', NULL, NULL, '', ''),
-(44, 6, 19, 1, 1, 1540054998, '2001', NULL, NULL, '', ''),
-(45, 6, 16, 1, 1, 1540056573, '2001', NULL, NULL, '', 'csdasd as '),
-(46, 6, 15, 1, 1, 1540057570, '2001', NULL, NULL, '', 'يسشي شسي شسي'),
-(47, 7, 15, 1, 1, 1540057574, '1400', NULL, NULL, '', 'يشسي شسي '),
-(48, 6, 20, 1, 1, 1540149981, '2001', NULL, NULL, '', 'يشسيشس يشسي'),
-(49, 9, 1, 1, 1, 1540201125, '1000', NULL, NULL, '', ''),
-(50, 6, 2, NULL, 1, 1540220310, NULL, NULL, NULL, NULL, 'نتائج '),
-(51, 6, 13, NULL, 1, 1540290915, NULL, NULL, NULL, NULL, 'نتيجة '),
-(52, 6, 21, NULL, 1, 1540291464, NULL, NULL, NULL, NULL, 'نتيجة لتحليل المخبرية'),
-(53, 6, 1, NULL, 1, 1540559144, NULL, NULL, NULL, NULL, 'hjghjh '),
-(54, 6, 1, NULL, 1, 1540563626, NULL, NULL, NULL, NULL, 'هذه هي نتيجة التحليل ');
+(3, 6, 13, 1, 1, '0000-00-00', '2000', NULL, NULL, '', '1'),
+(4, 8, 13, 1, 1, '0000-00-00', '1000', 1, 1539280222, '', '1'),
+(5, 6, 10, 1, 1, '0000-00-00', '2000', NULL, NULL, '', '1'),
+(6, 7, 2, 1, 1, '0000-00-00', '1400', NULL, NULL, '', '1'),
+(8, 7, 18, 1, 1, '0000-00-00', '1400', NULL, NULL, '', '1'),
+(9, 8, 12, 1, 1, '0000-00-00', '1000', NULL, NULL, '', '1'),
+(10, 9, 12, 1, 1, '0000-00-00', '1000', NULL, NULL, '', '1'),
+(11, 8, 20, 1, 1, '0000-00-00', '1000', NULL, NULL, '', '1'),
+(12, 7, 13, 1, 1, '0000-00-00', '1400', NULL, NULL, '', '1'),
+(13, 6, 5, 1, 1, '0000-00-00', '2000', NULL, NULL, '', '1'),
+(14, 6, 20, 1, 1, '0000-00-00', '1000', 1, 1540036183, '', '1'),
+(15, 6, 20, 1, 1, '0000-00-00', '1000', NULL, NULL, '', '1'),
+(16, 6, 20, 4, 1, '0000-00-00', '2000', 1, 1540036181, 'dasdasda', '1'),
+(17, 6, 20, 99, 1, '0000-00-00', '198000', 1, 1540036181, '', '1'),
+(18, 9, 20, 1, 1, '0000-00-00', '1000', NULL, NULL, '', '1'),
+(19, 8, 20, 99, 1, '0000-00-00', '99000', 1, 1540036179, '', '1'),
+(20, 6, 20, 1, 1, '0000-00-00', '2000', NULL, NULL, '', '1'),
+(21, 8, 20, 1111, 1, '0000-00-00', '1111000', 1, 1540036175, '', '1'),
+(22, 6, 19, 1, 1, '0000-00-00', '2000', 1, 1539810223, '', '1'),
+(23, 7, 19, 1, 1, '0000-00-00', '1400', 1, 1539810224, '', '1'),
+(24, 8, 19, 1, 1, '0000-00-00', '1000', 1, 1539810225, '', '1'),
+(25, 7, 9, 1, 1, '0000-00-00', '1400', NULL, NULL, '', '1'),
+(26, 7, 20, 1, 1, '0000-00-00', '1400', NULL, NULL, '', '1'),
+(27, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', '1'),
+(28, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', '33'),
+(29, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', '99'),
+(30, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', 'هنا نضع نتائج التحليل'),
+(31, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', 'نتيجة تحليل الدم'),
+(32, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', 'يسشيس'),
+(33, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', 'يشسيشسي'),
+(34, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', 'تشيانشتياشسنتي اشنست اينتششنسي شستيشس نتياشسن ياشسن ياشسنتياشسن تياشسنت اي'),
+(35, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', ''),
+(36, 7, 20, 1, 1, '0000-00-00', '1400', NULL, NULL, '', ''),
+(37, 7, 19, 1, 1, '0000-00-00', '1400', 1, 1540052833, '', ''),
+(38, 6, 19, 1, 1, '0000-00-00', '2001', 1, 1540052834, '', ''),
+(39, 8, 19, 1, 1, '0000-00-00', '1000', NULL, NULL, '', 'النتائج المخبرية للتحليل'),
+(40, 9, 19, 1, 1, '0000-00-00', '1000', NULL, NULL, '', ''),
+(41, 7, 19, 1, 1, '0000-00-00', '1400', NULL, NULL, '', ''),
+(42, 6, 19, 1, 1, '0000-00-00', '2001', NULL, NULL, '', ''),
+(43, 7, 19, 1, 1, '0000-00-00', '1400', NULL, NULL, '', ''),
+(44, 6, 19, 1, 1, '0000-00-00', '2001', NULL, NULL, '', ''),
+(45, 6, 16, 1, 1, '0000-00-00', '2001', NULL, NULL, '', 'csdasd as '),
+(46, 6, 15, 1, 1, '0000-00-00', '2001', NULL, NULL, '', 'يسشي شسي شسي'),
+(47, 7, 15, 1, 1, '0000-00-00', '1400', NULL, NULL, '', 'يشسي شسي '),
+(48, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', 'يشسيشس يشسي'),
+(49, 9, 1, 1, 1, '0000-00-00', '1000', NULL, NULL, '', ''),
+(50, 6, 2, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, 'نتائج '),
+(51, 6, 13, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, 'نتيجة '),
+(52, 6, 21, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, 'نتيجة لتحليل المخبرية'),
+(53, 6, 1, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, 'hjghjh '),
+(54, 6, 1, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, 'هذه هي نتيجة التحليل '),
+(55, 7, 23, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, 'نتيجة التحليل '),
+(56, 6, 23, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, 'بيس بنيساب تسينتانتبيسا تنانتابيسن نا تسنيبت   بيس '),
+(57, 6, 21, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(58, 6, 25, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(59, 6, 25, NULL, 1, '2018-10-10', NULL, NULL, NULL, NULL, ''),
+(60, 6, 25, NULL, 1, '2018-10-03', NULL, NULL, NULL, NULL, ''),
+(61, 7, 25, NULL, 1, '2018-10-28', NULL, NULL, NULL, NULL, ''),
+(62, 6, 25, NULL, 1, '2018-10-28', NULL, NULL, NULL, NULL, ''),
+(63, 6, 25, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, 'النتيجة المخبرية '),
+(64, 6, 25, NULL, 1, '2018-10-28', NULL, NULL, NULL, NULL, 'هذه هي النتيجة المخبرية للتحليل'),
+(65, 6, 25, NULL, 1, '2018-10-28', NULL, NULL, NULL, NULL, 'هذا تحليل جديد');
 
 -- --------------------------------------------------------
 
@@ -719,7 +793,7 @@ CREATE TABLE IF NOT EXISTS `logins` (
   `success` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`login_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=245 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=255 ;
 
 --
 -- Dumping data for table `logins`
@@ -969,7 +1043,39 @@ INSERT INTO `logins` (`login_id`, `ip_address`, `user_id`, `time`, `success`) VA
 (241, 0, 1, '2018-10-27 15:55:15', 1),
 (242, 0, 1, '2018-10-27 15:58:43', 1),
 (243, 0, 1, '2018-10-28 01:25:18', 1),
-(244, 0, 1, '2018-10-28 01:41:30', 1);
+(244, 0, 1, '2018-10-28 01:41:30', 1),
+(245, 0, 1, '2018-10-28 05:04:16', 1),
+(246, 0, 1, '2018-10-28 09:44:19', 1),
+(247, 0, 1, '2018-10-28 14:30:41', 1),
+(248, 0, 1, '2018-11-02 19:38:14', 1),
+(249, 0, 1, '2018-11-16 05:43:32', 0),
+(250, 0, 1, '2018-11-16 05:43:34', 1),
+(251, 0, 1, '2018-11-17 08:33:34', 1),
+(252, 0, 1, '2018-11-18 20:54:35', 1),
+(253, 0, 1, '2018-11-19 07:06:14', 1),
+(254, 0, 1, '2018-11-19 08:51:01', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `medical12s`
+--
+
+CREATE TABLE IF NOT EXISTS `medical12s` (
+  `id` int(11) NOT NULL DEFAULT '0',
+  `diagnose_name_en` mediumtext CHARACTER SET utf8 NOT NULL,
+  `diagnose_name_ar` mediumtext CHARACTER SET utf8 NOT NULL,
+  `description` mediumtext CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `medical12s`
+--
+
+INSERT INTO `medical12s` (`id`, `diagnose_name_en`, `diagnose_name_ar`, `description`) VALUES
+(7, 'Diagnose', 'تشخيص', 'هنا نضع وصف التشخيص'),
+(8, 'VXS', 'تشخيص', 'وصف التشخيص'),
+(9, 'VDT', 'في دي تي', 'وصف التشخيص.');
 
 -- --------------------------------------------------------
 
@@ -984,7 +1090,7 @@ CREATE TABLE IF NOT EXISTS `nurses` (
   `phone` varchar(50) NOT NULL,
   `address` mediumtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `nurses`
@@ -1017,7 +1123,7 @@ CREATE TABLE IF NOT EXISTS `patients` (
   `picture` text,
   `memo` text,
   PRIMARY KEY (`patient_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `patients`
@@ -1047,7 +1153,8 @@ INSERT INTO `patients` (`patient_id`, `first_name`, `last_name`, `fname`, `gende
 (21, 'ماهر', 'مطرب', 'سمير', 1, 'mdaskdaslkj@ljda.com', '094324234', 'دمشق', '22', 'Bank ID Card', 498873600, 1540291224, NULL, ''),
 (22, 'مهاب', 'الحسيني', 'جمال', 1, 'sadas@cc.com', '09332323', 'دمشق', '11', 'Passport', 846374400, 1540646403, NULL, ''),
 (23, 'جهاد', 'جميل', 'سامر', 1, 'asdasd@asd.com', '094923423', 'دمشق', NULL, NULL, 499219200, 1540646689, NULL, ''),
-(24, 'ads', 'das d', 'das', 1, 'sadsa@dsdas.com', '321321', 'dasd', NULL, NULL, 499219200, 1540672163, NULL, '');
+(24, 'ads', 'das d', 'das', 1, 'sadsa@dsdas.com', '321321', 'dasd', NULL, NULL, 499219200, 1540672163, NULL, ''),
+(25, 'عبد الله', 'الحسين', 'علي', 1, '', '0943434343', 'دمشق', '', 'Tazkara', -352771200, 1540727776, NULL, '');
 
 -- --------------------------------------------------------
 
@@ -1064,7 +1171,7 @@ CREATE TABLE IF NOT EXISTS `patient_doctor` (
   PRIMARY KEY (`patient_doctor_id`),
   KEY `patient_id` (`patient_id`),
   KEY `user_id` (`doctor_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `patient_doctor`
@@ -1094,7 +1201,8 @@ INSERT INTO `patient_doctor` (`patient_doctor_id`, `patient_id`, `doctor_id`, `v
 (21, 21, 7, 1540291224, 0),
 (22, 22, 5, 1540646403, 0),
 (23, 23, 5, 1540646689, 0),
-(24, 24, 6, 1540672163, 0);
+(24, 24, 6, 1540672163, 0),
+(25, 25, 4, 1540727872, 0);
 
 -- --------------------------------------------------------
 
@@ -1251,16 +1359,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `last_login` datetime NOT NULL,
   `last_login_ip` int(10) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `password_last_set`, `password_never_expires`, `remember_me`, `activation_code`, `active`, `forgot_code`, `forgot_generated`, `enabled`, `last_login`, `last_login_ip`) VALUES
-(1, 'admin', '$2a$08$glVINo.dWbH7voqyOzZ4YeyZOUTGSy3jxYXzNLrVPaWJj9ZLesoCy', '2018-09-19 18:00:15', 0, '6878a7fdad4a5aea216f1f66ae1becfac6a62285', '', 1, '', '0000-00-00 00:00:00', 1, '2018-10-28 03:41:30', 0),
+(1, 'admin', '$2a$08$glVINo.dWbH7voqyOzZ4YeyZOUTGSy3jxYXzNLrVPaWJj9ZLesoCy', '2018-09-19 18:00:15', 0, '6878a7fdad4a5aea216f1f66ae1becfac6a62285', '', 1, '', '0000-00-00 00:00:00', 1, '2018-11-19 10:51:01', 0),
 (2, 'ahmad', '$2a$08$30kc9L1nLO/sUVG2ExwUs..LqI5C/mMwoVzxPPWk0G1fTeS6T9jhW', '2018-09-19 18:01:15', 0, '6ac3c5aa0002289b0ba7bef6fc38c256869a86c8', '', 1, '', '0000-00-00 00:00:00', 1, '2018-10-02 17:38:48', 83919838),
-(3, 'mossab', '$2a$08$5JnDGg5bCUFvYYVsZSf24uUj/skPcMwferFknI8ar7bBFUDsUESrC', '2018-10-08 10:31:44', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-10-08 10:32:04', 83923213);
+(3, 'mossab', '$2a$08$5JnDGg5bCUFvYYVsZSf24uUj/skPcMwferFknI8ar7bBFUDsUESrC', '2018-10-08 10:31:44', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-10-08 10:32:04', 83923213),
+(4, 'admin', '$2a$08$glVINo.dWbH7voqyOzZ4YeyZOUTGSy3jxYXzNLrVPaWJj9ZLesoCy', '2018-09-19 18:00:15', 0, '6878a7fdad4a5aea216f1f66ae1becfac6a62285', '', 1, '', '0000-00-00 00:00:00', 1, '2018-11-02 21:38:14', 0);
 
 -- --------------------------------------------------------
 
@@ -1339,7 +1448,7 @@ CREATE TABLE IF NOT EXISTS `xray_patient` (
   `xray_id` int(11) NOT NULL,
   `patient_id` int(11) NOT NULL,
   `user_id_assign` int(11) NOT NULL,
-  `assign_date` int(11) NOT NULL,
+  `assign_date` date NOT NULL,
   `no_of_item` int(11) NOT NULL DEFAULT '1',
   `total_cost` decimal(10,0) DEFAULT NULL,
   `user_id_discharge` int(11) DEFAULT NULL,
@@ -1351,38 +1460,48 @@ CREATE TABLE IF NOT EXISTS `xray_patient` (
   KEY `patient_id` (`patient_id`),
   KEY `user_id_assign` (`user_id_assign`),
   KEY `user_id_discharge` (`user_id_discharge`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `xray_patient`
 --
 
 INSERT INTO `xray_patient` (`xray_patient_id`, `xray_id`, `patient_id`, `user_id_assign`, `assign_date`, `no_of_item`, `total_cost`, `user_id_discharge`, `discharge_date`, `memo`, `xresult`) VALUES
-(1, 1, 13, 1, 1539207077, 1, '2000', NULL, NULL, '', ''),
-(2, 1, 11, 1, 1539242825, 1, '2000', NULL, NULL, '', ''),
-(7, 1, 18, 1, 1539344962, 1, '2000', NULL, NULL, '', ''),
-(8, 1, 8, 1, 1539469611, 1, '2000', NULL, NULL, '', ''),
-(9, 1, 5, 1, 1539796285, 1, '2000', NULL, NULL, '', ''),
-(10, 1, 12, 1, 1539796367, 1, '2000', NULL, NULL, '', ''),
-(11, 1, 20, 1, 1539806766, 1, '2000', NULL, NULL, '', ''),
-(12, 1, 19, 1, 1539810276, 1, '2000', NULL, NULL, '', ''),
-(13, 1, 9, 1, 1539812266, 1, '2000', NULL, NULL, '', ''),
-(14, 1, 20, 1, 1540036941, 1, '2001', NULL, NULL, '', ''),
-(15, 1, 20, 1, 1540036980, 1, '2001', NULL, NULL, '', ''),
-(16, 1, 19, 1, 1540052781, 1, '2001', NULL, NULL, '', ''),
-(17, 1, 16, 1, 1540056659, 9, '18009', NULL, NULL, '', 'Ahmad'),
-(18, 1, 20, 1, 1540149964, 1, '2001', NULL, NULL, '', 'بسيبسي'),
-(19, 1, 1, 1, 1540201139, 1, '2001', NULL, NULL, '', ''),
-(20, 1, 2, 1, 1540211059, 1, '2001', NULL, NULL, '', ''),
-(21, 1, 1, 1, 1540215184, 99, '198099', NULL, NULL, '', 'das'),
-(22, 1, 1, 1, 1540219047, 1, '2001', NULL, NULL, '', 'dasd'),
-(23, 1, 1, 1, 1540219062, 1, '2001', NULL, NULL, '', 'new'),
-(24, 1, 2, 1, 1540220039, 0, NULL, NULL, NULL, NULL, 'test xx '),
-(25, 1, 13, 1, 1540290936, 0, NULL, NULL, NULL, NULL, 'نتيجة صورة الاشعة'),
-(26, 2, 21, 1, 1540292102, 0, NULL, NULL, NULL, NULL, ''),
-(27, 1, 1, 1, 1540563941, 0, NULL, NULL, NULL, NULL, ''),
-(28, 2, 1, 1, 1540563978, 0, NULL, NULL, NULL, NULL, ''),
-(29, 2, 1, 1, 1540564060, 0, NULL, NULL, NULL, NULL, 'نتيجة صورة الاشعه ');
+(1, 1, 13, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
+(2, 1, 11, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
+(7, 1, 18, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
+(8, 1, 8, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
+(9, 1, 5, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
+(10, 1, 12, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
+(11, 1, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
+(12, 1, 19, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
+(13, 1, 9, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
+(14, 1, 20, 1, '0000-00-00', 1, '2001', NULL, NULL, '', ''),
+(15, 1, 20, 1, '0000-00-00', 1, '2001', NULL, NULL, '', ''),
+(16, 1, 19, 1, '0000-00-00', 1, '2001', NULL, NULL, '', ''),
+(17, 1, 16, 1, '0000-00-00', 9, '18009', NULL, NULL, '', 'Ahmad'),
+(18, 1, 20, 1, '0000-00-00', 1, '2001', NULL, NULL, '', 'بسيبسي'),
+(19, 1, 1, 1, '0000-00-00', 1, '2001', NULL, NULL, '', ''),
+(20, 1, 2, 1, '0000-00-00', 1, '2001', NULL, NULL, '', ''),
+(21, 1, 1, 1, '0000-00-00', 99, '198099', NULL, NULL, '', 'das'),
+(22, 1, 1, 1, '0000-00-00', 1, '2001', NULL, NULL, '', 'dasd'),
+(23, 1, 1, 1, '0000-00-00', 1, '2001', NULL, NULL, '', 'new'),
+(24, 1, 2, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, 'test xx '),
+(25, 1, 13, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, 'نتيجة صورة الاشعة'),
+(26, 2, 21, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, ''),
+(27, 1, 1, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, ''),
+(28, 2, 1, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, ''),
+(29, 2, 1, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, 'نتيجة صورة الاشعه '),
+(30, 1, 23, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, 'يضع الطبيب ملاحظاته '),
+(31, 2, 23, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, 'ملاحظات الطبيب '),
+(32, 1, 21, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, 'يشسي شسي شس '),
+(33, 2, 21, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, 'يشس يسشي '),
+(34, 1, 21, 1, '2018-10-16', 0, NULL, NULL, NULL, NULL, 'يستن سينبى سةي '),
+(35, 1, 25, 1, '2018-10-09', 0, NULL, NULL, NULL, NULL, 'يشس يش شي س ي س  يس '),
+(36, 1, 25, 1, '2018-10-09', 0, NULL, NULL, NULL, NULL, 'يشس يسشةي ش'),
+(37, 2, 25, 1, '2018-10-17', 0, NULL, NULL, NULL, NULL, 'يسش يسشيلان ش'),
+(38, 1, 25, 1, '2018-10-10', 0, NULL, NULL, NULL, NULL, 'نتيجة صورة الاشعه '),
+(39, 1, 25, 1, '2018-10-28', 0, NULL, NULL, NULL, NULL, 'صورة للعمود الفقري ');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

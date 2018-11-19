@@ -18,7 +18,7 @@ if(is_uploaded_file($temp['tmp_name']))
         return;
     }
       
-    $fileName = "../../uploads/" . $temp['name'];
+    $fileName = "uploads/" . $temp['name'];
     move_uploaded_file($temp['tmp_name'], $fileName);
   
     echo json_encode(array('file_path' => $fileName));
