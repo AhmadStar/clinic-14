@@ -100,7 +100,10 @@
 </head>
 <!--  <body  dir="rtl" lang="ar" class="AR wrapper">-->
 
-<body dir="rtl" lang="ar" class="AR wrapper" >
+<body dir="rtl" lang="ar" class="AR wrapper" style="background-image: url('<?php echo base_url() ?>content/img/<?php  if($this->uri->segment(1) =='')
+                            echo 'home';
+                       else
+                            echo $this->uri->segment(1);?>.jpg'); background-size: cover">
 
     <div class="container">
         <header>
