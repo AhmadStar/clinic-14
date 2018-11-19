@@ -44,7 +44,7 @@
         relative_urls : false,
         remove_script_host : false,
         convert_urls : true,
-        document_base_url : ":<?php echo base_url() ?>",
+        document_base_url : "<?php echo base_url() ?>",
         selector: 'textarea',
         theme: 'modern',
         plugins: [
