@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col col-md-8 well well-sm">
+    <div class="col col-md-12 well well-sm">
         <?php echo form_open('article/new_article',array("id"=>"newArticleForm", "role"=>"form",)); ?>
         <fieldset>
             <legend>-
