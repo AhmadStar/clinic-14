@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 19, 2018 at 01:16 PM
+-- Generation Time: Nov 19, 2018 at 02:55 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `created_date` date DEFAULT NULL,
   `image` mediumtext,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `articles`
@@ -48,7 +48,8 @@ INSERT INTO `articles` (`id`, `title`, `body`, `author_id`, `created_date`, `ima
 (5, 'dasd', '<p><img src="http://localhost/clinic-14/uploads/DOBN16zXUAAM4yI.jpg" alt="sa" width="855" height="1200" /></p>', NULL, '2018-11-09', NULL),
 (6, '?????', '<p >??? ??? ??????? ?? ????? ??? ??? ????? ?????? ???????</p>\r\n <p ><img src="http://localhost/clinic-14/uploads/DM8US6GWsAAmR3p.jpg" alt="??? ??????" width="261" height="189" /></p>\r\n <p >???? ??? ??? ???? ????? ?? ????? ????? ???? ??????</p>\r\n <p ><img src="http://localhost/clinic-14/uploads/DN-yBJcW0AEYCJC.jpg" alt="" width="466" height="316" /></p>', NULL, '2018-11-15', NULL),
 (7, '?????? ?????', '<p><img src="http://localhost/clinic-14/uploads/DMHcrF6W4AAuhBJ.jpg" alt="" width="1024" height="982" /></p>', NULL, '2018-11-23', NULL),
-(8, '?????', '<p><img src="../../../uploads/DM8US6GWsAAmR3p.jpg" alt="" width="261" height="189" /></p>\n<p>&nbsp;</p>\n<p>نضع صورة</p>\n<p>&nbsp;</p>\n<p><img src="../../../uploads/DM8US6GWsAAmR3p.jpg" alt="" width="261" height="189" /></p>\n<p>&nbsp;</p>\n<p>نضع صورة</p>\n<p>&nbsp;</p>\n<p><img src="../../../uploads/DM7GNarUEAEu9qa.jpg" alt="" width="779" height="1024" /></p>\n<p>&nbsp;</p>\n<p>???? ????</p>', NULL, '2018-11-09', NULL);
+(8, '?????', '<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>نضع صورة</p>\r\n<p>&nbsp;</p>\r\n<p><img src="../../../uploads/DM8US6GWsAAmR3p.jpg" alt="" width="261" height="189" /></p>\r\n<p>&nbsp;</p>\r\n<p>نضع صورة</p>\r\n<p>&nbsp;</p>\r\n<p><img src="../../../uploads/DM7GNarUEAEu9qa.jpg" alt="" width="779" height="1024" /></p>\r\n<p>&nbsp;</p>\r\n<p>???? ????</p>', NULL, '2018-11-09', NULL),
+(9, 'دمشق', '<p >هنا سنضع نص بسيط&nbsp;</p>\r\n <p >&nbsp;</p>\r\n <p ><img src="../../../uploads/imagetools6.jpg" alt="" width="600" height="600" />&nbsp;</p>\r\n<p>وهنا نستطيع اضافة نص الى المقالة ..</p>\r\n<p>لا تنسي تظبيط ستايل المقالة&nbsp;</p>\r\n<p>لح حاول ضيف صورة جديدة</p>', NULL, '2018-11-24', NULL);
 
 -- --------------------------------------------------------
 
