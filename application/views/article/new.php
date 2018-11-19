@@ -1,0 +1,102 @@
+<div class="row">
+    <div class="col col-md-8 well well-sm">
+        <?php echo form_open('article/new_article',array("id"=>"newArticleForm", "role"=>"form",)); ?>
+        <fieldset>
+            <legend>-
+                <?php trP('ArticleInformation')?>:</legend>
+            <div>
+                <?php echo ( !empty($error) ? $error : '' ); ?>
+                <div class="form-group">
+
+                    <div class="col-md-12"><input type="text" name='title' id='title' value="<?php echo $this->input->post('title');?>" class='form-control' placeholder="<?php trP('Title')?>" title="<?php trP('Title')?>" required /></div>
+
+                    <div class="col-md-12"><input type="date" name='created_date' id='created_date' value="<?php echo $this->input->post('created_date');?>" class='form-control' placeholder="<?php trP('created_date')?>" title="<?php trP('created_date')?>" required /></div>
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </fieldset>
+        <fieldset>
+            <legend>-
+                <?php trP('Article')?>: </legend>
+            <div>
+                <div class="form-group">
+                    <div class="col-md-12"><textarea name="body" id="body" class="form-control" rows="20"><?php echo $this->input->post('body');?></textarea>
+                    </div>
+                </div>
+        </fieldset>
+        <div class="form-group">
+            <div class="col-md-6"><input type="submit" name='submit' id='submit' value=<?php trp('Add')?> class="form-control btn btn-info" /></div>
+            <div class="col-md-6">
+                <?php echo anchor('article',tr('cancel'),array('class'=>'form-control btn btn-info'));?>
+            </div>
+        </div>
+        <?php echo form_close(); ?>
+    </div>
+    <div class="pull-right" title="<?php trP('GoToArticles')?>">
+
+        <?php echo anchor('article', '<button class="btn btn-return"><span>'.tr('GoToArticles').'</span></button>');?>
+    </div>
+</div>
+
+<script type="text/javascript">
+    tinymce.init({
+        selector: 'textarea',
+        theme: 'modern',
+        plugins: [
+            'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen',
+            'insertdatetime media nonbreaking save table contextmenu directionality',
+            'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'
+        ],
+        toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
+        templates: [{
+                title: 'Test template 1',
+                content: 'Test 1'
+            },
+            {
+                title: 'Test template 2',
+                content: 'Test 2'
+            }
+        ],
+        content_css: [
+            '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+            '//www.tinymce.com/css/codepen.min.css'
+        ],
+        images_upload_url : 'upload.php',
+		automatic_uploads : true,
+
+		images_upload_handler : function(blobInfo, success, failure) {
+			var xhr, formData;
+
+			xhr = new XMLHttpRequest();
+			xhr.withCredentials = false;
+			xhr.open('POST', '../../upload.php');
+
+			xhr.onload = function() {
+				var json;
+
+				if (xhr.status != 200) {
+					failure('HTTP Error: ' + xhr.status);
+					return;
+				}
+
+				json = JSON.parse(xhr.responseText);
+
+				if (!json || typeof json.file_path != 'string') {
+					failure('Invalid JSON: ' + xhr.responseText);
+					return;
+				}
+
+				success(json.file_path);
+			};
+
+			formData = new FormData();
+			formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+			xhr.send(formData);
+		},
+    });
+
+</script>
