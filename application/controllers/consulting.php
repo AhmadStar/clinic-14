@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Article extends CI_Controller {
+class Consulting extends CI_Controller {
   
   /**
    * Drug::__construct()
@@ -29,8 +29,8 @@ class Article extends CI_Controller {
     $this->load->helper('url');
     $this->load->helper('form');
 
-    $data['title'] = tr('ArticlesList');
-    $path='article/list';
+    $data['title'] = tr('ConsultingsList');
+    $path='consulting/list';
     if(isset($_GET['ajax'])&&$_GET['ajax']==true)
     {
         $this->load->view($path, $data);
@@ -42,81 +42,81 @@ class Article extends CI_Controller {
     }
   }
     
-  public function ajax_list()
-  {
-        $this->load->model('articles_model','articles');
-		$list = $this->articles->get_datatables();
-		$data = array();
-		$no = $_POST['start'];        
-		foreach ($list as $articles) {
-			$no++;
-            $actions = '';
-			$row = array();
-			$row[] = $no;
-			$row[] = $articles->title;		
-			$row[] = $articles->created_date;
-            
-            $actions .= anchor('article/edit/'.$articles->id, '<span class="glyphicon glyphicon-edit"></span>',array('title'=>tr('EditArticle')));
-            $actions .= anchor('article/delete/'.$articles->id, '<span class="glyphicon glyphicon-remove"></span>',array('title'=>'Delete Article'));
-            $actions .= anchor('article/show/'.$articles->id, '<span class="glyphicon glyphicon-check"></span>',array('title'=>'Show Article'));
-            
-            $row[] = $actions;
-
-			$data[] = $row;
-		}
-
-		$output = array(
-						"draw" => $_POST['draw'],
-						"recordsTotal" => $this->articles->count_all(),
-						"recordsFiltered" => $this->articles->count_filtered(),
-						"data" => $data,
-				);
-		//output to json format
-		echo json_encode($output);
-	}    
-    
-    public function total()
-  {      
-        $this->load->model('Consumes','consumes');
-        $this->load->model('Articles_model','articles');        
-		$data = $this->consumes->get_total();
-		
-		$output = array(						
-						"data" => $data,
-				);
-		//output to json format
-		echo json_encode($output);
-	}    
-  
+//  public function ajax_list()
+//  {
+//        $this->load->model('consultings_model','consultings');
+//		$list = $this->consultings->get_datatables();
+//		$data = array();
+//		$no = $_POST['start'];        
+//		foreach ($list as $consultings) {
+//			$no++;
+//            $actions = '';
+//			$row = array();
+//			$row[] = $no;
+//			$row[] = $consultings->title;		
+//			$row[] = $consultings->created_date;
+//            
+//            $actions .= anchor('consulting/edit/'.$consultings->id, '<span class="glyphicon glyphicon-edit"></span>',array('title'=>tr('EditConsulting')));
+//            $actions .= anchor('consulting/delete/'.$consultings->id, '<span class="glyphicon glyphicon-remove"></span>',array('title'=>'Delete Consulting'));
+//            $actions .= anchor('consulting/show/'.$consultings->id, '<span class="glyphicon glyphicon-check"></span>',array('title'=>'Show Consulting'));
+//            
+//            $row[] = $actions;
+//
+//			$data[] = $row;
+//		}
+//
+//		$output = array(
+//						"draw" => $_POST['draw'],
+//						"recordsTotal" => $this->consultings->count_all(),
+//						"recordsFiltered" => $this->consultings->count_filtered(),
+//						"data" => $data,
+//				);
+//		//output to json format
+//		echo json_encode($output);
+//	}    
+//    
+//    public function total()
+//  {      
+//        $this->load->model('Consumes','consumes');
+//        $this->load->model('Consultings_model','consultings');        
+//		$data = $this->consumes->get_total();
+//		
+//		$output = array(						
+//						"data" => $data,
+//				);
+//		//output to json format
+//		echo json_encode($output);
+//	}    
+//  
   /**
    * Patient::search()
    */
-  public function search(/*$q=''*/)
-  {
-    if (!$this->bitauth->logged_in())
-    {
-      $this->session->set_userdata('redir', current_url());
-      redirect('account/login');
-    }
-    //if($q!='')
-    if($this->input->post())
-    {
-        $this->load->model('drugs');
-        $q=$this->input->post('q');
-        //$drugs=$this->drugs->search(array('drug_name_en'=>$q,'drug_name_fa'=>$q));
-        $drugs=$this->drugs->search(array('drug_name_en'=>$q,'drug_name_fa'=>$q));
-        $data['drugs']=$drugs;
-        $this->load->view('drug/result',$data);
-        return TRUE;
-    }
-    $data['title']=tr('DrugSearch');
-    $this->load->view('drug/search');
-  }
-  
+//  public function search(/*$q=''*/)
+//  {
+//    if (!$this->bitauth->logged_in())
+//    {
+//      $this->session->set_userdata('redir', current_url());
+//      redirect('account/login');
+//    }
+//    //if($q!='')
+//    if($this->input->post())
+//    {
+//        $this->load->model('drugs');
+//        $q=$this->input->post('q');
+//        //$drugs=$this->drugs->search(array('drug_name_en'=>$q,'drug_name_fa'=>$q));
+//        $drugs=$this->drugs->search(array('drug_name_en'=>$q,'drug_name_fa'=>$q));
+//        $data['drugs']=$drugs;
+//        $this->load->view('drug/result',$data);
+//        return TRUE;
+//    }
+//    $data['title']=tr('DrugSearch');
+//    $this->load->view('drug/search');
+//  }
+//  
   /**
-   * Patient::edit()
+   * Consulting::answered()
    */
-  public function edit($article_id=0)
+  public function answered($consulting_id=0)
   {
     if (!$this->bitauth->logged_in())
     {
@@ -128,15 +128,16 @@ class Article extends CI_Controller {
       $this->_no_access();
       return;
     }
-    $this->load->model('articles');
-    $this->articles->load($article_id);
+    $this->load->model('consultings');
+    $this->consultings->load($consulting_id);
     
     if($this->input->post())
     {
         
-      $this->form_validation->set_rules(array(        
-        array( 'field' => 'title', 'label' => 'Article Title', 'rules' => 'trim|has_no_schar', ),
-        array( 'field' => 'body', 'label' => 'Article body', 'rules' => 'trim', ),
+      $this->form_validation->set_rules(array(.
+                                              
+        array( 'field' => 'status', 'label' => 'Consulting Status', 'rules' => 'trim', ),
+        array( 'field' => 'answer', 'label' => 'Consulting Answer', 'rules' => 'trim', ),
       ));    
               
       if($this->form_validation->run() == TRUE)
@@ -144,17 +145,17 @@ class Article extends CI_Controller {
         //check if patient form already loaded from this app -> should be checked with session
         $session_check=$this->session->userdata(current_url());
         $this->session->unset_userdata(current_url());
-        if($session_check && $session_check[0]==$article_id)
+        if($session_check && $session_check[0]==$consulting_id)
         {
             unset($_POST['submit']);
-            $article=$this->input->post();
-            $this->load->model('articles');
-            foreach($article as $key => $value)
-              $this->articles->$key = $value;
-            $this->articles->save();
+            $consulting=$this->input->post();
+            $this->load->model('consultings');
+            foreach($consulting as $key => $value)
+              $this->consultings->$key = $value;
+            $this->consultings->save();
             unset($_POST);
-            $data['script'] = '<script>alert("'.tr('hasbeenupdated').' '.html_escape($this->articles->title).' '.tr('successfuly').'");</script>';
-//            redirect('article');
+            $data['script'] = '<script>alert("'.tr('hasbeenupdated').' '.tr('Consulting').' '.tr('successfuly').'");</script>';
+//            redirect('consulting');
         }else{
           //user may have sent the form to a url other than the original
           $data['error'] = '<div class="alert alert-danger">Form URL Error</div>';
@@ -163,10 +164,10 @@ class Article extends CI_Controller {
         $data['error']=validation_errors();
       }
     }
-    $this->session->set_userdata(current_url(),array($article_id));
-    $data['title'] = tr('EditArticle');    
-    $data['article']=$this->articles;
-    $path='article/edit';
+    $this->session->set_userdata(current_url(),array($consulting_id));
+    $data['title'] = tr('EditConsulting');    
+    $data['consulting']=$this->consultings;
+    $path='consulting/edit';
     if(isset($_GET['ajax'])&&$_GET['ajax']==true)
     {
         $this->load->view($path, $data);
@@ -181,7 +182,7 @@ class Article extends CI_Controller {
   /**
    * Patient::edit()
    */
-  public function delete($article_id=0)
+  public function delete($consulting_id=0)
   {
     if (!$this->bitauth->logged_in())
     {
@@ -193,8 +194,8 @@ class Article extends CI_Controller {
       $this->_no_access();
       return;
     }
-    $this->load->model('articles');
-    $this->articles->load($article_id);
+    $this->load->model('consultings');
+    $this->consultings->load($consulting_id);
     
     if($this->input->post())
     {
@@ -203,18 +204,18 @@ class Article extends CI_Controller {
         array( 'field' => 'del', 'label' => '', 'rules' => 'required|trim|has_no_schar', ),
       ));
       if($this->form_validation->run() == TRUE&&
-         $this->input->post('id')==$article_id)
+         $this->input->post('id')==$consulting_id)
       {
         //check if patient form already loaded from this app -> should be checked with session
         $session_check=$this->session->userdata(current_url());
         $this->session->unset_userdata(current_url());
-        if($session_check && $session_check[0]==$article_id)
+        if($session_check && $session_check[0]==$consulting_id)
         {
             
             //$this->load->model('drug_patient');
-            //$this->drug_patient->get_by_fkey('drug_id',$article_id);
+            //$this->drug_patient->get_by_fkey('drug_id',$consulting_id);
             //if(!$this->drug_patient->drug_patient_id){
-                $this->articles->delete();
+                $this->consultings->delete();
                 echo 'ok';
                 return;
             //}else{
@@ -232,14 +233,14 @@ class Article extends CI_Controller {
         return;
       }
     }
-    $this->session->set_userdata(current_url(),array($article_id));
-    $data['article']=$this->articles;
+    $this->session->set_userdata(current_url(),array($consulting_id));
+    $data['consulting']=$this->consultings;
     //$data['css'] = "<style>.form-group{margin-bottom:0px;} .form-group .form-control{margin-bottom:10px;}</style>";
     //$data['includes']=array('drug/delete');
     
 //      print_r($data);
 //      echo $data;
-    $this->load->view('article/confirm_delete',$data);
+    $this->load->view('consulting/confirm_delete',$data);
     //$this->load->view('header',$data);
     //$this->load->view('index',$data);
     //$this->load->view('footer',$data);
@@ -248,7 +249,7 @@ class Article extends CI_Controller {
   /*
    * 
    */
-  public function new_article()
+  public function new_consulting()
   {
     
     if(!$this->bitauth->has_role('admin'))
@@ -260,29 +261,29 @@ class Article extends CI_Controller {
     if($this->input->post())
     {
       $this->form_validation->set_rules(array(        
-        array( 'field' => 'title', 'label' => 'Article Title', 'rules' => 'trim|has_no_schar', ),
-        array( 'field' => 'created_date', 'label' => 'Article created date', 'rules' => 'trim|has_no_schar', ),
-        array( 'field' => 'body', 'label' => 'Article bode', 'rules' => 'trim', ),
+        array( 'field' => 'question', 'label' => 'Consulting Title', 'rules' => 'trim|has_no_schar', ),
+        array( 'field' => 'date', 'label' => 'Consulting created date', 'rules' => 'trim|has_no_schar', ),
+        array( 'field' => 'body', 'label' => 'Consulting bode', 'rules' => 'trim', ),
       ));
       if($this->form_validation->run() == TRUE)
       {
         
         unset($_POST['submit']);
-        $article=$this->input->post();
-        $this->load->model('articles');
-        foreach($article as $key => $value)
-          $this->articles->$key = $value;
-        $this->articles->save();
+        $consulting=$this->input->post();
+        $this->load->model('consultings');
+        foreach($consulting as $key => $value)
+          $this->consultings->$key = $value;
+        $this->consultings->save();
         unset($_POST);
 
-          $data['script'] = '<script>alert("'.tr('hasbeenregistered').' '.html_escape($this->articles->title).' '.tr('successfuly').'");</script>';
+          $data['script'] = '<script>alert("'.tr('hasbeenregistered').' '.html_escape($this->consultings->title).' '.tr('successfuly').'");</script>';
       }else{
         $data['error']=validation_errors();
       }
     }    
-    $data['title'] = tr('NewArticle');    
+    $data['title'] = tr('NewConsulting');    
     $data['css'] = "<style>.form-group{margin-bottom:0px;} .form-group .form-control{margin-bottom:10px;}</style>";
-    $path='article/new';
+    $path='consulting/new';
     if(isset($_GET['ajax'])&&$_GET['ajax']==true)
     {
         $this->load->view($path, $data);
@@ -294,23 +295,23 @@ class Article extends CI_Controller {
     }
   } 
   
-  public function show($article_id=0)
+  public function show($consulting_id=0)
   {
-    $this->load->model('articles');
-    $this->articles->load($article_id);
+    $this->load->model('consultings');
+    $this->consultings->load($consulting_id);
     
     if($this->input->post())
     {
         
       $this->form_validation->set_rules(array(
-        array( 'field' => 'body', 'label' => 'Article body', 'rules' => 'trim', ),
+        array( 'field' => 'body', 'label' => 'Consulting body', 'rules' => 'trim', ),
       )); 
     }
       
       
-    $data['title'] = tr('ShowArticle');
-    $data['article']=$this->articles;
-    $path='article/show';
+    $data['title'] = tr('ShowConsulting');
+    $data['consulting']=$this->consultings;
+    $path='consulting/show';
     if(isset($_GET['ajax'])&&$_GET['ajax']==true)
     {
         $this->load->view($path, $data);

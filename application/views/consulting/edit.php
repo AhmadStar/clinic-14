@@ -1,6 +1,6 @@
 <div class="row">
     <?php if(!empty($article->id)){ ?>
-    <div class="col col-md-12 well well-sm">
+    <div class="col col-md-8 well well-sm">
         <?php echo form_open('article/edit/'.$article->id,array("id"=>"newArticleForm", "role"=>"form",)); ?>
         <fieldset>
             <legend>-

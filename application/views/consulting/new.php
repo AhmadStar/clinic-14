@@ -1,7 +1,6 @@
 <div class="row">
-    <?php if(!empty($article->id)){ ?>
     <div class="col col-md-12 well well-sm">
-        <?php echo form_open('article/edit/'.$article->id,array("id"=>"newArticleForm", "role"=>"form",)); ?>
+        <?php echo form_open('article/new_article',array("id"=>"newArticleForm", "role"=>"form",)); ?>
         <fieldset>
             <legend>-
                 <?php trP('ArticleInformation')?>:</legend>
@@ -9,38 +8,37 @@
                 <?php echo ( !empty($error) ? $error : '' ); ?>
                 <div class="form-group">
 
-                    <div class="col-md-12"><input type="text" name='title' id='title' value="<?php echo set_value('title', $article->title);?>" class='form-control' placeholder="<?php trP('Title')?>" title="<?php trP('Title')?>" required /></div>
-                </div>
+                    <div class="col-md-12"><input type="text" name='title' id='title' value="<?php echo $this->input->post('title');?>" class='form-control' placeholder="<?php trP('Title')?>" title="<?php trP('Title')?>" required /></div>
 
-                <div class="clearfix"></div>
+                    <div class="col-md-12"><input type="date" name='created_date' id='created_date' value="<?php echo $this->input->post('created_date');?>" class='form-control' placeholder="<?php trP('created_date')?>" title="<?php trP('created_date')?>" required /></div>
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
         </fieldset>
         <fieldset>
             <legend>-
                 <?php trP('Article')?>: </legend>
             <div>
-                <div class="form-group" id="get-data-form">
-                    <div class="col-md-12"><textarea name="body" id="body" class="form-control" rows="20"><?php echo set_value('body', $article->body);?></textarea>
+                <div class="form-group">
+                    <div class="col-md-12"><textarea name="body" id="body" class="form-control" rows="20"><?php echo $this->input->post('body');?></textarea>
                     </div>
                 </div>
         </fieldset>
         <div class="form-group">
-            <div class="col-md-6"><input type="submit" name='submit' id='submit' value=<?php trp('update')?> class="form-control btn btn-info" /></div>
+            <div class="col-md-6"><input type="submit" name='submit' id='submit' value=<?php trp('Add')?> class="form-control btn btn-info" /></div>
             <div class="col-md-6">
                 <?php echo anchor('article',tr('cancel'),array('class'=>'form-control btn btn-info'));?>
             </div>
         </div>
         <?php echo form_close(); ?>
     </div>
-    <div class="pull-right" title="<?php trP('GotoArticles')?>">
+    <div class="pull-right" title="<?php trP('GoToArticles')?>">
 
-        <?php echo anchor('article', '<button class="btn btn-return"><span>'.tr('ReturnToArticles').'</span></button>');?>
+        <?php echo anchor('article', '<button class="btn btn-return"><span>'.tr('GoToArticles').'</span></button>');?>
     </div>
-    <?php
-}else{
-  echo '<div class="alert alert-danger text-center"><h1>Article Not Found</h1></div><div class="pull-right" title="Go to Articles">'.anchor('article', '<span class="glyphicon glyphicon-arrow-left"></span>').'</div>';
-}
-?>
 </div>
+
 <script type="text/javascript">
     tinymce.init({
         directionality : 'rtl',
@@ -81,7 +79,7 @@
 
 			xhr = new XMLHttpRequest();
 			xhr.withCredentials = false;
-			xhr.open('POST', '../../../upload.php');
+			xhr.open('POST', '../../upload.php');
 
 			xhr.onload = function() {
 				var json;
@@ -109,4 +107,3 @@
     });
 
 </script>
-
