@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Articles_model extends CI_Model {
+class Consultings_model extends CI_Model {
 
-	var $table = 'articles';
-	var $column_order = array(null, 'title','created_date'); //set column field database for datatable orderable
-	var $column_search = array('id','title','created_date'); //set column field database for datatable searchable 
+	var $table = 'consulting';
+	var $column_order = array(null, 'date','status'); //set column field database for datatable orderable
+	var $column_search = array('id','date','status'); //set column field database for datatable searchable 
 	var $order = array('id' => 'asc'); // default order 
 
 	public function __construct()
@@ -18,9 +18,9 @@ class Articles_model extends CI_Model {
 	{
 		
 		//add custom filter here		
-		if($this->input->post('title'))
+		if($this->input->post('date'))
 		{
-			$this->db->like('title', $this->input->post('title'));
+			$this->db->like('date', $this->input->post('date'));
 		}
 		
         

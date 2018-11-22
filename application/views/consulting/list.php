@@ -1,8 +1,8 @@
-<legend class="legend">- <?php echo trP('ArticlesList');?></legend>
+<legend class="legend">- <?php echo trP('ConsultingsList');?></legend>
 <div> 
  <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title" ><?php trP('ArticleFilter')?></h3>
+                <h3 class="panel-title" ><?php trP('ConsultingFilter')?></h3>
             </div>
             <div class="panel-body">
                 <form id="form-filter" class="form-horizontal filter-body">                    
@@ -26,15 +26,15 @@
             </div>
         </div>
     <div class="hidden-print">
-<?php echo anchor('article/new_article', tr('NewArticel'),array('class'=>'btn btn-info'))?>
+<?php echo anchor('consulting/new_consulting', tr('NewConsulting'),array('class'=>'btn btn-info'))?>
 </div>
-  <table id="article_list_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+  <table id="consulting_list_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th><?php trP('Number')?></th>
-                    <th><?php trP('Title')?></th>                   
-                    <th><?php trP('CreatedDate')?></th>                    
-                    <th><?php trP('')?></th>                                                         
+                    <th><?php trP('ConsultingDate')?></th>                   
+                    <th><?php trP('Consulting')?></th>                    
+                    <th><?php trP('Status')?></th>                                                         
                 </tr>
             </thead>
             <tbody>
@@ -49,7 +49,7 @@ var table;
 $(document).ready(function() {
 
     //datatables
-    table = $('#article_list_table').DataTable({ 
+    table = $('#consulting_list_table').DataTable({ 
 
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
@@ -61,7 +61,7 @@ $(document).ready(function() {
 
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo site_url('article/ajax_list')?>",
+            "url": "<?php echo site_url('consulting/ajax_list')?>",
             "type": "POST",
             "data": function ( data ) {                
                 data.title = $('#title').val();
@@ -91,36 +91,36 @@ $(document).ready(function() {
 </script>
 
 <script>
-    $(document).ready(function(){ 
-        $('#article_list_table').on('click','a',function(e){
-            if($(this).attr('title')=='Delete Article'){
-               e.preventDefault();
-               $.get($(this).attr('href'),'',function(data){
-                   $('#tmpDiv').html(data);
-               });
-            }
-        });
-    });
-	
-	function HandleActions(){
-		$('#article_list_table').on('click','a',function(e){
-            if($(this).attr('title')=='Delete Article'){
-               e.preventDefault();
-               $.get($(this).attr('href'),'',function(data){
-                   $('#tmpDiv').html(data);
-               });
-            }
-        });
-	}
+//    $(document).ready(function(){ 
+//        $('#consulting_list_table').on('click','a',function(e){
+//            if($(this).attr('title')=='Delete Consulting'){
+//               e.preventDefault();
+//               $.get($(this).attr('href'),'',function(data){
+//                   $('#tmpDiv').html(data);
+//               });
+//            }
+//        });
+//    });
+//	
+//	function HandleActions(){
+//		$('#consulting_list_table').on('click','a',function(e){
+//            if($(this).attr('title')=='Delete Consulting'){
+//               e.preventDefault();
+//               $.get($(this).attr('href'),'',function(data){
+//                   $('#tmpDiv').html(data);
+//               });
+//            }
+//        });
+//	}
 	
 //	function loadTotal(){
 //		$.ajax({
-//        url: '<?php echo site_url('article/total')?>',
+//        url: '<?php echo site_url('consulting/total')?>',
 //        type: 'POST',
 //        data: {
 //            min_date : $('#min').datepicker({ dateFormat: 'yy-mm-dd' }).val(),
 //            max_date : $('#max').datepicker({ dateFormat: 'dd-mm-yy' }).val(),
-//            article_id : $('#article_id').val()
+//            consulting_id : $('#consulting_id').val()
 //        },
 //        dataType: 'json',
 //        success: function(data) {

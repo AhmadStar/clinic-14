@@ -2,7 +2,7 @@
 
 class Consultings extends MY_Model {
     
-    const DB_TABLE = 'articles';
+    const DB_TABLE = 'consulting';
     const DB_TABLE_PK = 'id';
     
     /**
@@ -27,7 +27,7 @@ class Consultings extends MY_Model {
      * Question.
      * @var string
      */
-    public $qestion;
+    public $question;
     
     /**
      * Status
