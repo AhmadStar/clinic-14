@@ -1,6 +1,6 @@
 <div class="row">
     <?php if(!empty($article->id)){ ?>
-    <div class="col col-md-8 well well-sm">
+    <div class="col col-md-12 well well-sm">
         <?php echo form_open('article/edit/'.$article->id,array("id"=>"newArticleForm", "role"=>"form",)); ?>
         <fieldset>
             <legend>-
@@ -41,8 +41,14 @@
 }
 ?>
 </div>
-<script>
+<script type="text/javascript">
     tinymce.init({
+        directionality : 'rtl',
+        language : 'ar',
+        relative_urls : false,
+        remove_script_host : false,
+        convert_urls : true,
+        document_base_url : "<?php echo base_url() ?>",
         selector: 'textarea',
         theme: 'modern',
         plugins: [
@@ -53,7 +59,6 @@
         ],
         toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
         toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
-        image_advtab: true,
         templates: [{
                 title: 'Test template 1',
                 content: 'Test 1'
@@ -66,8 +71,42 @@
         content_css: [
             '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
             '//www.tinymce.com/css/codepen.min.css'
-        ]
+        ],
+        images_upload_url : 'upload.php',
+        images_upload_base_path:'uploads',
+		automatic_uploads : true,
+
+		images_upload_handler : function(blobInfo, success, failure) {
+			var xhr, formData;
+
+			xhr = new XMLHttpRequest();
+			xhr.withCredentials = false;
+			xhr.open('POST', '../../../upload.php');
+
+			xhr.onload = function() {
+				var json;
+
+				if (xhr.status != 200) {
+					failure('HTTP Error: ' + xhr.status);
+					return;
+				}
+
+				json = JSON.parse(xhr.responseText);
+
+				if (!json || typeof json.file_path != 'string') {
+					failure('Invalid JSON: ' + xhr.responseText);
+					return;
+				}
+
+				success(json.file_path);
+			};
+
+			formData = new FormData();
+			formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+			xhr.send(formData);
+		},
     });
 
-
 </script>
+
