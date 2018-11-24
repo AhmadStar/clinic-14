@@ -31,7 +31,7 @@ if($xrays)
           '<td>'.html_escape($xray->xray_name_en).'</td>'.
           '<td>'.html_escape($xray->xray_name_ar).'</td>'.
           '<td>'.html_escape($xray->price).'</td>'.
-          '<td>'.html_escape(character_limiter($xray->memo, 50,'...')).'</td>'.
+         // '<td>'.html_escape(character_limiter($xray->memo, 50,'...')).'</td>'.
           '<td class="hidden-print">'.$actions.'</td>'.
         '</tr>';
     }

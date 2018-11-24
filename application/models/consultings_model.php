@@ -23,8 +23,7 @@ class Consultings_model extends CI_Model {
 			$this->db->like('date', $this->input->post('date'));
 		}
 		
-        
-
+        $this->db->where('status',0);
 		$this->db->from($this->table);
 		$i = 0;
 	
