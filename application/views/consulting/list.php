@@ -34,7 +34,8 @@
                     <th><?php trP('Number')?></th>
                     <th><?php trP('ConsultingDate')?></th>                   
                     <th><?php trP('Consulting')?></th>                    
-                    <th><?php trP('Status')?></th>                                                         
+                    <th><?php trP('Status')?></th> 
+                    
                 </tr>
             </thead>
             <tbody>
@@ -63,9 +64,9 @@ $(document).ready(function() {
         "ajax": {
             "url": "<?php echo site_url('consulting/ajax_list')?>",
             "type": "POST",
-            "data": function ( data ) {                
-                data.title = $('#title').val();
-            }
+//            "data": function ( data ) {                
+//                data.title = $('#title').val();
+//            }
         },
 
         //Set column definition initialisation properties.

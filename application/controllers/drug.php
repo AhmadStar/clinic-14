@@ -26,6 +26,7 @@ class Drug extends CI_Controller {
       redirect('account/login');
     }
     
+    $this->load->helper('text');
     $this->load->model('drugs');
     
     $data['drugs'] = $this->drugs->get();

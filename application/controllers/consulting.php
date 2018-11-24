@@ -28,6 +28,7 @@ class Consulting extends CI_Controller {
     
     $this->load->helper('url');
     $this->load->helper('form');
+    $this->load->helper('text');
 
     $data['title'] = tr('ConsultingsList');
     $path='consulting/list';
@@ -127,6 +128,8 @@ class Consulting extends CI_Controller {
       $this->_no_access();
       return;
     }
+    
+    
     $this->load->model('consultings');
     $this->consultings->load($consulting_id);
     
@@ -147,6 +150,7 @@ class Consulting extends CI_Controller {
         if($session_check && $session_check[0]==$consulting_id)
         {
             unset($_POST['submit']);
+            $_POST['status'] = 1;
             $consulting=$this->input->post();
             $this->load->model('consultings');
             foreach($consulting as $key => $value)
@@ -260,12 +264,17 @@ class Consulting extends CI_Controller {
     if($this->input->post())
     {
       $this->form_validation->set_rules(array(        
-        array( 'field' => 'question', 'label' => 'question', 'rules' => 'trim', ),));
+        array( 'field' => 'question', 'label' => 'question', 'rules' => 'trim', ),
+               'field' => 'status', 'label' => 'status', 'rules' => 'trim', 
+               'field' => 'date', 'label' => 'date', 'rules' => 'trim', ));
+        
       if($this->form_validation->run() == TRUE)
       {
         
         unset($_POST['submit']);
+        $_POST['status'] = 0;
         $consulting=$this->input->post();
+        
         $this->load->model('consultings');
         foreach($consulting as $key => $value)
           $this->consultings->$key = $value;
@@ -290,7 +299,37 @@ class Consulting extends CI_Controller {
         $this->load->view('footer',$data);
     }
   } 
-  
+    
+    
+  public function show($consulting_id=0)
+  {
+    $this->load->model('consultings');
+    $this->consultings->load($consulting_id);
+    
+    if($this->input->post())
+    {
+        
+      $this->form_validation->set_rules(array(
+        array( 'field' => 'date', 'label' => 'Consulting Date', 'rules' => 'trim', ),
+        array( 'field' => 'question', 'label' => 'Consulting Question', 'rules' => 'trim', ),
+        array( 'field' => 'answer', 'label' => 'Consulting Answer', 'rules' => 'trim', ),
+      )); 
+    }
+      
+      
+    $data['title'] = tr('ShowConsulting');
+    $data['consulting']=$this->consultings;
+    $path='consulting/show';
+    if(isset($_GET['ajax'])&&$_GET['ajax']==true)
+    {
+        $this->load->view($path, $data);
+    }else{
+        $data['includes']=array($path);
+        $this->load->view('header',$data);
+        $this->load->view('index',$data);
+        $this->load->view('footer',$data);
+    }
+  }
 
 
   public function _no_access()

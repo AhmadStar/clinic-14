@@ -9,7 +9,7 @@
                 <?php echo ( !empty($error) ? $error : '' ); ?>
                 <div class="form-group">
 
-                    <div class="col-md-12"><text name="question" id="question" class="form-control" style="max-width:100px"><?php echo set_value('question', $consulting->question);?></text>
+                    <div class="col-md-12"><p><?php echo $consulting->question;?></p>
                     </div>
                 </div>
 
