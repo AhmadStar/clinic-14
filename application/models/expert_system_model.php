@@ -89,9 +89,11 @@ class Expert_System_Model extends MY_Model {
                  
                  foreach ($attributes as $attribute){
                      $categories[] = $attribute[$col['COLUMN_NAME']];
+                     
                  }
              }
          }
+         
          
          /* 
           * for each column we found the attribute in its and calculate the attribute probability
@@ -107,7 +109,7 @@ class Expert_System_Model extends MY_Model {
                  
                  foreach ($attributes as $attribute){
                      foreach ($categories as $category){
-                         $attributes_prob['_'.$attribute[$col['COLUMN_NAME']].'_'.$category] = $this->calculate_train_samples_prob($col['COLUMN_NAME'], $attribute[$col['COLUMN_NAME']], $category);
+                         $attributes_prob['_'.$col['COLUMN_NAME'].'_'.$attribute[$col['COLUMN_NAME']].'_'.$category] = $this->calculate_train_samples_prob($col['COLUMN_NAME'], $attribute[$col['COLUMN_NAME']], $category);
                      } 
                  }
                  
@@ -126,12 +128,65 @@ class Expert_System_Model extends MY_Model {
          $this->categories = array_slice($categories,0,count($categories));
          $this->attributes_prob = array_slice($attributes_prob,0,count($attributes_prob));
          
-        //Encode $example array into a JSON string.
+        //Encode $example array into a JSON string and store it in DB.
          $categoriesEncoded = json_encode($this->categories);
          $attributes_probEncoded = json_encode($this->attributes_prob);
          
-//         $a=json_decode($categoriesEncoded, true);
-//         print_r($a);
+         $data['categories'] = $categoriesEncoded;
+         $data['attributes_prob'] = $attributes_probEncoded;
+         
+         $insert = $this->db->insert('bayes', $data);
+         
+        $a=json_decode($categoriesEncoded, true);
+         print_r($a);
+
+    }
+    
+    public function predicate($data){
+        $this->db->select('*');
+        $this->db->from('bayes');
+        $query = $this->db->get();
+        
+        $categories=json_decode($query->result_array()[0]['categories'], true);
+        $attributes_prob=json_decode($query->result_array()[0]['attributes_prob'], true);
+        $probs = array();
+        $category_probs = array();
+        
+        foreach($categories as $category){
+            $probs[$category] = 1;
+        }
+        //print_r($attributes_prob);
+        foreach ($data as $item => $value){
+           // print_r($value.' '.gettype($value).' ');
+            if (gettype($value) == 'integer'){
+                foreach($categories as $category){
+                    $probs[$category] = $probs[$category]*$this->calculate_numerical_predicate_samples_prob($attributes_prob['_'.$item.'_std_'.$category], $attributes_prob['_'.$item.'_mean_'.$category], $value);
+                }
+            }
+            else{
+                foreach($categories as $category){
+                    if($value == 'false'){$value = 0;}
+                    elseif($value == 'true'){$value = 1;}
+                    
+                   // print_r(' '.$item.' '.$value.' ');
+                    
+                    $probs[$category] = $probs[$category]*$attributes_prob['_'.$item.'_'.$value.'_'.$category];
+                }    
+            }
+        
+        }
+        
+           
+        foreach($categories as $category){
+            $category_probs[$category] = 0;
+        }
+        
+        foreach($categories as $category){
+            $category_probs[$category] = $probs[$category]/array_sum($probs);
+        }
+
+        print_r(array_keys($category_probs, max($category_probs))[0]);
+        return array_keys($category_probs, max($category_probs))[0];
 
     }
      
