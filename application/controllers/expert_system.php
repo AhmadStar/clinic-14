@@ -29,9 +29,16 @@ class Expert_System extends CI_Controller {
     $this->load->helper('url');
     $this->load->helper('form');
       
-      $this->load->model('expert_system_model','bayes');
-      $data['d'] = $this->bayes->sample_prob_positive('exercice_angina','yes');
-      print_r($data['d']);
+    $this->load->model('expert_system_model','bayes');
+    $test['age'] = 43;
+    $test['chest_pain_type'] = 'asympt';
+    $test['rest_blood_pressure'] = 140;
+    $test['blood_sugar'] = 'false';
+    $test['rest_electro'] = 'normal';
+    $test['max_heart_rate'] = 135;
+    $test['exercice_angina'] ='yes';
+    $data['d'] = $this->bayes->predicate($test); 
+    //print_r($data['d']);
     $data['title'] = tr('ExpertSystem');
     $path='expert_system/list';
     if(isset($_GET['ajax'])&&$_GET['ajax']==true)
