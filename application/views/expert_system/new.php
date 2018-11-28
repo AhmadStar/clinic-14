@@ -48,11 +48,17 @@
 <div class="row" id='myDIV' style='display:none'>
     <div class="col col-md-8 well well-sm">
         <fieldset>
-            <legend>-
-                <?php trP('TheResult')?> :
+            <legend>
+                <center>
+                    <?php trP('TheResult')?> :
+                </center>
             </legend>
             <div class="col-md-12">
-                <b id="userInformation"></b>
+                <p>
+                    <center style='font-size:20px'>
+                        <b id="userInformation"></b>
+                    </center>
+                </p>
             </div>
     </div>
 </div>
