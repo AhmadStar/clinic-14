@@ -137,6 +137,7 @@ class Incomes extends CI_Model {
     */
     public function save_income($data)
     {
+        print_r($data);
 		$insert = $this->db->insert('incomes', $data);
 	    return $insert;
 	}

@@ -62,6 +62,7 @@ class Expert_System_Model extends MY_Model {
         return (1 / sqrt(2*pi()*$std))*exp(-(pow(($val-$mean),2))/(2*pow($std,2)));
     }
     
+    
      public function train($DB_name, $table_name, $categories_col_name)
     {
          
@@ -143,7 +144,7 @@ class Expert_System_Model extends MY_Model {
     }
     
     public function predicate($data){
-        print_r($data);
+        //print_r($data);
         $this->db->select('*');
         $this->db->from('bayes');
         $query = $this->db->get();
@@ -158,7 +159,7 @@ class Expert_System_Model extends MY_Model {
         }
         //print_r($attributes_prob);
         foreach ($data as $item => $value){
-            print_r($value.' '.gettype($value).' ');
+            //print_r($value.' '.gettype($value).' ');
             if (gettype($value) == 'integer'){
                 foreach($categories as $category){
                     $probs[$category] = $probs[$category]*$this->calculate_numerical_predicate_samples_prob($attributes_prob['_'.$item.'_std_'.$category], $attributes_prob['_'.$item.'_mean_'.$category], $value);
@@ -185,9 +186,13 @@ class Expert_System_Model extends MY_Model {
         foreach($categories as $category){
             $category_probs[$category] = $probs[$category]/array_sum($probs);
         }
-
-        print_r(array_keys($category_probs, max($category_probs))[0]);
-        return array_keys($category_probs, max($category_probs))[0];
+        
+        $result = array_keys($category_probs, max($category_probs));
+        
+        $data['disease'] = $result[0];
+        $insert = $this->db->insert('disease', $data);
+       
+        return array_keys($category_probs, max($category_probs));
 
     }
     
