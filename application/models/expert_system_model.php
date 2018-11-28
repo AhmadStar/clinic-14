@@ -143,6 +143,7 @@ class Expert_System_Model extends MY_Model {
     }
     
     public function predicate($data){
+        print_r($data);
         $this->db->select('*');
         $this->db->from('bayes');
         $query = $this->db->get();
@@ -157,7 +158,7 @@ class Expert_System_Model extends MY_Model {
         }
         //print_r($attributes_prob);
         foreach ($data as $item => $value){
-           // print_r($value.' '.gettype($value).' ');
+            print_r($value.' '.gettype($value).' ');
             if (gettype($value) == 'integer'){
                 foreach($categories as $category){
                     $probs[$category] = $probs[$category]*$this->calculate_numerical_predicate_samples_prob($attributes_prob['_'.$item.'_std_'.$category], $attributes_prob['_'.$item.'_mean_'.$category], $value);
@@ -188,6 +189,19 @@ class Expert_System_Model extends MY_Model {
         print_r(array_keys($category_probs, max($category_probs))[0]);
         return array_keys($category_probs, max($category_probs))[0];
 
+    }
+    
+    public function disease(){
+        $user_data = array();
+        $user_data['age'] = (integer)$this->input->post('age');
+        $user_data['chest_pain_type'] = $this->input->post('chest_pain_type');
+        $user_data['rest_blood_pressure'] = (integer)$this->input->post('rest_blood_pressure');
+        $user_data['blood_sugar'] = $this->input->post('blood_sugar');
+        $user_data['rest_electro'] = $this->input->post('rest_electro');
+        $user_data['max_heart_rate'] = (integer)$this->input->post('max_heart_rate');
+        $user_data['exercice_angina'] =$this->input->post('exercice_angina');
+       
+        return $this->predicate($user_data);
     }
      
     

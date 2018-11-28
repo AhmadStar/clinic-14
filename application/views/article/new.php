@@ -70,7 +70,7 @@
             '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
             '//www.tinymce.com/css/codepen.min.css'
         ],
-        images_upload_url : 'upload.php',
+        images_upload_url : '../../upload.php',
         images_upload_base_path:'uploads',
 		automatic_uploads : true,
 
