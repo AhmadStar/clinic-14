@@ -3,7 +3,7 @@
         <?php echo form_open('expert_system',array("id"=>"newConsulting", "role"=>"form",)); ?>
         <fieldset>
             <legend>-
-                <?php trP('userInformation')?>:<b id="userInformation"></b></legend>
+                <?php trP('معلومات')?> :</legend>
             <div>
                 <?php echo ( !empty($error) ? $error : '' ); ?>
                 <div class="form-group">
@@ -30,6 +30,7 @@
                         <?php echo form_dropdown('exercice_angina',$exercice_angina_options,$this->input->post('exercice_angina'),"class='form-control' title='exercice_angina' id = 'exercice_angina'");?>
                     </div>
 
+
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -42,6 +43,17 @@
                     <?php trP('Result')?></button></div>
         </div>
         <?php echo form_close(); ?>
+    </div>
+</div>
+<div class="row" id='myDIV' style='display:none'>
+    <div class="col col-md-8 well well-sm">
+        <fieldset>
+            <legend>-
+                <?php trP('TheResult')?> :
+            </legend>
+            <div class="col-md-12">
+                <b id="userInformation"></b>
+            </div>
     </div>
 </div>
 
@@ -57,6 +69,12 @@
 
 <script>
     function loadTotal() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
         $.ajax({
             url: '<?php echo site_url('expert_system/predicate')?>',
             type: 'POST',
@@ -71,9 +89,10 @@
             },
             dataType: 'json',
             success: function(data) {
-                HandleActions();
-                alert(data.data[0].predicate);            
-                //$("#userInformation").html(data.data[0].userInformation);
+                //                HandleActions();
+                //                alert(data);            
+                //                $("#userInformation").html(data);
+                $("#userInformation").html(data.data[0]);
                 //            console.log(data);
             }
         });
