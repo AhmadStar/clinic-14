@@ -30,17 +30,22 @@ class Expert_System extends CI_Controller {
     $this->load->helper('form');
       
     $this->load->model('expert_system_model','bayes');
-    $test['age'] = 43;
-    $test['chest_pain_type'] = 'asympt';
-    $test['rest_blood_pressure'] = 140;
-    $test['blood_sugar'] = 'false';
-    $test['rest_electro'] = 'normal';
-    $test['max_heart_rate'] = 135;
-    $test['exercice_angina'] ='yes';
-    $data['d'] = $this->bayes->predicate($test); 
+//    $test['age'] = 43;
+//    $test['chest_pain_type'] = 'asympt';
+//    $test['rest_blood_pressure'] = 140;
+//    $test['blood_sugar'] = 'false';
+//    $test['rest_electro'] = 'normal';
+//    $test['max_heart_rate'] = 135;
+//    $test['exercice_angina'] ='yes';
+//     
     //print_r($data['d']);
+    $data['chest_pain_type_options'] = $this->chest_pain_type_options();
+    $data['blood_sugar_options'] = $this->blood_sugar_options();
+    $data['rest_electro_options'] = $this->rest_electro_options();
+    $data['exercice_angina_options'] = $this->exercice_angina_options();
+    //$data['d'] = $this->bayes->predicate($test);
     $data['title'] = tr('ExpertSystem');
-    $path='expert_system/list';
+    $path='expert_system/new';
     if(isset($_GET['ajax'])&&$_GET['ajax']==true)
     {
         $this->load->view($path, $data);
@@ -51,6 +56,56 @@ class Expert_System extends CI_Controller {
         $this->load->view('footer',$data);
     }
   }
+    
+  public function predicate()
+  {
+      $this->load->model('expert_system_model','bayes');
+      
+      $data = $this->bayes->disease();
+      
+
+      $output = array(						
+						"data" => $data,
+				);
+      
+		//output to json format
+      echo json_encode($output);
+  }
+ 
+  /**
+   * _id_type_options()
+   * returns the array of type
+   */
+  public function chest_pain_type_options()
+  {
+    return array('0'=>tr('chest_pain_type'),
+                 'asympt'=>'asympt',
+                 'atyp_angina'=>'atyp_angina',
+                 'non_anginal'=>'non_anginal',
+                 'typ_angina'=>'typ_angina',);
+                 
+  }
+     public function blood_sugar_options()
+  {
+    return array('0'=>tr('blood_sugar'),
+                 'true'=>'true',
+                 'false'=>'false',);
+  }
+     public function rest_electro_options()
+  {
+    return array('0'=>tr('rest_electro'),
+                 'normal'=>'normal',
+                 'st_t_wave_abnormality'=>'st_t_wave_abnormality',
+                 'left_vent_hyper'=>'left_vent_hyper',);
+  }
+     public function exercice_angina_options()
+  {
+    return array('0'=>tr('exercice_angina'),
+                 'yes'=>'yes',
+                 'no'=>'no',);
+  }
+  
+    
     
 //  public function ajax_list()
 //  {

@@ -1,109 +1,82 @@
 <div class="row">
-    <div class="col col-md-12 well well-sm">
-        <?php echo form_open('article/new_article',array("id"=>"newArticleForm", "role"=>"form",)); ?>
+    <div class="col col-md-8 well well-sm">
+        <?php echo form_open('expert_system',array("id"=>"newConsulting", "role"=>"form",)); ?>
         <fieldset>
             <legend>-
-                <?php trP('ArticleInformation')?>:</legend>
+                <?php trP('userInformation')?>:<b id="userInformation"></b></legend>
             <div>
                 <?php echo ( !empty($error) ? $error : '' ); ?>
                 <div class="form-group">
 
-                    <div class="col-md-12"><input type="text" name='title' id='title' value="<?php echo $this->input->post('title');?>" class='form-control' placeholder="<?php trP('Title')?>" title="<?php trP('Title')?>" required /></div>
+                    <div class="col-md-12"><input type="number" name='age' id='age' value="<?php echo $this->input->post('age');?>" class='form-control' placeholder="<?php trP('Age')?>" title="<?php trP('Age')?>" required /></div>
 
-                    <div class="col-md-12"><input type="date" name='created_date' id='created_date' value="<?php echo set_value('created_date',@$today);?>" class='form-control' placeholder="<?php trP('created_date')?>" title="<?php trP('created_date')?>" required /></div>
+                    <div class="col-md-12">
+                        <?php echo form_dropdown('chest_pain_type',$chest_pain_type_options,$this->input->post('chest_pain_type'),"class='form-control' title='chest_pain_type' id=chest_pain_type");?>
+                    </div>
+
+                    <div class="col-md-12"><input type="number" name='rest_blood_pressure' id='rest_blood_pressure' value="<?php echo $this->input->post('rest_blood_pressure');?>" class='form-control' placeholder="<?php trP('rest_blood_pressure')?>" title="<?php trP('rest_blood_pressure')?>" required /></div>
+
+                    <div class="col-md-12">
+                        <?php echo form_dropdown('blood_sugar',$blood_sugar_options,$this->input->post('blood_sugar'),"class='form-control' title='blood_sugar' id ='blood_sugar'");?>
+                    </div>
+
+                    <div class="col-md-12">
+                        <?php echo form_dropdown('rest_electro',$rest_electro_options,$this->input->post('rest_electro'),"class='form-control' title='rest_electro' id='rest_electro' ");?>
+                    </div>
+
+                    <div class="col-md-12"><input type="number" name='max_heart_rate' id='max_heart_rate' value="<?php echo $this->input->post('max_heart_rate');?>" class='form-control' placeholder="<?php trP('max_heart_rate')?>" title="<?php trP('max_heart_rate')?>" required /></div>
+
+                    <div class="col-md-12">
+                        <?php echo form_dropdown('exercice_angina',$exercice_angina_options,$this->input->post('exercice_angina'),"class='form-control' title='exercice_angina' id = 'exercice_angina'");?>
+                    </div>
 
                 </div>
             </div>
             <div class="clearfix"></div>
         </fieldset>
-        <fieldset>
-            <legend>-
-                <?php trP('Article')?>: </legend>
-            <div>
-                <div class="form-group">
-                    <div class="col-md-12"><textarea name="body" id="body" class="form-control" rows="20"><?php echo $this->input->post('body');?></textarea>
-                    </div>
-                </div>
-        </fieldset>
         <div class="form-group">
-            <div class="col-md-6"><input type="submit" name='submit' id='submit' value=<?php trp('Add')?> class="form-control btn btn-info" /></div>
             <div class="col-md-6">
-                <?php echo anchor('article',tr('cancel'),array('class'=>'form-control btn btn-info'));?>
+                <?php echo anchor('home',tr('ReturnToHome'),array('class'=>'form-control btn btn-info'));?>
             </div>
+            <div class="col-md-6"><button type="button" id="result" class="form-control btn btn-info">
+                    <?php trP('Result')?></button></div>
         </div>
         <?php echo form_close(); ?>
-    </div>
-    <div class="pull-right" title="<?php trP('GoToArticles')?>">
-
-        <?php echo anchor('article', '<button class="btn btn-return"><span>'.tr('GoToArticles').'</span></button>');?>
     </div>
 </div>
 
 <script type="text/javascript">
-    tinymce.init({
-        directionality : 'rtl',
-        language : 'ar',
-        relative_urls : false,
-        remove_script_host : false,
-        convert_urls : true,
-        document_base_url : "<?php echo base_url() ?>",
-        selector: 'textarea',
-        theme: 'modern',
-        plugins: [
-            'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-            'searchreplace wordcount visualblocks visualchars code fullscreen',
-            'insertdatetime media nonbreaking save table contextmenu directionality',
-            'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'
-        ],
-        toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-        toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
-        templates: [{
-                title: 'Test template 1',
-                content: 'Test 1'
-            },
-            {
-                title: 'Test template 2',
-                content: 'Test 2'
-            }
-        ],
-        content_css: [
-            '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-            '//www.tinymce.com/css/codepen.min.css'
-        ],
-        images_upload_url : 'upload.php',
-        images_upload_base_path:'uploads',
-		automatic_uploads : true,
-
-		images_upload_handler : function(blobInfo, success, failure) {
-			var xhr, formData;
-
-			xhr = new XMLHttpRequest();
-			xhr.withCredentials = false;
-			xhr.open('POST', '../../upload.php');
-
-			xhr.onload = function() {
-				var json;
-
-				if (xhr.status != 200) {
-					failure('HTTP Error: ' + xhr.status);
-					return;
-				}
-
-				json = JSON.parse(xhr.responseText);
-
-				if (!json || typeof json.file_path != 'string') {
-					failure('Invalid JSON: ' + xhr.responseText);
-					return;
-				}
-
-				success(json.file_path);
-			};
-
-			formData = new FormData();
-			formData.append('file', blobInfo.blob(), blobInfo.filename());
-
-			xhr.send(formData);
-		},
+    $(document).ready(function() {
+        $('#result').click(function() {
+            loadTotal();
+        });
     });
+
+</script>
+
+
+<script>
+    function loadTotal() {
+        $.ajax({
+            url: '<?php echo site_url('expert_system/predicate')?>',
+            type: 'POST',
+            data: {
+                age: $('#age').val(),
+                chest_pain_type: $('#chest_pain_type').val(),
+                rest_blood_pressure: $('#rest_blood_pressure').val(),
+                blood_sugar: $('#blood_sugar').val(),
+                rest_electro: $('#rest_electro').val(),
+                max_heart_rate: $('#max_heart_rate').val(),
+                exercice_angina: $('#exercice_angina').val(),
+            },
+            dataType: 'json',
+            success: function(data) {
+                HandleActions();
+                alert(data.data[0].predicate);            
+                //$("#userInformation").html(data.data[0].userInformation);
+                //            console.log(data);
+            }
+        });
+    }
 
 </script>
