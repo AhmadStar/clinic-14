@@ -21,7 +21,8 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/droidarabickufi.css">
     <link rel="stylesheet" href='<?php echo base_url() ?>content/css/dataTables.bootstrap.min.css' />
     <link rel="stylesheet" href='<?php echo base_url() ?>content/css/iconsstyles.css' />
-
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href='<?php echo base_url() ?>content/css/style.css' />
 
 
