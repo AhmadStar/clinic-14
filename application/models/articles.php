@@ -70,14 +70,22 @@ class Articles extends MY_Model {
          
     }
     
-    function get_article_name($article_id)
+    public function get_all_articles()
     {
-        $this->db->select('name');
-        $this->db->where('id', $article_id);
+        $this->db->select('*');
         $this->db->from('articles');
         $query = $this->db->get();
         
-        return $query->result(); 
+        return $query->result_array();
+    }
+    
+    public function get_articles_count()
+    {
+        $this->db->select('COUNT(*) as count');
+        $this->db->from('articles');
+        $query = $this->db->get();
+        
+        return $query->result_array()[0]['count']; 
         
     }
     

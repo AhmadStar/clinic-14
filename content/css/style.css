@@ -31,25 +31,6 @@ section .navbar-right {
 
 
 
-/*
-.content section .col-sm-9 {
-    float: left;
-}
-
-.content section .col-sm-3 {
-    float: right;
-}
-
-
-
-/*
-aside.col.col-sm-3 {
-    float: right;
-}
-
-*/
-
-
 article .well-sm {
     float: none;
     opacity: 0.9;
@@ -120,7 +101,7 @@ th {
 
 
 .legend_colour {
-       color: white;
+    color: white;
 }
 
 .hidden-print {
@@ -316,8 +297,12 @@ th {
 }
 
 .isblog {
-    
+
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.9) inset, 0 0 200px 0 rgba(0, 0, 0, 0) inset, 0 2px 4px 1px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.06);
     padding: 15px;
     background-color: white;
+}
+
+.w3-row-padding img {
+    margin-bottom: 20px
 }

@@ -25,11 +25,14 @@ class Home extends CI_Controller {
   public function index()
   {
     //initialize and load header
-    $data['title'] = 'مركز الشفاء الطبي';
+    $data['title'] = 'موقع الاستشارات الطبية';
     $data['navActiveId']='navbarLiHome';
     $this->load->helper('site');  
+    $this->load->model('articles','articles');
+    $data['articlesCount'] = $this->articles->get_articles_count();
+    $data['articles'] = $this->articles->get_all_articles();
     
-    $data['includes']=array('home/cp');
+    $data['includes']=array('home/articlesgallery');
     
     $this->load->view('header',$data);
     $this->load->view('index',$data);
