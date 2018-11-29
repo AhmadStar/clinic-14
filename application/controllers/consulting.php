@@ -26,6 +26,7 @@ class Consulting extends CI_Controller {
       redirect('account/login');
     }
     
+    
     $this->load->helper('url');
     $this->load->helper('form');
     $this->load->helper('text');
@@ -46,6 +47,7 @@ class Consulting extends CI_Controller {
   public function ajax_list()
   {
         $this->load->model('consultings_model','consultings');
+      
 		$list = $this->consultings->get_datatables();
 		$data = array();
 		$no = $_POST['start'];        
@@ -129,6 +131,7 @@ class Consulting extends CI_Controller {
       return;
     }
     
+      
     
     $this->load->model('consultings');
     $this->consultings->load($consulting_id);
@@ -151,6 +154,7 @@ class Consulting extends CI_Controller {
         {
             unset($_POST['submit']);
             $_POST['status'] = 1;
+            $_POST['doctor_id'] = $this->session->userdata('ba_user_id');
             $consulting=$this->input->post();
             $this->load->model('consultings');
             foreach($consulting as $key => $value)
@@ -273,6 +277,8 @@ class Consulting extends CI_Controller {
         
         unset($_POST['submit']);
         $_POST['status'] = 0;
+          //print_r($this->session->userdata('ba_user_id'));
+        $_POST['user_id'] = $this->session->userdata('ba_user_id');
         $consulting=$this->input->post();
         
         $this->load->model('consultings');
@@ -281,7 +287,7 @@ class Consulting extends CI_Controller {
         $this->consultings->save();
         unset($_POST);
 
-          $data['script'] = '<script>alert("'.tr('hasbeenregistered').' '.tr('Consultings').' '.tr('successfuly').'");</script>';
+         $data['script'] = '<script>alert("'.tr('hasbeenregistered').' '.tr('Consultings').' '.tr('successfuly').'");</script>';
       }else{
         $data['error']=validation_errors();
       }
@@ -298,6 +304,8 @@ class Consulting extends CI_Controller {
         $this->load->view('index',$data);
         $this->load->view('footer',$data);
     }
+      
+      
   } 
     
     

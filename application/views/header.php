@@ -79,7 +79,7 @@
 
     </style>
     <?php if(isset($css))echo $css ?>
-<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 
     <script src="<?php echo base_url() ?>content/js/jquery-2.2.3.min.js"></script>
     <script src="<?php echo base_url() ?>content/js/jquery.cookie.js"></script>
@@ -88,8 +88,8 @@
     <script src="<?php echo base_url() ?>content/js/dataTables.bootstrap.min.js"></script>
     <script src="<?php echo base_url() ?>content/js/bootstrap-datepicker.js"></script>
     <script src="<?php echo base_url() ?>content/js/bootstrap-datepicker.ar.min.js" charset="UTF-8"></script>
-  <script src="<?php echo base_url() ?>content/js/tinymce/tinymce.min.js"></script>
-  <script src="<?php echo base_url() ?>content/js/tinymce/jquery.tinymce.min.js"></script>
+    <script src="<?php echo base_url() ?>content/js/tinymce/tinymce.min.js"></script>
+    <script src="<?php echo base_url() ?>content/js/tinymce/jquery.tinymce.min.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -104,20 +104,21 @@
                             echo 'home';
                        else
                             echo $this->uri->segment(1);?>.jpg'); background-size: cover">
-
-    <div class="container">
-        <header>
-            <section>
-                <?php
+    <header>
+        <section>
+            <?php
             if($this->bitauth->logged_in()){
               include_once 'repository/nav.php';
             }else{
               include_once 'repository/logo.php';
             }
           ?>
-            </section>
-            <div id="fixedNavPadding" style="margin-bottom:72px" class="hidden"></div>
-        </header>
+        </section>
+        <div id="fixedNavPadding" style="margin-bottom:72px" class="hidden"></div>
+    </header>
+
+    <div class="container">
+
         <div class="content">
             <?php /*
    content will be here by php 

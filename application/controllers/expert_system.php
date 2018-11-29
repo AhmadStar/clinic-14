@@ -78,7 +78,7 @@ class Expert_System extends CI_Controller {
    */
   public function chest_pain_type_options()
   {
-    return array('0'=>tr('chest_pain_type'),
+    return array(NULL=>tr('chest_pain_type'),
                  'asympt'=>'asympt',
                  'atyp_angina'=>'atyp_angina',
                  'non_anginal'=>'non_anginal',
@@ -87,20 +87,20 @@ class Expert_System extends CI_Controller {
   }
      public function blood_sugar_options()
   {
-    return array('0'=>tr('blood_sugar'),
+    return array(NULL=>tr('blood_sugar'),
                  'true'=>'true',
                  'false'=>'false',);
   }
      public function rest_electro_options()
   {
-    return array('0'=>tr('rest_electro'),
+    return array(NULL=>tr('rest_electro'),
                  'normal'=>'normal',
                  'st_t_wave_abnormality'=>'st_t_wave_abnormality',
                  'left_vent_hyper'=>'left_vent_hyper',);
   }
      public function exercice_angina_options()
   {
-    return array('0'=>tr('exercice_angina'),
+    return array(NULL=>tr('exercice_angina'),
                  'yes'=>'yes',
                  'no'=>'no',);
   }

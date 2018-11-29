@@ -25,9 +25,11 @@
                 </form>
             </div>
         </div>
+<!--
     <div class="hidden-print">
 <?php echo anchor('consulting/new_consulting', tr('NewConsulting'),array('class'=>'btn btn-info'))?>
 </div>
+-->
   <table id="consulting_list_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>

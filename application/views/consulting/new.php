@@ -11,7 +11,7 @@
                 </div>
         </fieldset>
         <div class="form-group">
-            <div class="col-md-6"><input type="submit" name='submit' id='submit' value=<?php trp('Add')?> class="form-control btn btn-info" /></div>
+            <div class="col-md-6"><input type="submit" name='submit' id='submit' value=<?php trp('Send')?> class="form-control btn btn-info" /></div>
             <div class="col-md-6">
                 <?php echo anchor('consulting',tr('cancel'),array('class'=>'form-control btn btn-info'));?>
             </div>
