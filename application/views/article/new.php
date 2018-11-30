@@ -1,7 +1,6 @@
 <div class="row">
     <div class="col col-md-12 well well-sm">
         <?php echo form_open('article/new_article',array("id"=>"newArticleForm", "role"=>"form",)); ?>
-        <fieldset>
             <legend>-
                 <?php trP('ArticleInformation')?>:</legend>
             <div>
@@ -15,8 +14,8 @@
                 </div>
             </div>
             <div class="clearfix"></div>
-        </fieldset>
-        <fieldset>
+
+   
             <legend>-
                 <?php trP('Article')?>: </legend>
             <div>
@@ -24,7 +23,7 @@
                     <div class="col-md-12"><textarea name="body" id="body" class="form-control" rows="20"><?php echo $this->input->post('body');?></textarea>
                     </div>
                 </div>
-        </fieldset>
+        
         <div class="form-group">
             <div class="col-md-6"><input type="submit" name='submit' id='submit' value=<?php trp('Add')?> class="form-control btn btn-info" /></div>
             <div class="col-md-6">

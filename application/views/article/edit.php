@@ -2,7 +2,7 @@
     <?php if(!empty($article->id)){ ?>
     <div class="col col-md-12 well well-sm">
         <?php echo form_open('article/edit/'.$article->id,array("id"=>"newArticleForm", "role"=>"form",)); ?>
-        <fieldset>
+        
             <legend>-
                 <?php trP('ArticleInformation')?>:</legend>
             <div>
@@ -22,7 +22,7 @@
                     <div class="col-md-12"><textarea name="body" id="body" class="form-control" rows="20"><?php echo set_value('body', $article->body);?></textarea>
                     </div>
                 </div>
-        </fieldset>
+        
         <div class="form-group">
             <div class="col-md-6"><input type="submit" name='submit' id='submit' value=<?php trp('update')?> class="form-control btn btn-info" /></div>
             <div class="col-md-6">
