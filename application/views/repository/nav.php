@@ -27,7 +27,7 @@
                 <?php echo anchor('consulting/new_consulting','<span class="glyphicon glyphicon-off" style="position: relative; top: 5px"></span> '.tr('NewConsulting'));?>
             </li>
             <li>
-                <?php echo anchor('article','<span class="glyphicon glyphicon-off" style="position: relative; top: 5px"></span> '.tr('Articles'));?>
+                <?php echo anchor('article/userlist','<span class="glyphicon glyphicon-off" style="position: relative; top: 5px"></span> '.tr('Articles'));?>
             </li>
 
             <li id="navbarLiHome">
@@ -37,24 +37,7 @@
 
 <!--
             <?php
-//        if($this->bitauth->is_admin())
-//          include_once 'nav/admin.php';
-//        elseif ($this->bitauth->has_role('doctor'))
-//          include_once 'nav/doctor.php';
-//        elseif ($this->bitauth->has_role('xray'))
-//          include_once 'nav/xray.php';
-//        elseif ($this->bitauth->has_role('lab'))
-//          include_once 'nav/lab.php';
-//        elseif ($this->bitauth->has_role('pharmacy'))
-//          include_once 'nav/pharmacy.php';
-//        elseif ($this->bitauth->has_role('receptionist'))
-//          include_once 'nav/receptionist.php';
-//        elseif ($this->bitauth->has_role('guest'))
-//          include_once 'nav/guest.php';
-//        elseif ($this->bitauth->has_role('patient'))
-//          include_once 'nav/patient.php';
-//        else
-//          include_once 'nav/default.php';
+
       ?>
 -->
             <li class="dropdown">

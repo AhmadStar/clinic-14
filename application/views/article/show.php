@@ -1,7 +1,8 @@
 <div class="row">
     <?php if(!empty($article->id)){ ?>
-
-        <div class="isblog"> <?php print htmlspecialchars_decode(stripslashes($article->body));?>
+        <div class="isblog"> 
+            <p><h1><?php echo $article->title;?></h1></p></br>
+            <?php echo $article->body;?>
         <?php echo form_close(); ?> </div>
     
     <div class="pull-right" title="<?php trP('GotoArticles')?>">

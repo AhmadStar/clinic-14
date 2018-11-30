@@ -28,6 +28,7 @@ class Home extends CI_Controller {
     $data['title'] = 'موقع الاستشارات الطبية';
     $data['navActiveId']='navbarLiHome';
     $this->load->helper('site');  
+    $this->load->helper('text');
     $this->load->model('articles','articles');
     $data['articlesCount'] = $this->articles->get_articles_count();
     $data['articles'] = $this->articles->get_all_articles();

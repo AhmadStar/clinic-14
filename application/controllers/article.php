@@ -292,6 +292,26 @@ class Article extends CI_Controller {
         $this->load->view('footer',$data);
     }
   } 
+    
+    public function userlist()
+  {
+    //initialize and load header
+    $data['title'] = tr('Articles');
+    $this->load->helper('text');
+    $this->load->model('articles','articles');
+    $data['articlesCount'] = $this->articles->get_articles_count();
+    $data['articles'] = $this->articles->get_all_articles();
+    $path='article/userlist';
+    if(isset($_GET['ajax'])&&$_GET['ajax']==true)
+    {
+        $this->load->view($path, $data);
+    }else{
+        $data['includes']=array($path);
+        $this->load->view('header',$data);
+        $this->load->view('index',$data);
+        $this->load->view('footer',$data);
+    }
+  }
   
   public function show($article_id=0)
   {
