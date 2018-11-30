@@ -25,6 +25,7 @@
                 <div class="col-md-12"><input type='email' name='email' id='email' value="<?php echo $this->input->post('email');?>" class='form-control' placeholder="<?php trP('Email')?>" title='Email' required /></div>
             </div>
             <div class="form-group">
+                <div class="col-md-12"><input type='text' name='consulting_title' id='consulting_title' value="<?php echo $this->input->post('consulting_title');?>" class='form-control' placeholder="<?php trP('ConsultingTitle')?>" title="<?php trP('ConsultingTitle')?>" required /></div>
                 <div class="col-md-12"><input type='phone' name='phone' id='phone' value="<?php echo $this->input->post('phone');?>" class='form-control' placeholder="<?php trP('Phone')?>" title='Phone' required /></div>
             </div>
             <div class="clearfix"></div>
@@ -47,6 +48,9 @@
                     <div class="col-md-12">
                         <label class="radio-inline">التاريخ المرضي (الأمراض التي تعاني منها)</label>
                         <textarea name="disease" id="disease" class="form-control" rows="5"><?php echo $this->input->post('disease');?>
+                    </textarea>
+                        <label class="radio-inline">نص الاستشارة</label>
+                        <textarea name="question" id="question" class="form-control" rows="5"><?php echo $this->input->post('question');?>
                     </textarea>
                     </div>
             <div class="clearfix"></div>

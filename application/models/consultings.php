@@ -24,6 +24,12 @@ class Consultings extends MY_Model {
     public $doctor_id;
     
     /**
+     * Consulting Title.
+     * @var string
+     */
+    public $consulting_title;
+    
+    /**
      * Question.
      * @var string
      */
@@ -61,6 +67,15 @@ class Consultings extends MY_Model {
             $ret_val[$row->{$this::DB_TABLE_PK}] = $model;
         }
         return $ret_val;  
+         
+    }
+    
+     public function get_patient_information($id=0) 
+    {
+        $this->db->select('*');
+        $this->db->where('user_id', $id);
+        $query = $this->db->get('userdata');
+        return $query->result_array();  
          
     }
     

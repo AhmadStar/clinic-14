@@ -1,6 +1,5 @@
 <legend class="legend">- <?php echo trP('ArticlesList');?></legend>
 <div> 
-<!--
  <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title" ><?php trP('ArticleFilter')?></h3>
@@ -26,7 +25,6 @@
                 </form>
             </div>
         </div>
--->
     <div class="hidden-print">
 <?php echo anchor('article/new_article', tr('NewArticel'),array('class'=>'btn btn-info'))?>
 </div>

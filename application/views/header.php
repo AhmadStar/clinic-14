@@ -108,11 +108,11 @@
     <header>
         <section>
             <?php
-            if($this->bitauth->logged_in()){
+            //if($this->bitauth->logged_in()){
               include_once 'repository/nav.php';
-            }else{
-              include_once 'repository/logo.php';
-            }
+            //}else{
+             // include_once 'repository/logo.php';
+           // }
           ?>
         </section>
         <div id="fixedNavPadding" style="margin-bottom:72px" class="hidden"></div>

@@ -20,11 +20,18 @@ class Article extends CI_Controller {
    */
   public function index($limit = 15,$page = 1)
   {
+    
     if (!$this->bitauth->logged_in())
     {
       $this->session->set_userdata('redir', current_url());
       redirect('account/login');
-    }
+    }  
+      
+    if(!$this->bitauth->has_role('admin'))
+    {
+      $this->_no_access();
+      return;
+    }  
     
     $this->load->helper('url');
     $this->load->helper('form');
@@ -128,6 +135,7 @@ class Article extends CI_Controller {
       $this->_no_access();
       return;
     }
+      
     $this->load->model('articles');
     $this->articles->load($article_id);
     
@@ -193,6 +201,7 @@ class Article extends CI_Controller {
       $this->_no_access();
       return;
     }
+      
     $this->load->model('articles');
     $this->articles->load($article_id);
     
@@ -205,25 +214,17 @@ class Article extends CI_Controller {
       if($this->form_validation->run() == TRUE&&
          $this->input->post('id')==$article_id)
       {
-        //check if patient form already loaded from this app -> should be checked with session
+          
         $session_check=$this->session->userdata(current_url());
         $this->session->unset_userdata(current_url());
         if($session_check && $session_check[0]==$article_id)
         {
-            
-            //$this->load->model('drug_patient');
-            //$this->drug_patient->get_by_fkey('drug_id',$article_id);
-            //if(!$this->drug_patient->drug_patient_id){
                 $this->articles->delete();
                 echo 'ok';
                 return;
-            //}else{
-              //  echo 'nok';
-            //    return;
-            //}
 
         }else{
-          //user may have sent the form to a url other than the original
+          
           $data['error'] = 'mismatch';
           return;
         }
@@ -234,15 +235,8 @@ class Article extends CI_Controller {
     }
     $this->session->set_userdata(current_url(),array($article_id));
     $data['article']=$this->articles;
-    //$data['css'] = "<style>.form-group{margin-bottom:0px;} .form-group .form-control{margin-bottom:10px;}</style>";
-    //$data['includes']=array('drug/delete');
-    
-//      print_r($data);
-//      echo $data;
+
     $this->load->view('article/confirm_delete',$data);
-    //$this->load->view('header',$data);
-    //$this->load->view('index',$data);
-    //$this->load->view('footer',$data);
   }
   
   /*
@@ -250,6 +244,11 @@ class Article extends CI_Controller {
    */
   public function new_article()
   {
+    if (!$this->bitauth->logged_in())
+    {
+      $this->session->set_userdata('redir', current_url());
+      redirect('account/login');
+    }
     
     if(!$this->bitauth->has_role('admin'))
     {
