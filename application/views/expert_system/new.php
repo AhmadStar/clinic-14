@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col col-md-8 well well-sm">
         <?php echo form_open('expert_system',array("id"=>"newConsulting", "role"=>"form",)); ?>
-        <fieldset>
+        
             <legend>-
                 <?php trP('معلومات')?> :</legend>
             <div>
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="clearfix"></div>
-        </fieldset>
+        
         <div class="form-group">
             <div class="col-md-6">
                 <?php echo anchor('home',tr('ReturnToHome'),array('class'=>'form-control btn btn-info'));?>

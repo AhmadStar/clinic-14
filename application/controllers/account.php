@@ -19,7 +19,7 @@ class Account extends CI_Controller
    * Account::login()
    *
    */
-  public function login()
+ public function login()
   {
     $data = array();
 
@@ -64,6 +64,7 @@ class Account extends CI_Controller
         $this->load->view('footer', $data);
     }
   }
+
 
   /**
    * account::users()
@@ -115,18 +116,7 @@ class Account extends CI_Controller
   */
   public function signup()
   {
-    if ($this->bitauth->get_users() && !$this->bitauth->logged_in())
-    {
-      $this->session->set_userdata('redir', current_url());
-      redirect('account/login');
-    }
-
-    if ($this->bitauth->get_users() && !$this->bitauth->is_admin())
-    {
-      $this->_no_access();
-      return;
-    }
-    
+ 
     $data = array();
     $data['roles_option'] = $this->config->item('roles', 'bitauth');
     if($this->input->post())
@@ -135,38 +125,20 @@ class Account extends CI_Controller
         array( 'field' => 'username', 'label' => 'User Name', 'rules' => 'required|trim|bitauth_unique_username|has_no_schar', ),
         array( 'field' => 'first_name', 'label' => 'First Name', 'rules' => 'trim|has_no_schar', ),
         array( 'field' => 'last_name', 'label' => 'Last Name', 'rules' => 'trim|has_no_schar', ),
-        array( 'field' => 'fname', 'label' => 'Father Name', 'rules' => 'trim|has_no_schar', ),
-        array( 'field' => 'gender', 'label' => 'Gender', 'rules' => 'required', ),
         array( 'field' => 'email', 'label' => 'Email', 'rules' => 'required|trim|valid_email', ),
         array( 'field' => 'phone', 'label' => 'Phone', 'rules' => 'required|trim', ),
-        array( 'field' => 'address', 'label' => 'Address', 'rules' => 'trim', ),
-        array( 'field' => 'social_id', 'label' => 'Social ID', 'rules' => 'required|trim|has_no_schar', ),
-        array( 'field' => 'id_type', 'label' => 'ID Type', 'rules' => 'required|trim', ),
-        array( 'field' => 'position', 'label' => 'Position', 'rules' => 'required|trim|has_no_schar', ),
-        array( 'field' => 'memo', 'label' => 'Memo', 'rules' => '', ),
+        array( 'field' => 'gender', 'label' => 'Gender', 'rules' => 'required', ),
+        array( 'field' => 'disease', 'label' => 'Disease', 'rules' => '', ),
         array( 'field' => 'birth_date', 'label' => 'Birth Date', 'rules' => '', ),
         array( 'field' => 'password', 'label' => 'Password', 'rules' => 'required|bitauth_valid_password', ),
-        array( 'field' => 'password_conf', 'label' => 'Confirm Password', 'rules' => 'required|matches[password]', ),
+        array( 'field' => 'password_conf', 'label' => 'Confirm Password', 'rules' => 'required|matches[password]', ),  
       ));
       
       if($this->form_validation->run() == TRUE)
       {
         unset($_POST['submit'], $_POST['password_conf']);
         $user = $this->input->post();
-        $user['birth_date']=strtotime($user['birth_date']);
-        $user['create_date']=now();
-        //find the role from position and then assign the proper group to user
-        foreach (array_keys($data['roles_option']) as $key => $value) {
-          if($value==$_POST['position']){
-            $role=pow(2,$key);
-            $this->db->select('group_id')->from('groups')->where('roles',$role);
-            $q=$this->db->get();
-            foreach($q->result() as $row){
-              $user['groups'] = array($row->group_id);
-              break;
-            }
-          }
-        }//end foreach
+        $user['birth_date']=$user['birth_date'];
         
         if($this->bitauth->add_user($user))
         {
@@ -174,7 +146,7 @@ class Account extends CI_Controller
               unset($_POST[$key]);
           
           $data['script'] = '<script>alert("'. html_escape($user['username']). ' has been registered successfuly.");</script>';
-          //redirect(current_url());
+          
         }
         else
           $data['error'] = '<div class="alert alert-danger">Registring user: '. html_escape($user['username']). ' is failed.</div>';
@@ -189,12 +161,15 @@ class Account extends CI_Controller
     if(isset($_GET['ajax'])&&$_GET['ajax']==true)
     {
         $this->load->view($path, $data);
+        
     }else{
         $data['includes']=array($path);
         $this->load->view('header', $data);
         $this->load->view('index', $data);
         $this->load->view('footer', $data);
+        
     }
+   // redirect($redir ? $redir : '');
   }
 
   /**

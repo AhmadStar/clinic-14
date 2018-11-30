@@ -91,31 +91,6 @@ class Consulting extends CI_Controller {
 	}    
   
   /**
-   * Patient::search()
-   */
-//  public function search(/*$q=''*/)
-//  {
-//    if (!$this->bitauth->logged_in())
-//    {
-//      $this->session->set_userdata('redir', current_url());
-//      redirect('account/login');
-//    }
-//    //if($q!='')
-//    if($this->input->post())
-//    {
-//        $this->load->model('drugs');
-//        $q=$this->input->post('q');
-//        //$drugs=$this->drugs->search(array('drug_name_en'=>$q,'drug_name_fa'=>$q));
-//        $drugs=$this->drugs->search(array('drug_name_en'=>$q,'drug_name_fa'=>$q));
-//        $data['drugs']=$drugs;
-//        $this->load->view('drug/result',$data);
-//        return TRUE;
-//    }
-//    $data['title']=tr('DrugSearch');
-//    $this->load->view('drug/search');
-//  }
-//  
-  /**
    * Consulting::answered()
    */
   public function answer($consulting_id=0)
@@ -125,6 +100,7 @@ class Consulting extends CI_Controller {
       $this->session->set_userdata('redir', current_url());
       redirect('account/login');
     }
+      
     if(!$this->bitauth->has_role('admin'))
     {
       $this->_no_access();
@@ -135,6 +111,7 @@ class Consulting extends CI_Controller {
     
     $this->load->model('consultings');
     $this->consultings->load($consulting_id);
+    
     
     if($this->input->post())
     {
@@ -147,7 +124,7 @@ class Consulting extends CI_Controller {
               
       if($this->form_validation->run() == TRUE)
       {
-        //check if patient form already loaded from this app -> should be checked with session
+     
         $session_check=$this->session->userdata(current_url());
         $this->session->unset_userdata(current_url());
         if($session_check && $session_check[0]==$consulting_id)
@@ -162,9 +139,7 @@ class Consulting extends CI_Controller {
             $this->consultings->save();
             unset($_POST);
             $data['script'] = '<script>alert("'.tr('hasbeenupdated').' '.tr('Consulting').' '.tr('successfuly').'");</script>';
-//            redirect('consulting');
         }else{
-          //user may have sent the form to a url other than the original
           $data['error'] = '<div class="alert alert-danger">Form URL Error</div>';
         }
       }else{
@@ -174,6 +149,8 @@ class Consulting extends CI_Controller {
     $this->session->set_userdata(current_url(),array($consulting_id));
     $data['title'] = tr('Answer');    
     $data['consulting']=$this->consultings;
+    $this->load->model('consultings','con');
+    $data['patientinfo']= $this->con->get_patient_information($this->consultings->user_id);
     $path='consulting/answer';
     if(isset($_GET['ajax'])&&$_GET['ajax']==true)
     {
@@ -213,25 +190,16 @@ class Consulting extends CI_Controller {
       if($this->form_validation->run() == TRUE&&
          $this->input->post('id')==$consulting_id)
       {
-        //check if patient form already loaded from this app -> should be checked with session
         $session_check=$this->session->userdata(current_url());
         $this->session->unset_userdata(current_url());
         if($session_check && $session_check[0]==$consulting_id)
         {
-            
-            //$this->load->model('drug_patient');
-            //$this->drug_patient->get_by_fkey('drug_id',$consulting_id);
-            //if(!$this->drug_patient->drug_patient_id){
                 $this->consultings->delete();
                 echo 'ok';
                 return;
-            //}else{
-              //  echo 'nok';
-            //    return;
-            //}
+            
 
         }else{
-          //user may have sent the form to a url other than the original
           $data['error'] = 'mismatch';
           return;
         }
@@ -242,33 +210,25 @@ class Consulting extends CI_Controller {
     }
     $this->session->set_userdata(current_url(),array($consulting_id));
     $data['consulting']=$this->consultings;
-    //$data['css'] = "<style>.form-group{margin-bottom:0px;} .form-group .form-control{margin-bottom:10px;}</style>";
-    //$data['includes']=array('drug/delete');
-    
-//      print_r($data);
-//      echo $data;
+  
     $this->load->view('consulting/confirm_delete',$data);
-    //$this->load->view('header',$data);
-    //$this->load->view('index',$data);
-    //$this->load->view('footer',$data);
   }
   
   /*
    * 
    */
   public function new_consulting()
-  {
-    
-    if(!$this->bitauth->has_role('admin'))
+  {   
+    if (!$this->bitauth->logged_in())
     {
-      $this->_no_access();
-      return;
+      $this->session->set_userdata('redir', current_url());
+      redirect('account/signup');
     }
-    
     if($this->input->post())
     {
       $this->form_validation->set_rules(array(        
-        array( 'field' => 'question', 'label' => 'question', 'rules' => 'trim', ),
+        array( 'field' => 'consulting_title', 'label' => 'Consulting Title', 'rules' => 'trim', 
+               'field' => 'question', 'label' => 'question', 'rules' => 'trim', ),
                'field' => 'status', 'label' => 'status', 'rules' => 'trim', 
                'field' => 'date', 'label' => 'date', 'rules' => 'trim', ));
         
@@ -277,7 +237,6 @@ class Consulting extends CI_Controller {
         
         unset($_POST['submit']);
         $_POST['status'] = 0;
-          //print_r($this->session->userdata('ba_user_id'));
         $_POST['user_id'] = $this->session->userdata('ba_user_id');
         $consulting=$this->input->post();
         
