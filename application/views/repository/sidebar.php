@@ -1,6 +1,7 @@
 <!--<div id='sidebar'>-->
 <div id='sidebar' >
   <div id="accordion" class="panel-group">
+<!--
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">
@@ -34,34 +35,17 @@
           </div>
         </div>
       </div>
+-->
     <?php
       //load sidebar based on user Role to get list of all roles check bitauth config file
       if($this->bitauth->is_admin())
         include_once 'sidebar/admin.php';
-      if($this->bitauth->is_admin())
-        include_once 'sidebar/consume.php';
-      if($this->bitauth->is_admin())
-        include_once 'sidebar/income.php';
+        include_once 'sidebar/article.php';
       if ($this->bitauth->has_role('doctor'))
         include_once 'sidebar/doctor.php';
-      if ($this->bitauth->has_role('patient'))
-        include_once 'sidebar/nurse.php';
-      if ($this->bitauth->has_role('doctor'))
-        include_once 'sidebar/diagnose.php';
-      if ($this->bitauth->has_role('pharmacy'))
-        include_once 'sidebar/pharmacy.php';
-      if ($this->bitauth->has_role('xray'))
-        include_once 'sidebar/xray.php';
-      if ($this->bitauth->has_role('lab'))
-        include_once 'sidebar/lab.php';
-      if ($this->bitauth->has_role('receptionist'))
-        include_once 'sidebar/receptionist.php';
-      if ($this->bitauth->has_role('guest'))
-        include_once 'sidebar/guest.php';
-      if ($this->bitauth->has_role('patient'))
-        include_once 'sidebar/patient.php';      
-      if ($this->bitauth->has_role('patient'))
-        include_once 'sidebar/dailyincome.php';
+        include_once 'sidebar/consulting.php';
+      
+      
     ?>
     <script></script>
   </div>

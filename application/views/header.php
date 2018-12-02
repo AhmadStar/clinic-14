@@ -91,6 +91,7 @@
     <script src="<?php echo base_url() ?>content/js/bootstrap-datepicker.ar.min.js" charset="UTF-8"></script>
     <script src="<?php echo base_url() ?>content/js/tinymce/tinymce.min.js"></script>
     <script src="<?php echo base_url() ?>content/js/tinymce/jquery.tinymce.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
