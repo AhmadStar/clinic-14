@@ -9,8 +9,6 @@ if(!empty($users))//show list of user to admin
   echo "<div>".$pagination."<div class='table-responsive'><table class='table table-bordered table-striped'><thead><tr>
             <th>".tr('UserName')."</th>
            <th>".tr('Name')."</th>
-           <th>".tr('FatherName')."</th>
-           <th>".tr('Position')."</th>
            <th>".tr('Email')."</th>
            <th>".tr('Phone')."</th>
            <th class='hidden-print'></th>
@@ -35,8 +33,6 @@ if(!empty($users))//show list of user to admin
                 echo '<tr id="'.$_user->user_id.'" title="'; if($_user->first_name||$_user->last_name) echo html_escape($_user->first_name.' '.$_user->last_name);else echo html_escape($_user->username); echo '">'.
 			'<td>'.html_escape($_user->username).'</td>'.
 			'<td>'.html_escape($_user->first_name.' '.$_user->last_name).'</td>'.
-			'<td>'.html_escape($_user->fname).'</td>'.
-			'<td>'.html_escape($_user->position).'</td>'.
 			'<td>'.html_escape($_user->email).'</td>'.
 			'<td>'.html_escape($_user->phone).'</td>'.
 			'<td class="hidden-print">'.$actions.'</td>'.

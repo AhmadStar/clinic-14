@@ -5,38 +5,28 @@ if(!empty($user)){
 ;?>
 <link rel='stylesheet' href='<?php echo base_url() ?>content/css/bootstrap-fileupload.min.css' media='screen'/>
 <script src='<?php echo base_url() ?>content/js/bootstrap-fileupload.js'></script>
-<div class="col col-md-8 well well-md">
+<div class="col col-md-7 well well-md">
   <?php echo form_open_multipart('account/edit_user/'.$user->user_id,array("id"=>"edituserForm", "role"=>"form",)); ?>
   <div style="margin-bottom: 20px;color: black;"><?php trP('EditUserInformationfor')?> :<br/><center><?php echo $user->username;?></center><input type="hidden" name='username' id='username' value="<?php echo set_value('username',$user->username);?>"/></div>
   <?php echo (!empty($error) ? $error : '' ); ?>
-    <fieldset>
+    
       <legend>- <?php trP('PersonalInformation')?>:</legend>
       <div>
         <div class="form-group">
-          <div class="col-md-9">
-            <div><input type="text" name='first_name' id="first_name" value="<?php echo set_value('first_name',$user->first_name);?>" class='form-control' placeholder='First Name' title='First Name' required autofocus /></div>
-            <div><input type="text" name='last_name' id='last_name' value="<?php echo set_value('last_name',$user->last_name);?>" class='form-control' placeholder='Last Name' title='Last Name' /></div>
-            <div><input type="text" name='fname' id='fname' value="<?php echo set_value('fname',$user->fname);?>" class='form-control' placeholder='Father Name' title='Father Name' /></div>
+          <div>
+            <div class="col-md-6"><input type="text" name='first_name' id="first_name" value="<?php echo set_value('first_name',$user->first_name);?>" class='form-control' placeholder='First Name' title='First Name' required autofocus /></div>
+            <div class="col-md-6"><input type="text" name='last_name' id='last_name' value="<?php echo set_value('last_name',$user->last_name);?>" class='form-control' placeholder='Last Name' title='Last Name' /></div>
+            
             <div class="col-md-12" style="margin-bottom:10px;">
               <label class="radio-inline"><input type="radio" name='gender' value="1" title='Male' <?php echo isset($_POST['gender'])?($this->input->post('gender')?'checked':''):($user->gender?'checked':'');?> /><?php trP('Male')?></label>
               <label class="radio-inline"><input type="radio" name='gender' value="0" title='Female' <?php echo isset($_POST['gender'])?($this->input->post('gender')?'':'checked'):($user->gender?'':'checked');?> /><?php trP('Female')?></label>
             </div>
           </div>
-          <div class="col-md-3">
-            <div class="fileupload fileupload-new" data-provides="fileupload">
-              <div class="fileupload-preview thumbnail" style="width: 120px; height: 140px;"><img src="<?php echo base_url().$user->picture;?>" /></div>
-              <div class="text-center">
-                <span class="btn btn-file btn-default"><span class="fileupload-new"><?php trP('Select image')?></span><span class="fileupload-exists">Change</span>
-                <input type="file" name="picture" id="picture" /></span>
-                <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none" title="Remove the selected picture">&times;</a>
-              </div>  
-            </div>
-          </div>
+          
         </div>
         <div class="clearfix"></div>
       </div>
-    </fieldset>
-    <fieldset>
+    
       <legend>- <?php trP('AdditionalInformation')?>:</legend>
       <div>
         <div class="form-group">
@@ -47,28 +37,11 @@ if(!empty($user)){
         </div>
         <div class="clearfix"></div>
         <div class="form-group">
-          <div class="col-md-12"><input type="text" name='address' id='address' value="<?php echo set_value('address',$user->address);?>" class='form-control' placeholder='Address' title='Address'/></div>
-        </div>
-        <div class="form-group">
-          <div class="col-md-6"><input type="text" name='social_id' id='social_id' value="<?php echo set_value('social_id',$user->social_id)?>" class='form-control' placeholder='Social ID' title='Social ID' required/></div>
-        </div>
-        <div class="form-group">
-          <div class="col-md-6">
-            <?php echo form_dropdown('id_type',$id_type_options,set_value('id_type',$user->id_type),"class='form-control' title='ID Type'");?>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-md-6">
-            <input type="text" name='position' id='position' value="<?php echo set_value('position',$user->position);?>" class='form-control' placeholder='Position' title='Position'/>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-md-6"><input type="date" name='birth_date' id='birth_date' value="<?php echo set_value('birth_date',date('Y-m-d',$user->birth_date));?>" class='form-control' placeholder='Birth Date' title='Birth Date'/></div>
+          <div class="col-md-12"><input type="date" name='birth_date' id='birth_date' value="<?php echo set_value('birth_date',$user->birth_date);?>" class='form-control' placeholder='Birth Date' title='Birth Date'/></div>
         </div>
         <div class="clearfix"></div>
       </div>
-    </fieldset>
-    <fieldset>
+   
       <legend>- <?php trP('AccountSettings')?>:</legend>
       <div>
         <?php if($this->bitauth->is_admin()){?>
@@ -91,15 +64,8 @@ if(!empty($user)){
         </div>
         <div class="clearfix"></div>
       </div>
-    </fieldset>
-    <fieldset>
-      <legend>- <?php trP('Memo')?>:</legend>
-      <div>
-        <div class="form-group">
-          <div class="col-md-12"><textarea name="memo" id="memo" class="form-control" rows="10"><?php echo set_value('memo',$user->memo);?></textarea></div>
-        </div>
-      </div>
-    </fieldset>
+    
+   
     <div class="form-group">
       <div class="col-md-6"><input type="submit" name='submit' id='submit' value=<?php trp('update')?> class="form-control btn btn-info" /></div>
       <div class="col-md-6"><?php echo anchor('account/users',tr('cancel'),array('class'=>'form-control btn btn-info'));?></div>

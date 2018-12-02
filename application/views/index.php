@@ -15,13 +15,13 @@
     <aside class="col col-sm-3">
         <?php
 //    if(strtolower($title)!='login')
-//      if (!$this->bitauth->logged_in()){
+      if ($this->bitauth->logged_in()){
 //        include_once 'account/login.php';
 //      }
 //      else{ 
-//          if($this->uri->segment(1) ==''){ } 
-//          else { include_once 'repository/sidebar.php';}
-//      }
+          if($this->uri->segment(1) ==''){ } 
+          else { include_once 'repository/sidebar.php';}
+      }
     ?>
     </aside>
 

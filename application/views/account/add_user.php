@@ -29,27 +29,53 @@
             </div>
             <div class="clearfix"></div>
             <div class="col-md-12">
-                        <input type="date" name='birth_date' id='birth_date' value="<?php echo set_value('birth_date',@$today);?>" class='form-control' placeholder="<?php trP('birth_date')?>" title="<?php trP('birth_date')?>" required />
-                    </div>
+                <input type="date" name='birth_date' id='birth_date' value="<?php echo set_value('birth_date',@$today);?>" class='form-control' placeholder="<?php trP('birth_date')?>" title="<?php trP('birth_date')?>" required />
+            </div>
 
-                    <div class="col-md-12">
-                        <input type="radio" name='gender' value="1" title='Male' <?php echo isset($_POST['gender'])?($this->input->post('gender')?'checked':''):'';?> />
-                        <label class="radio-inline">
-                            <?php trP('Male')?> </label>
-                    </div>
+            <div class="col-md-12">
+                <input type="radio" name='gender' value="1" title='Male' <?php echo isset($_POST['gender'])?($this->input->post('gender')?'checked':''):'';?> required/>
+                <label class="radio-inline">
+                    <?php trP('Male')?> </label>
+            </div>
 
-                    <div class="col-md-12">
-                        <input type="radio" name='gender' value="0" title='Female' <?php echo isset($_POST['gender'])?($this->input->post('gender')?'':'checked'):'';?> />
-                        <label class="radio-inline">
-                            <?php trP('Female')?></label>
-                    </div>
+            <div class="col-md-12">
+                <input type="radio" name='gender' value="0" title='Female' <?php echo isset($_POST['gender'])?($this->input->post('gender')?'':'checked'):'';?> required/>
+                <label class="radio-inline">
+                    <?php trP('Female')?></label>
+            </div>
 
-                    <div class="col-md-12">
-                        <label class="radio-inline">التاريخ المرضي (الأمراض التي تعاني منها)</label>
-                        <textarea name="disease" id="disease" class="form-control" rows="5"><?php echo $this->input->post('disease');?>
+            <div class="col-md-12">
+                <div>
+                    <label class="radio-inline">التاريخ المرضي (الأمراض التي تعاني منها)</label>
+                    <textarea name="disease" id="disease" class="form-control" rows="5" required><?php echo $this->input->post('disease');?> 
                     </textarea>
-                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12" style="padding: 12px 12px; padding-top: 12px; padding-right: 12px; padding-bottom: 12px; padding-left: 12px;">
+
+                <center>
+                    <p id="captImg">
+                        <?php echo $image; ?>
+                    </p>
+                    <p>Can't read the image? click <a href="javascript:void(0);" class="refreshCaptcha">here</a> to refresh.</p>
+                </center>
+            </div>
+
+            <div class="col-md-10" style="padding-bottom: 12px; ">
+
+                <div class="col-md-9" style="float:right">
+                    <input type='text' name='captcha' id='captcha' value="<?php echo $this->input->post('captcha');?>" class='form-control' placeholder="<?php trP('captcha')?>" title='captcha' required />
+                </div>
+            </div>
             <div class="clearfix"></div>
+        </div>
+
+        <div>
+            <div class="form-group">
+
+
+            </div>
         </div>
 
 
@@ -63,6 +89,19 @@
         <?php echo form_close(); ?>
     </div>
 </div>
-<script type="text/javascript">
-   
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- captcha refresh code -->
+<script>
+    $(document).ready(function() {
+        $('.refreshCaptcha').on('click', function() {
+            $.get('<?php echo base_url().'account/refresh '; ?>',
+                function(data) {
+                    $('#captImg').html(data);
+                });
+        });
+    });
+
 </script>
