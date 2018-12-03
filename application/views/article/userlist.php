@@ -14,8 +14,8 @@
                           echo $articles[$i]['title']; 
                       echo"</a></h3>";
                       echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
-                        echo "<img src='http://localhost/clinic-14/uploads/rrr.jpg' style='width:100%'></a>";
-                      echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
+                        echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
+                      echo "<p>"; echo character_limiter($articles[$i]['body'], 400,'...'); echo"</p></b>";
                       echo "</div>";
                       echo "</div>";
 
@@ -34,8 +34,8 @@
                           echo $articles[$i]['title']; 
                       echo"</a></h3>";
                       echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
-                        echo "<img src='http://localhost/clinic-14/uploads/rrr.jpg' style='width:100%'></a>";
-                      echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
+                        echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
+                      echo "<p>"; echo character_limiter($articles[$i]['body'], 400,'...'); echo"</p></b>";
                       echo "</div>";
                       echo "</div>";
                   } 
@@ -52,8 +52,8 @@
                           echo $articles[$i]['title']; 
                         echo"</a></h3>";
                       echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
-                        echo "<img src='http://localhost/clinic-14/uploads/rrr.jpg' style='width:100%'></a>";
-                      echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
+                        echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
+                      echo "<p>"; echo character_limiter($articles[$i]['body'], 400,'...'); echo"</p></b>";
                       echo "</div>";
                       echo "</div>";
                   } 
@@ -70,7 +70,7 @@
                           echo $articles[$i]['title']; 
                       echo"</a></h3>";
                       echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
-                        echo "<img src='http://localhost/clinic-14/uploads/rrr.jpg' style='width:100%'></a>";
+                        echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
                       echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
                       echo "</div>";
                       echo "</div>";

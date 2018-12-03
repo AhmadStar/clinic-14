@@ -100,8 +100,8 @@
                             echo $articles[0]['title'];
                             echo"</a></h3>";
                     echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[0]['id'];echo "' title='" ;echo $articles[0]['title']; echo"'>";
-                        echo "<img src='http://localhost/clinic-14/uploads/rrr.jpg' style='width:100%'></a>";
-                    echo "<p>"; echo character_limiter($articles[0]['body'], 150,'...'); echo"</p></b>";
+                        echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
+                    echo "<p>"; echo character_limiter($articles[0]['body'], 250,'...'); echo"</p></b>";
                         ?>
                 </div>
             </div>
@@ -113,8 +113,8 @@
                             echo $articles[1]['title'];
                             echo"</a></h3>";
                     echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[1]['id'];echo "' title='" ;echo $articles[1]['title']; echo"'>";
-                        echo "<img src='http://localhost/clinic-14/uploads/rrr.jpg' style='width:100%'></a>";
-                    echo "<p>"; echo character_limiter($articles[1]['body'], 150,'...'); echo"</p></b>";
+                        echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
+                    echo "<p>"; echo character_limiter($articles[1]['body'], 250,'...'); echo"</p></b>";
                         ?>
                 </div>
             </div>
@@ -126,8 +126,8 @@
                             echo $articles[2]['title'];
                             echo"</a></h3>";
                     echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[2]['id'];echo "' title='" ;echo $articles[2]['title']; echo"'>";
-                        echo "<img src='http://localhost/clinic-14/uploads/rrr.jpg' style='width:100%'></a>";
-                    echo "<p>"; echo character_limiter($articles[2]['body'], 150,'...'); echo"</p></b>";
+                        echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
+                    echo "<p>"; echo character_limiter($articles[2]['body'], 250,'...'); echo"</p></b>";
                         ?>
                 </div>
             </div>
