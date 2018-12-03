@@ -30,9 +30,6 @@ class Home extends CI_Controller {
     $this->load->helper('site');  
     $this->load->helper('text');
     $this->load->model('articles','articles');
-    $this->load->model('consultings','consultings');
-    $data['guestCount']=count($this->bitauth->get_users_by_role('guest'));
-    $data['unAnsweredConsulting'] = $this->consultings->get_Count_un_answered_Consultings();
     $data['articlesCount'] = $this->articles->get_articles_count();
     $data['articles'] = $this->articles->get_all_articles();
     if ($this->bitauth->logged_in() && $this->bitauth->is_admin()){

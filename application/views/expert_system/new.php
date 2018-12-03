@@ -47,7 +47,7 @@
 </div>
 <div class="row" id='myDIV' style='display:none'>
     <div class="col col-md-8 well well-sm">
-        <fieldset>
+        
             <legend>
                 <center>
                     <?php trP('TheResult')?> :

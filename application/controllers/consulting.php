@@ -101,7 +101,7 @@ class Consulting extends CI_Controller {
       redirect('account/login');
     }
       
-    if(!$this->bitauth->has_role('admin'))
+    if(!$this->bitauth->has_role('doctor'))
     {
       $this->_no_access();
       return;
@@ -222,6 +222,7 @@ class Consulting extends CI_Controller {
     if (!$this->bitauth->logged_in())
     {
       $this->session->set_userdata('redir', current_url());
+        
       redirect('account/signup');
     }
     if($this->input->post())
@@ -270,22 +271,26 @@ class Consulting extends CI_Controller {
     
   public function show($consulting_id=0)
   {
+    if (!$this->bitauth->logged_in())
+    {
+      $this->session->set_userdata('redir', current_url());
+      redirect('account/login');
+    }
+      
     $this->load->model('consultings');
     $this->consultings->load($consulting_id);
-    
-    if($this->input->post())
-    {
-        
-      $this->form_validation->set_rules(array(
-        array( 'field' => 'date', 'label' => 'Consulting Date', 'rules' => 'trim', ),
-        array( 'field' => 'question', 'label' => 'Consulting Question', 'rules' => 'trim', ),
-        array( 'field' => 'answer', 'label' => 'Consulting Answer', 'rules' => 'trim', ),
-      )); 
-    }
+    $data['consulting']=$this->consultings;
+      
+    $consulting=array();
+    if ((integer)$this->consultings->status == 1)
+        $consulting['read'] = 1;
+    $this->load->model('consultings');
+    foreach($consulting as $key => $value)
+      $this->consultings->$key = $value;
+    $this->consultings->save();
       
       
     $data['title'] = tr('ShowConsulting');
-    $data['consulting']=$this->consultings;
     $path='consulting/show';
     if(isset($_GET['ajax'])&&$_GET['ajax']==true)
     {
@@ -297,6 +302,43 @@ class Consulting extends CI_Controller {
         $this->load->view('footer',$data);
     }
   }
+    
+    public function userconsulting($limit = 15,$page = 1)
+    {
+        if (!$this->bitauth->logged_in())
+        {
+          $this->session->set_userdata('redir', current_url());
+          redirect('account/login');
+        }
+        $this->load->helper('text');
+
+        $this->load->model('consultings');
+
+        $data['consultings'] = $this->consultings->get_user_Consulting($this->session->userdata('ba_user_id'));    
+//        $data['readconsultings'] = $this->consultings->get_user_readConsulting($this->session->userdata('ba_user_id')); 
+        
+        $data['title'] = tr('ConsultingsList'); 
+
+        $data['page'] = (int)$page;
+        $data['per_page'] = (int)$limit;
+        $this->load->library('pagination');
+        $this->load->library('my_pagination');
+        $config['total_rows'] = count($data['consultings']);
+        $config['per_page'] = $data['per_page'];
+        $this->my_pagination->initialize($config); 
+        $data['pagination']=$this->my_pagination->create_links();
+
+        $path='consulting/userconsultinglist';
+        if(isset($_GET['ajax'])&&$_GET['ajax']==true)
+        {
+            $this->load->view($path, $data);
+        }else{
+            $data['includes']=array($path);
+            $this->load->view('header',$data);
+            $this->load->view('index',$data);
+            $this->load->view('footer',$data);
+        }
+    }
 
 
   public function _no_access()

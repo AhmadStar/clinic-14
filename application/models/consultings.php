@@ -70,6 +70,31 @@ class Consultings extends MY_Model {
          
     }
     
+    public function get_user_Consulting($id=0){
+        $this->db->select('*');
+        $this->db->where('user_id', $id);
+        $this->db->order_by('date', 'desc');
+        $query = $this->db->get('consulting');
+        return $query->result_array();  
+         
+    }
+    
+    public function get_Count_un_answered_Consultings(){
+        $this->db->select('COUNT(*) as count');
+        $this->db->where('status',0);
+        $this->db->from('consulting');
+        $query = $this->db->get();
+        
+        return $query->result_array()[0]['count']; 
+    }
+//    public function get_user_readConsulting($id=0){
+//        $this->db->select('*');
+//        $this->db->where('user_id', $id);
+//        $this->db->where('read', 1);
+//        $query = $this->db->get('consultings');
+//        return $query->result_array();
+//    }
+    
      public function get_patient_information($id=0) 
     {
         $this->db->select('*');
