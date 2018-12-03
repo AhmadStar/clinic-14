@@ -134,7 +134,7 @@ class Account extends CI_Controller
         array( 'field' => 'disease', 'label' => 'Disease', 'rules' => '', ),
         array( 'field' => 'birth_date', 'label' => 'Birth Date', 'rules' => '', ),
         array( 'field' => 'password', 'label' => 'Password', 'rules' => 'required|bitauth_valid_password', ),
-        array( 'field' => 'password_conf', 'label' => 'Confirm Password', 'rules' => 'required|matches[password]', ),array( 'field' => 'captcha', 'label' => 'captcha', 'rules' => 'trim', ),  
+        array( 'field' => 'password_conf', 'label' => 'Confirm Password', 'rules' => 'required|matches[password]', ),array( 'field' => 'captcha', 'label' => 'captcha', 'rules' => 'trim|required', ),  
       ));
       
      
@@ -183,7 +183,7 @@ class Account extends CI_Controller
               $data['error'] = '<div class="alert alert-danger">Registring user: '. html_escape($user['username']). ' is failed.</div>';
           }
           else{
-              print_r('Captcha code does not match, please try again.');
+              $data['error'] = '<div class="alert alert-danger">captcha error rewrite it</div>';
           }
       }else{
           $data['error'] = validation_errors();

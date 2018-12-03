@@ -7,8 +7,8 @@
             </a>
         </h4>
     </div>
-<!--    <div class="panel-collapse collapse" id="collapseMyMyMenu">-->
-    <div>
+    <div class="panel-collapse collapse" id="collapseMyMenu">
+    
         <div class="panel-body">
             <table class="table">
                 <tbody>
