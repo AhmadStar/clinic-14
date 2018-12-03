@@ -48,7 +48,13 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <?php echo anchor('account/edit_user/'.$this->session->userdata('ba_user_id'),'<span class="glyphicon glyphicon-user" style="position: relative; top: 5px;"></span> '.tr('Profile'));?>
+                        <?php 
+                            if (!$this->bitauth->logged_in()){
+                                echo anchor('account/login','<span class="glyphicon glyphicon-user" style="position: relative; top: 5px;"></span> '.tr('Login'));
+                            }else{
+                                echo anchor('account/edit_user/'.$this->session->userdata('ba_user_id'),'<span class="glyphicon glyphicon-user" style="position: relative; top: 5px;"></span> '.tr('Profile'));
+                            }
+                        ?>
                     </li>
                     <li class="divider"></li>
                     <li>

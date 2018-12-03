@@ -13,6 +13,8 @@ class Account extends CI_Controller
     $this->load->helper('site');   
 
     $this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
+          $this->load->helper('captcha');
+
   }
 
   /**
@@ -116,7 +118,6 @@ class Account extends CI_Controller
   */
   public function signup()
   {
-    $this->load->helper('captcha');
     
     $data = array();
       
@@ -141,9 +142,6 @@ class Account extends CI_Controller
       {
         $inputCaptcha = $this->input->post('captcha');
         $sessCaptcha = $this->session->userdata('captchaCode');
-          
-        print_r($inputCaptcha);
-        print_r($sessCaptcha);
           if($inputCaptcha === $sessCaptcha)
           {
         
@@ -154,10 +152,31 @@ class Account extends CI_Controller
 
             if($this->bitauth->add_user($user))
             {
+                
+                
+            if($this->bitauth->login($this->input->post('username'), $this->input->post('password')))
+                {
+                var_dump($this->session->userdata('redir'));
+                  // Redirect
+                  if($redir = $this->session->userdata('redir'))
+                  {
+                      
+                    $this->session->unset_userdata('redir');
+                  }
+
+                  redirect($redir ? $redir : ''); //should be redirect to user home page
+                }
+                else
+                {
+                  $data['error'] = $this->bitauth->get_error();
+                }
+
+                
               foreach ($_POST as $key => $value)
                   unset($_POST[$key]);
 
-              $data['script'] = '<script>alert("'. html_escape($user['username']). ' has been registered successfuly.");</script>';
+//              $data['script'] = '<script>alert("'. html_escape($user['username']). ' has been registered successfuly.");</script>';
+                
 
             }
             else

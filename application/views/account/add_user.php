@@ -62,12 +62,12 @@
                 </center>
             </div>
 
-            <div class="col-md-10" style="padding-bottom: 12px; ">
-
-                <div class="col-md-9" style="float:right">
+            <div class="" style="padding-right: 35%; padding-bottom: 10%;">
+                <div class="" style="width: 50%;">
                     <input type='text' name='captcha' id='captcha' value="<?php echo $this->input->post('captcha');?>" class='form-control' placeholder="<?php trP('captcha')?>" title='captcha' required />
                 </div>
             </div>
+            
             <div class="clearfix"></div>
         </div>
 
@@ -91,13 +91,12 @@
 </div>
 
 <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <!-- captcha refresh code -->
 <script>
     $(document).ready(function() {
         $('.refreshCaptcha').on('click', function() {
-            $.get('<?php echo base_url().'account/refresh '; ?>',
+            $.get('<?php echo base_url().'index.php/account/refresh '; ?>',
                 function(data) {
                     $('#captImg').html(data);
                 });

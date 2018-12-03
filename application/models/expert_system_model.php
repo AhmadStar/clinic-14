@@ -205,8 +205,14 @@ class Expert_System_Model extends MY_Model {
         $user_data['rest_electro'] = $this->input->post('rest_electro');
         $user_data['max_heart_rate'] = (integer)$this->input->post('max_heart_rate');
         $user_data['exercice_angina'] =$this->input->post('exercice_angina');
+        $result = array();
+        if ($this->predicate($user_data)[0] == 'positive'){
+            $result[]='positive';
+        }else{
+            $result[]='negative';
+        }
        
-        return $this->predicate($user_data);
+        return $result;
     }
      
     
