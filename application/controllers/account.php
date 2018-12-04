@@ -261,7 +261,7 @@ class Account extends CI_Controller
         array( 'field' => 'disease', 'label' => 'Disease', 'rules' => '', ),
         array( 'field' => 'birth_date', 'label' => 'Birth Date', 'rules' => '', ),
         array( 'field' => 'password', 'label' => 'Password', 'rules' => 'required|bitauth_valid_password', ),
-        array( 'field' => 'password_conf', 'label' => 'Confirm Password', 'rules' => 'required|matches[password]', ), 
+        array( 'field' => 'password_conf', 'label' => 'Confirm Password', 'rules' => 'matches[password]', ), 
       ));
 
       if($this->input->post('password'))
@@ -563,6 +563,7 @@ class Account extends CI_Controller
       $data['group']=$group;
       $data['group_roles']=$role_list;
       $data['users']=$users;
+       
     }else{
       $data['title']= tr('EditGroup');
     }

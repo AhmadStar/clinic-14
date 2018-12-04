@@ -13,8 +13,7 @@
                 </div>
 
                 <div class="clearfix"></div>
-        </fieldset>
-        <fieldset>
+        
             <legend>-
                 <?php trP('Article')?>: </legend>
             <div>

@@ -19,8 +19,13 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <?php echo anchor('account/logout','<span class="glyphicon glyphicon-off" style="position: relative; top: 5px;"></span> '.tr('Logout'));?>
-                    </li>
+                        <?php 
+                            if (!$this->bitauth->logged_in()){
+                                echo anchor('account/signup','<span class="glyphicon glyphicon-user" style="position: relative; top: 5px;"></span> '.tr('Signup'));
+                            }else{
+                                echo anchor('account/logout','<span class="glyphicon glyphicon-off" style="position: relative; top: 5px;"></span> '.tr('Logout'));
+                            }
+                        ?>
                 </ul>
             </li>
 
@@ -31,9 +36,9 @@
             </li>
 -->
             
-            <?php if($this->bitauth->logged_in()){
+            <?php if($this->bitauth->logged_in() ){
                     echo "<li>";
-                    echo anchor('colnsulting/userconsulting','<span class="glyphicon glyphicon-off" style="position: relative; top: 5px"></span> '.tr('MyConsulting'));
+                    echo anchor('consulting/userconsulting','<span class="glyphicon glyphicon-off" style="position: relative; top: 5px"></span> '.tr('MyConsulting'));
                     echo "</li>";
                 }   
             ?>
