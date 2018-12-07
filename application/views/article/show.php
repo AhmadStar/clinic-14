@@ -7,11 +7,11 @@
     
     <div class="pull-right" title="<?php trP('GotoArticles')?>">
 
-        <?php echo anchor('article', '<button class="btn btn-return"><span>'.tr('ReturnToArticles').'</span></button>');?>
+        <?php echo anchor('article/userlist', '<button class="btn btn-return"><span>'.tr('ReturnToArticles').'</span></button>');?>
     </div>
     <?php
 }else{
-  echo '<div class="alert alert-danger text-center"><h1>Article Not Found</h1></div><div class="pull-right" title="Go to Articles">'.anchor('article', '<span class="glyphicon glyphicon-arrow-left"></span>').'</div>';
+  echo '<div class="alert alert-danger text-center"><h1>Article Not Found</h1></div><div class="pull-right" title="Go to Articles">'.anchor('article/userlist', '<span class="glyphicon glyphicon-arrow-left"></span>').'</div>';
 }
 ?>
 </div>

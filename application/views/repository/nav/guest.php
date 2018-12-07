@@ -1,7 +1,7 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
 
-            <li class="dropdown" style='margin-right:200px'>
+            <li class="dropdown" style='margin-right:100px'>
                 <!-- Fixed on all users -->
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="glyphicon glyphicon-user" style="position: relative; top: 5px;"></span>

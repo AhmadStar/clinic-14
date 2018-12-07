@@ -156,7 +156,7 @@ class Account extends CI_Controller
                 
             if($this->bitauth->login($this->input->post('username'), $this->input->post('password')))
                 {
-                var_dump($this->session->userdata('redir'));
+                //var_dump($this->session->userdata('redir'));
                   // Redirect
                   if($redir = $this->session->userdata('redir'))
                   {
@@ -210,6 +210,7 @@ class Account extends CI_Controller
         $data['image'] = $captcha['image'];
     $data['title'] = tr('RegisterUser');    
     $data['id_type_options'] = $this->_id_type_options();
+    $data['current_url']=$this->session->unset_userdata('redir');
     $path='account/add_user';
     
     if(isset($_GET['ajax'])&&$_GET['ajax']==true)
