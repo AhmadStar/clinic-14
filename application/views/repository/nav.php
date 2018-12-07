@@ -19,6 +19,9 @@
      if($this->bitauth->logged_in() && $this->bitauth->is_admin()){
       include_once 'nav/admin.php';   
      }
+    elseif($this->bitauth->logged_in() && $this->bitauth->has_role('doctor')){
+        include_once 'nav/doctor.php'; 
+    }
     else
         include_once 'nav/guest.php';
     ?>

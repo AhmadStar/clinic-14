@@ -8,7 +8,7 @@
         include_once 'sidebar/admin.php';
       if($this->bitauth->is_admin())
         include_once 'sidebar/article.php';
-      if ($this->bitauth->has_role('doctor'))
+      if ($this->bitauth->has_role('admin'))
         include_once 'sidebar/doctor.php';
       if ($this->bitauth->has_role('doctor'))
         include_once 'sidebar/consulting.php';

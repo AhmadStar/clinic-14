@@ -35,8 +35,8 @@
                 <tr>
                     <th><?php trP('Number')?></th>
                     <th><?php trP('ConsultingDate')?></th>                   
-                    <th><?php trP('Consulting')?></th>                    
-                    <th><?php trP('Status')?></th> 
+                    <th><?php trP('ConsultingTitle')?></th>                    
+                    <th></th> 
                     
                 </tr>
             </thead>
@@ -94,46 +94,7 @@ $(document).ready(function() {
 </script>
 
 <script>
-//    $(document).ready(function(){ 
-//        $('#consulting_list_table').on('click','a',function(e){
-//            if($(this).attr('title')=='Delete Consulting'){
-//               e.preventDefault();
-//               $.get($(this).attr('href'),'',function(data){
-//                   $('#tmpDiv').html(data);
-//               });
-//            }
-//        });
-//    });
-//	
-//	function HandleActions(){
-//		$('#consulting_list_table').on('click','a',function(e){
-//            if($(this).attr('title')=='Delete Consulting'){
-//               e.preventDefault();
-//               $.get($(this).attr('href'),'',function(data){
-//                   $('#tmpDiv').html(data);
-//               });
-//            }
-//        });
-//	}
-	
-//	function loadTotal(){
-//		$.ajax({
-//        url: '<?php echo site_url('consulting/total')?>',
-//        type: 'POST',
-//        data: {
-//            min_date : $('#min').datepicker({ dateFormat: 'yy-mm-dd' }).val(),
-//            max_date : $('#max').datepicker({ dateFormat: 'dd-mm-yy' }).val(),
-//            consulting_id : $('#consulting_id').val()
-//        },
-//        dataType: 'json',
-//        success: function(data) {
-//			HandleActions();
-////			alert(data.data[0].total);            
-//            $("#total").html(data.data[0].total);
-////            console.log(data);
-//        }
-//    });
-//	}
+
 </script>
 </div> 
                         

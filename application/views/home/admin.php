@@ -23,6 +23,32 @@
         opacity: 0.9;
     }
 
+    .col-sm-4,
+    .col-sm-12 {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .f,
+    .w3-hover-f:hover,
+    .w3-f,
+    .w3-hover-f:hover {
+        color: #000 !important;
+        background-color: #eed3d76b !important;
+    }
+
+    .s,
+    .w3-hover-s:hover {
+        color: #000 !important;
+        background-color: #eee !important;
+    }
+
+    .t,
+    .w3-hover-t:hover {
+        color: #000!important; 
+        background-color: #d6e9c6a6 !important;
+    }
+
 </style>
 
 <div class="container-fluid">
@@ -31,44 +57,58 @@
 
 
         <div class="row row_">
-            <div class="col-sm-3">
-                <div class="well">
-                    <center>
-                        <h4>
-                            <?php trP('Users');?>
-                        </h4>
-                        <p><?php echo $guestCount?></p>
-                    </center>
+            <div class="w3-quarter">
+                <div class="w3-container w3-orange w3-text-white w3-padding-16">
+                    <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+                    <div class="w3-right">
+                        <h3>
+                            <?php echo $guestCount?>
+                        </h3>
+                    </div>
+                    <div class="w3-clear"></div>
+                    <h4>
+                        <?php echo trP('Users')?>
+                    </h4>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="well">
-                    <center>
-                        <h4>
-                            <?php trp('Visitors');?>
-                        </h4>
-                        <p>100 Million</p>
-                    </center>
+            <div class="w3-quarter">
+                <div class="w3-container w3-blue w3-text-white w3-padding-16">
+                    <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+                    <div class="w3-right">
+                        <h3>50</h3>
+                    </div>
+                    <div class="w3-clear"></div>
+                    <h4>
+                        <?php echo trP('Vistitors')?>
+                    </h4>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="well">
-                    <center>
-                        <h4>
-                            <?php trP('ArticlesConut')?>
-                        </h4>
-                        <p><?php echo $articlesCount?></p>
-                    </center>
+            <div class="w3-quarter">
+                <div class="w3-container w3-red w3-text-white w3-padding-16">
+                    <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+                    <div class="w3-right">
+                        <h3>
+                            <?php echo $articlesCount?>
+                        </h3>
+                    </div>
+                    <div class="w3-clear"></div>
+                    <h4>
+                        <?php echo trP('Articles')?>
+                    </h4>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="well">
-                    <center>
-                        <h4>
-                            <?php trP('UnAnswerConsultings')?>
-                        </h4>
-                        <p><?php echo $unAnsweredConsulting; ?></p>
-                    </center>
+            <div class="w3-quarter">
+                <div class="w3-container w3-green w3-text-white w3-padding-16">
+                    <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+                    <div class="w3-right">
+                        <h3>
+                            <?php echo $unAnsweredConsulting?>
+                        </h3>
+                    </div>
+                    <div class="w3-clear"></div>
+                    <h4>
+                        <?php echo trP('Consultings')?>
+                    </h4>
                 </div>
             </div>
         </div>
@@ -86,14 +126,14 @@
 
         <div class="row row_">
             <div class="col-sm-12">
-                <div class="well_">
+                <div class="w3-container w3-black w3-text-white w3-padding-16">
                     <h4>
                         <?php trP('MostReadArticles')?>
                     </h4>
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="well" style="height:450px">
+                <div class="w3-container f w3-text-white w3-padding-16">
                     <?php
                     echo "<h3>";
                         echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[0]['id'];echo "' title='" ;echo $articles[$i]['title']; echo"'>";
@@ -106,7 +146,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="well" style="height:450px">
+                <div class="w3-container s w3-text-black w3-padding-16">
                     <?php
                     echo "<h3>";
                         echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[1]['id'];echo "' title='" ;echo $articles[$i]['title']; echo"'>";
@@ -119,7 +159,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="well" style="height:450px">
+                <div class="w3-container t w3-text-white w3-padding-16">
                     <?php
                     echo "<h3>";
                         echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[2]['id'];echo "' title='" ;echo $articles[$i]['title']; echo"'>";

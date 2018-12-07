@@ -57,7 +57,7 @@ class Consulting extends CI_Controller {
 			$row = array();
 			$row[] = $no;
 			$row[] = $consultings->date;		
-			$row[] = $consultings->question;
+			$row[] = $consultings->consulting_title;
             
             $actions .= anchor('consulting/answer/'.$consultings->id, '<span class="glyphicon glyphicon-edit"></span>',array('title'=>tr('Answer')));
             

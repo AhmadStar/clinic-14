@@ -30,7 +30,7 @@
        <div class="form-group">
             <label for="members[]" class="col col-md-3 control-label"><?php trP('Members')?></label>
 		    <div class="col col-md-9">
-            <?php form_multiselect('members[]', $users, set_value('members[]', $group->members),'class="form-control"')?>
+            <?php echo form_multiselect('members[]', $users, set_value('members[]', $group->members),'class="form-control"')?>
             </div>
 	   </div>
     </div>

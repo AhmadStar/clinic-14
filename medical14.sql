@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 03, 2018 at 05:11 PM
+-- Generation Time: Dec 07, 2018 at 02:43 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.16
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `created_date` date DEFAULT NULL,
   `image` mediumtext,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
 
 --
 -- Dumping data for table `articles`
@@ -74,83 +74,6 @@ INSERT INTO `bayes` (`categories`, `attributes_prob`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comments`
---
-
-CREATE TABLE IF NOT EXISTS `comments` (
-  `comment_id` int(11) NOT NULL AUTO_INCREMENT,
-  `patient_doctor_id` int(11) DEFAULT NULL,
-  `comment` text NOT NULL,
-  `spressur` int(11) NOT NULL,
-  `ppressure` int(11) NOT NULL,
-  `hrate` int(11) NOT NULL,
-  `heate` int(11) NOT NULL,
-  `oxidation` int(11) NOT NULL,
-  `nbreathing` int(11) NOT NULL,
-  `comment_type` smallint(6) NOT NULL DEFAULT '1' COMMENT 'for future use, 1 is default',
-  `create_date` date NOT NULL,
-  `last_edit_time` int(11) NOT NULL,
-  PRIMARY KEY (`comment_id`),
-  KEY `patient_doctor_id` (`patient_doctor_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
-
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`comment_id`, `patient_doctor_id`, `comment`, `spressur`, `ppressure`, `hrate`, `heate`, `oxidation`, `nbreathing`, `comment_type`, `create_date`, `last_edit_time`) VALUES
-(1, 15, 'dsadas d', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539206086),
-(2, 15, 'ملاحظة تانية', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539206100),
-(3, 4, 'هاذ تعليق من الطبيب', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539239993),
-(4, 13, 'ystyidtyi', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539246131),
-(5, 1, 'Test', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539264097),
-(6, 1, 'asd', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539297053),
-(7, 18, 'التشخيص التهاب قصبات', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539344838),
-(8, 5, 'kjl', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539358706),
-(9, 5, 'kjl', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539358707),
-(10, 5, 'kjl', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539358707),
-(11, 7, 'dsas', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539469571),
-(12, 5, 'dsa', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539782613),
-(13, 20, 'csada', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539784367),
-(14, 13, 'dasdas', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539784566),
-(15, 10, 'بسيبسي', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1539784856),
-(16, 20, 'test', 120, 60, 0, 0, 0, 0, 1, '0000-00-00', 1539786498),
-(17, 20, 'test', 120, 80, 0, 0, 0, 0, 1, '0000-00-00', 1539786521),
-(18, 20, 'test 120', 120, 80, 0, 0, 0, 0, 1, '0000-00-00', 1539786695),
-(19, 20, 'test harte rate', 120, 80, 85, 0, 0, 0, 1, '0000-00-00', 1539787328),
-(20, 20, 'heate dasdkjh sadkjsda', 120, 80, 70, 37, 0, 0, 1, '0000-00-00', 1539787552),
-(21, 20, 'oxidation', 100, 0, 60, 33, 17, 0, 1, '0000-00-00', 1539788244),
-(22, 20, 'nbreathing', 120, 80, 60, 37, 99, 12, 1, '0000-00-00', 1539788395),
-(23, 16, 'اختبار', 140, 90, 60, 38, 99, 14, 1, '0000-00-00', 1539790794),
-(24, 0, 'dasd', 3, 4, 5, 6, 7, 8, 1, '0000-00-00', 1539794233),
-(25, 0, 'Test', 1, 2, 3, 4, 5, 6, 1, '0000-00-00', 1539794346),
-(26, 19, 'تعليق', 9, 8, 7, 6, 5, 4, 1, '0000-00-00', 1539794899),
-(27, 19, 'تعليق اخيرااا', 1, 2, 3, 4, 5, 6, 1, '0000-00-00', 1539795117),
-(28, 19, 'dashdkj ahsdkja hskjdhak jsdhkjas hdkjahskdjhaskj dhkjshdkjas hdkjahdkjashdkjh', 1, 1, 2, 1, 1, 1, 1, '0000-00-00', 1539796891),
-(29, 6, 'تعليق', 2, 5, 5, 5, 5, 5, 1, '0000-00-00', 1539812246),
-(30, 20, 'هذ تعليق', 120, 80, 60, 38, 95, 12, 1, '0000-00-00', 1539863147),
-(31, 1, 'شس', 1, 1, 1, 1, 1, 1, 1, '0000-00-00', 1540170719),
-(32, 12, 'هذا تعليق من الطبيب', 120, 80, 11, 88, 31, 312, 1, '0000-00-00', 1540220941),
-(33, 21, 'تعليق الطبيب', 120, 80, 60, 38, 95, 12, 1, '0000-00-00', 1540310378),
-(34, 1, 'هذا تعليق من الطبيب .. هنا نضع تعليق الطبيب ....هنا نضع تعليق الطبيب', 120, 80, 60, 38, 97, 12, 1, '0000-00-00', 1540572053),
-(35, 1, '', 1, 2, 2, 2, 2, 2, 1, '0000-00-00', 1540639654),
-(36, 1, '', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1540639737),
-(37, 1, '', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1540639742),
-(38, 23, 'هذا تعليق من الطبيب', 12, 8, 80, 38, 95, 81, 1, '0000-00-00', 1540727194),
-(39, 25, 'يسي شي', 0, 10, 0, 0, 0, 0, 1, '0000-00-00', 1540737367),
-(40, 25, 'هذا تعليق من الطبيب', 1, 1, 1, 1, 1, 1, 1, '0000-00-00', 1540737434),
-(41, 25, '', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1540737440),
-(42, 25, 'dsad as', 1, 1, 1, 1, 1, 1, 1, '2018-10-06', 1540737495),
-(43, 25, 'sad', 1, 1, 0, 0, 0, 0, 1, '2018-10-06', 1540737562),
-(44, 25, '', 0, 0, 0, 0, 0, 0, 1, '0000-00-00', 1540737631),
-(45, 25, '', 0, 0, 0, 0, 0, 0, 1, '2018-10-20', 1540737636),
-(46, 25, 'fds', 1, 1, 1, 1, 1, 1, 1, '2018-10-06', 1540742525),
-(47, 25, '', 0, 0, 0, 0, 0, 0, 1, '2018-10-28', 1540742535),
-(48, 25, 'هذا تعليق من الطبييب', 1, 1, 1, 1, 1, 1, 1, '2018-09-06', 1540744496);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `consulting`
 --
 
@@ -172,311 +95,18 @@ CREATE TABLE IF NOT EXISTS `consulting` (
 --
 
 INSERT INTO `consulting` (`id`, `user_id`, `doctor_id`, `consulting_title`, `question`, `status`, `answer`, `read`, `date`) VALUES
-(1, NULL, NULL, '', 'استشارة جديدة', 1, 'هنا نضع جواب الاجابة', 0, '0000-00-00 00:00:00'),
-(21, NULL, NULL, '', 'استشارة جديدة', 1, 'الرد على الاستشارة', 0, '2018-11-28 19:11:17'),
-(33, 0, NULL, '', 'jjj', 0, NULL, 0, '2018-11-28 19:56:06'),
 (34, 1, 1, '', 'kkkk', 1, 'jjj', 0, '2018-11-28 20:04:31'),
-(35, 1, NULL, '', 'vdga', 0, NULL, 0, '2018-11-30 07:18:18'),
+(35, 1, 23, '', 'vdga', 1, 'fdfgsdg', 0, '2018-11-30 07:18:18'),
 (36, 1, NULL, NULL, 'vdga', 0, NULL, 0, '2018-11-30 07:23:57'),
 (37, 1, NULL, 'sss', 'ssss', 0, NULL, 0, '2018-11-30 07:24:06'),
 (38, 1, NULL, 'sss', 'ssss', 0, NULL, 0, '2018-11-30 07:24:50'),
 (39, 1, 1, 'sss', 'dddd', 1, 'fff', 0, '2018-11-30 07:25:03'),
-(40, 0, NULL, '?????', 'هون السؤال', 0, NULL, 0, '2018-11-30 08:53:22'),
-(41, 0, NULL, 'تجريب', 'ااا', 0, NULL, 0, '2018-11-30 08:55:48'),
-(42, 0, NULL, 'ىى', 'تتت', 0, NULL, 0, '2018-11-30 08:56:42'),
 (43, 5, NULL, 'تجريب', 'رهف', 0, NULL, 0, '2018-11-30 09:12:44'),
 (44, 20, NULL, 'تجريب', 'lk hh', 0, NULL, 0, '2018-12-02 12:49:43'),
 (45, 20, NULL, 'تجريب', 'lk hh', 0, NULL, 0, '2018-12-02 12:52:43'),
 (46, 20, NULL, 'kkk', 'kkkk', 0, NULL, 0, '2018-12-02 14:27:17'),
 (47, 20, NULL, 'jjj', 'jjjj', 0, NULL, 0, '2018-12-02 16:48:26'),
 (48, 20, NULL, 'jjjjjjjjjjjjjjjjjjjj', 'jjj', 0, NULL, 0, '2018-12-02 17:37:43');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `consumes`
---
-
-CREATE TABLE IF NOT EXISTS `consumes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `count` int(11) NOT NULL,
-  `doctor_id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `price` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
-
---
--- Dumping data for table `consumes`
---
-
-INSERT INTO `consumes` (`id`, `name`, `count`, `doctor_id`, `date`, `price`) VALUES
-(12, 'بسيب يس', 11, 5, '2018-10-13', 11),
-(13, 'فاتورة ادوية', 1, 4, '2018-10-28', 5000),
-(14, 'منشار جبس', 1, 4, '2018-10-28', 300000),
-(15, 'فاتورة مياه', 1, 4, '2018-11-30', 10000);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customers`
---
-
-CREATE TABLE IF NOT EXISTS `customers` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `FirstName` varchar(50) NOT NULL,
-  `LastName` varchar(50) NOT NULL DEFAULT '',
-  `phone` varchar(50) NOT NULL DEFAULT '',
-  `address` varchar(50) NOT NULL DEFAULT '',
-  `city` varchar(50) NOT NULL DEFAULT '',
-  `country` varchar(50) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=123 ;
-
---
--- Dumping data for table `customers`
---
-
-INSERT INTO `customers` (`id`, `FirstName`, `LastName`, `phone`, `address`, `city`, `country`) VALUES
-(1, 'Carine ', 'Schmitt', '40.32.2555', '54, rue Royale', 'Nantes', 'France'),
-(2, 'Jean', 'King', '7025551838', '8489 Strong St.', 'Las Vegas', 'USA'),
-(3, 'Peter', 'Ferguson', '03 9520 4555', '636 St Kilda Road', 'Melbourne', 'Australia'),
-(4, 'Janine ', 'Labrune', '40.67.8555', '67, rue des Cinquante Otages', 'Nantes', 'France'),
-(5, 'Jonas ', 'Bergulfsen', '07-98 9555', 'Erling Skakkes gate 78', 'Stavern', 'Norway'),
-(6, 'Susan', 'Nelson', '4155551450', '5677 Strong St.', 'San Rafael', 'USA'),
-(7, 'Zbyszek ', 'Piestrzeniewicz', '(26) 642-7555', 'ul. Filtrowa 68', 'Warszawa', 'Poland'),
-(8, 'Roland', 'Keitel', '+49 69 66 90 2555', 'Lyonerstr. 34', 'Frankfurt', 'Germany'),
-(9, 'Julie', 'Murphy', '6505555787', '5557 North Pendale Street', 'San Francisco', 'USA'),
-(10, 'Kwai', 'Lee', '2125557818', '897 Long Airport Avenue', 'NYC', 'USA'),
-(11, 'Diego ', 'Freyre', '(91) 555 94 44', 'C/ Moralzarzal, 86', 'Madrid', 'Spain'),
-(12, 'Christina ', 'Berglund', '0921-12 3555', 'Berguvsvägen  8', 'Luleå', 'Sweden'),
-(13, 'Jytte ', 'Petersen', '31 12 3555', 'Vinbæltet 34', 'Kobenhavn', 'Denmark'),
-(14, 'Mary ', 'Saveley', '78.32.5555', '2, rue du Commerce', 'Lyon', 'France'),
-(15, 'Eric', 'Natividad', '+65 221 7555', 'Bronz Sok.', 'Singapore', 'Singapore'),
-(16, 'Jeff', 'Young', '2125557413', '4092 Furth Circle', 'NYC', 'USA'),
-(17, 'Kelvin', 'Leong', '2155551555', '7586 Pompton St.', 'Allentown', 'USA'),
-(18, 'Juri', 'Hashimoto', '6505556809', '9408 Furth Circle', 'Burlingame', 'USA'),
-(19, 'Wendy', 'Victorino', '+65 224 1555', '106 Linden Road Sandown', 'Singapore', 'Singapore'),
-(20, 'Veysel', 'Oeztan', '+47 2267 3215', 'Brehmen St. 121', 'Bergen', 'Norway  '),
-(21, 'Keith', 'Franco', '2035557845', '149 Spinnaker Dr.', 'New Haven', 'USA'),
-(22, 'Isabel ', 'de Castro', '(1) 356-5555', 'Estrada da saúde n. 58', 'Lisboa', 'Portugal'),
-(23, 'Martine ', 'Rancé', '20.16.1555', '184, chaussée de Tournai', 'Lille', 'France'),
-(24, 'Marie', 'Bertrand', '(1) 42.34.2555', '265, boulevard Charonne', 'Paris', 'France'),
-(25, 'Jerry', 'Tseng', '6175555555', '4658 Baden Av.', 'Cambridge', 'USA'),
-(26, 'Julie', 'King', '2035552570', '25593 South Bay Ln.', 'Bridgewater', 'USA'),
-(27, 'Mory', 'Kentary', '+81 06 6342 5555', '1-6-20 Dojima', 'Kita-ku', 'Japan'),
-(28, 'Michael', 'Frick', '2125551500', '2678 Kingston Rd.', 'NYC', 'USA'),
-(29, 'Matti', 'Karttunen', '90-224 8555', 'Keskuskatu 45', 'Helsinki', 'Finland'),
-(30, 'Rachel', 'Ashworth', '(171) 555-1555', 'Fauntleroy Circus', 'Manchester', 'UK'),
-(31, 'Dean', 'Cassidy', '+353 1862 1555', '25 Maiden Lane', 'Dublin', 'Ireland'),
-(32, 'Leslie', 'Taylor', '6175558428', '16780 Pompton St.', 'Brickhaven', 'USA'),
-(33, 'Elizabeth', 'Devon', '(171) 555-2282', '12, Berkeley Gardens Blvd', 'Liverpool', 'UK'),
-(34, 'Yoshi ', 'Tamuri', '(604) 555-3392', '1900 Oak St.', 'Vancouver', 'Canada'),
-(35, 'Miguel', 'Barajas', '6175557555', '7635 Spinnaker Dr.', 'Brickhaven', 'USA'),
-(36, 'Julie', 'Young', '6265557265', '78934 Hillside Dr.', 'Pasadena', 'USA'),
-(37, 'Brydey', 'Walker', '+612 9411 1555', 'Suntec Tower Three', 'Singapore', 'Singapore'),
-(38, 'Frédérique ', 'Citeaux', '88.60.1555', '24, place Kléber', 'Strasbourg', 'France'),
-(39, 'Mike', 'Gao', '+852 2251 1555', 'Bank of China Tower', 'Central Hong Kong', 'Hong Kong'),
-(40, 'Eduardo ', 'Saavedra', '(93) 203 4555', 'Rambla de Cataluña, 23', 'Barcelona', 'Spain'),
-(41, 'Mary', 'Young', '3105552373', '4097 Douglas Av.', 'Glendale', 'USA'),
-(42, 'Horst ', 'Kloss', '0372-555188', 'Taucherstraße 10', 'Cunewalde', 'Germany'),
-(43, 'Palle', 'Ibsen', '86 21 3555', 'Smagsloget 45', 'Århus', 'Denmark'),
-(44, 'Jean ', 'Fresnière', '(514) 555-8054', '43 rue St. Laurent', 'Montréal', 'Canada'),
-(45, 'Alejandra ', 'Camino', '(91) 745 6555', 'Gran Vía, 1', 'Madrid', 'Spain'),
-(46, 'Valarie', 'Thompson', '7605558146', '361 Furth Circle', 'San Diego', 'USA'),
-(47, 'Helen ', 'Bennett', '(198) 555-8888', 'Garden House', 'Cowes', 'UK'),
-(48, 'Annette ', 'Roulet', '61.77.6555', '1 rue Alsace-Lorraine', 'Toulouse', 'France'),
-(49, 'Renate ', 'Messner', '069-0555984', 'Magazinweg 7', 'Frankfurt', 'Germany'),
-(50, 'Paolo ', 'Accorti', '011-4988555', 'Via Monte Bianco 34', 'Torino', 'Italy'),
-(51, 'Daniel', 'Da Silva', '+33 1 46 62 7555', '27 rue du Colonel Pierre Avia', 'Paris', 'France'),
-(52, 'Daniel ', 'Tonini', '30.59.8555', '67, avenue de l''Europe', 'Versailles', 'France'),
-(53, 'Henriette ', 'Pfalzheim', '0221-5554327', 'Mehrheimerstr. 369', 'Köln', 'Germany'),
-(54, 'Elizabeth ', 'Lincoln', '(604) 555-4555', '23 Tsawassen Blvd.', 'Tsawassen', 'Canada'),
-(55, 'Peter ', 'Franken', '089-0877555', 'Berliner Platz 43', 'München', 'Germany'),
-(56, 'Anna', 'O''Hara', '02 9936 8555', '201 Miller Street', 'North Sydney', 'Australia'),
-(57, 'Giovanni ', 'Rovelli', '035-640555', 'Via Ludovico il Moro 22', 'Bergamo', 'Italy'),
-(58, 'Adrian', 'Huxley', '+61 2 9495 8555', 'Monitor Money Building', 'Chatswood', 'Australia'),
-(59, 'Marta', 'Hernandez', '6175558555', '39323 Spinnaker Dr.', 'Cambridge', 'USA'),
-(60, 'Ed', 'Harrison', '+41 26 425 50 01', 'Rte des Arsenaux 41 ', 'Fribourg', 'Switzerland'),
-(61, 'Mihael', 'Holz', '0897-034555', 'Grenzacherweg 237', 'Genève', 'Switzerland'),
-(62, 'Jan', 'Klaeboe', '+47 2212 1555', 'Drammensveien 126A', 'Oslo', 'Norway  '),
-(63, 'Bradley', 'Schuyler', '+31 20 491 9555', 'Kingsfordweg 151', 'Amsterdam', 'Netherlands'),
-(64, 'Mel', 'Andersen', '030-0074555', 'Obere Str. 57', 'Berlin', 'Germany'),
-(65, 'Pirkko', 'Koskitalo', '981-443655', 'Torikatu 38', 'Oulu', 'Finland'),
-(66, 'Catherine ', 'Dewey', '(02) 5554 67', 'Rue Joseph-Bens 532', 'Bruxelles', 'Belgium'),
-(67, 'Steve', 'Frick', '9145554562', '3758 North Pendale Street', 'White Plains', 'USA'),
-(68, 'Wing', 'Huang', '5085559555', '4575 Hillside Dr.', 'New Bedford', 'USA'),
-(69, 'Julie', 'Brown', '6505551386', '7734 Strong St.', 'San Francisco', 'USA'),
-(70, 'Mike', 'Graham', '+64 9 312 5555', '162-164 Grafton Road', 'Auckland  ', 'New Zealand'),
-(71, 'Ann ', 'Brown', '(171) 555-0297', '35 King George', 'London', 'UK'),
-(72, 'William', 'Brown', '2015559350', '7476 Moss Rd.', 'Newark', 'USA'),
-(73, 'Ben', 'Calaghan', '61-7-3844-6555', '31 Duncan St. West End', 'South Brisbane', 'Australia'),
-(74, 'Kalle', 'Suominen', '+358 9 8045 555', 'Software Engineering Center', 'Espoo', 'Finland'),
-(75, 'Philip ', 'Cramer', '0555-09555', 'Maubelstr. 90', 'Brandenburg', 'Germany'),
-(76, 'Francisca', 'Cervantes', '2155554695', '782 First Street', 'Philadelphia', 'USA'),
-(77, 'Jesus', 'Fernandez', '+34 913 728 555', 'Merchants House', 'Madrid', 'Spain'),
-(78, 'Brian', 'Chandler', '2155554369', '6047 Douglas Av.', 'Los Angeles', 'USA'),
-(79, 'Patricia ', 'McKenna', '2967 555', '8 Johnstown Road', 'Cork', 'Ireland'),
-(80, 'Laurence ', 'Lebihan', '91.24.4555', '12, rue des Bouchers', 'Marseille', 'France'),
-(81, 'Paul ', 'Henriot', '26.47.1555', '59 rue de l''Abbaye', 'Reims', 'France'),
-(82, 'Armand', 'Kuger', '+27 21 550 3555', '1250 Pretorius Street', 'Hatfield', 'South Africa'),
-(83, 'Wales', 'MacKinlay', '64-9-3763555', '199 Great North Road', 'Auckland', 'New Zealand'),
-(84, 'Karin', 'Josephs', '0251-555259', 'Luisenstr. 48', 'Münster', 'Germany'),
-(85, 'Juri', 'Yoshido', '6175559555', '8616 Spinnaker Dr.', 'Boston', 'USA'),
-(86, 'Dorothy', 'Young', '6035558647', '2304 Long Airport Avenue', 'Nashua', 'USA'),
-(87, 'Lino ', 'Rodriguez', '(1) 354-2555', 'Jardim das rosas n. 32', 'Lisboa', 'Portugal'),
-(88, 'Braun', 'Urs', '0452-076555', 'Hauptstr. 29', 'Bern', 'Switzerland'),
-(89, 'Allen', 'Nelson', '6175558555', '7825 Douglas Av.', 'Brickhaven', 'USA'),
-(90, 'Pascale ', 'Cartrain', '(071) 23 67 2555', 'Boulevard Tirou, 255', 'Charleroi', 'Belgium'),
-(91, 'Georg ', 'Pipps', '6562-9555', 'Geislweg 14', 'Salzburg', 'Austria'),
-(92, 'Arnold', 'Cruz', '+63 2 555 3587', '15 McCallum Street', 'Makati City', 'Philippines'),
-(93, 'Maurizio ', 'Moroni', '0522-556555', 'Strada Provinciale 124', 'Reggio Emilia', 'Italy'),
-(94, 'Akiko', 'Shimamura', '+81 3 3584 0555', '2-2-8 Roppongi', 'Minato-ku', 'Japan'),
-(95, 'Dominique', 'Perrier', '(1) 47.55.6555', '25, rue Lauriston', 'Paris', 'France'),
-(96, 'Rita ', 'Müller', '0711-555361', 'Adenauerallee 900', 'Stuttgart', 'Germany'),
-(97, 'Sarah', 'McRoy', '04 499 9555', '101 Lambton Quay', 'Wellington', 'New Zealand'),
-(98, 'Michael', 'Donnermeyer', ' +49 89 61 08 9555', 'Hansastr. 15', 'Munich', 'Germany'),
-(99, 'Maria', 'Hernandez', '2125558493', '5905 Pompton St.', 'NYC', 'USA'),
-(100, 'Alexander ', 'Feuer', '0342-555176', 'Heerstr. 22', 'Leipzig', 'Germany'),
-(101, 'Dan', 'Lewis', '2035554407', '2440 Pompton St.', 'Glendale', 'USA'),
-(102, 'Martha', 'Larsson', '0695-34 6555', 'Åkergatan 24', 'Bräcke', 'Sweden'),
-(103, 'Sue', 'Frick', '4085553659', '3086 Ingle Ln.', 'San Jose', 'USA'),
-(104, 'Roland ', 'Mendel', '7675-3555', 'Kirchgasse 6', 'Graz', 'Austria'),
-(105, 'Leslie', 'Murphy', '2035559545', '567 North Pendale Street', 'New Haven', 'USA'),
-(106, 'Yu', 'Choi', '2125551957', '5290 North Pendale Street', 'NYC', 'USA'),
-(107, 'Martín ', 'Sommer', '(91) 555 22 82', 'C/ Araquil, 67', 'Madrid', 'Spain'),
-(108, 'Sven ', 'Ottlieb', '0241-039123', 'Walserweg 21', 'Aachen', 'Germany'),
-(109, 'Violeta', 'Benitez', '5085552555', '1785 First Street', 'New Bedford', 'USA'),
-(110, 'Carmen', 'Anton', '+34 913 728555', 'c/ Gobelas, 19-1 Urb. La Florida', 'Madrid', 'Spain'),
-(111, 'Sean', 'Clenahan', '61-9-3844-6555', '7 Allen Street', 'Glen Waverly', 'Australia'),
-(112, 'Franco', 'Ricotti', '+39 022515555', '20093 Cologno Monzese', 'Milan', 'Italy'),
-(113, 'Steve', 'Thompson', '3105553722', '3675 Furth Circle', 'Burbank', 'USA'),
-(114, 'Hanna ', 'Moos', '0621-08555', 'Forsterstr. 57', 'Mannheim', 'Germany'),
-(115, 'Alexander ', 'Semenov', '+7 812 293 0521', '2 Pobedy Square', 'Saint Petersburg', 'Russia'),
-(116, 'Raanan', 'Altagar,G M', '+ 972 9 959 8555', '3 Hagalim Blv.', 'Herzlia', 'Israel'),
-(117, 'José Pedro ', 'Roel', '(95) 555 82 82', 'C/ Romero, 33', 'Sevilla', 'Spain'),
-(118, 'Rosa', 'Salazar', '2155559857', '11328 Douglas Av.', 'Philadelphia', 'USA'),
-(119, 'Sue', 'Taylor', '4155554312', '2793 Furth Circle', 'Brisbane', 'USA'),
-(120, 'Thomas ', 'Smith', '(171) 555-7555', '120 Hanover Sq.', 'London', 'UK'),
-(121, 'Valarie', 'Franco', '6175552555', '6251 Ingle Ln.', 'Boston', 'USA'),
-(122, 'Tony', 'Snowden', '+64 9 5555500', 'Arenales 1938 3''A''', 'Auckland  ', 'New Zealand');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `dailyincome`
---
-
-CREATE TABLE IF NOT EXISTS `dailyincome` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `doctor_id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `amount` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
-
---
--- Dumping data for table `dailyincome`
---
-
-INSERT INTO `dailyincome` (`id`, `doctor_id`, `date`, `amount`) VALUES
-(1, 4, '2018-10-12', 1000),
-(2, 5, '2018-10-06', 99),
-(3, 4, '2018-10-23', 2000),
-(5, 5, '2018-09-30', 1000),
-(6, 5, '2018-09-30', 1000),
-(7, 7, '2018-09-30', 2000),
-(8, 6, '2018-10-28', 3000),
-(9, 5, '2018-10-21', 3000),
-(10, 4, '2019-01-29', 2000),
-(11, 5, '2018-09-29', 3000),
-(12, 7, '2018-09-29', 2000),
-(13, 0, '2018-10-28', 10000),
-(14, 0, '2018-10-28', 1000),
-(15, 0, '2018-10-05', 3000),
-(16, 0, '2018-10-28', 2000),
-(17, 0, '2019-02-02', 88888888);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `diagnoses`
---
-
-CREATE TABLE IF NOT EXISTS `diagnoses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `diagnose_name_en` mediumtext NOT NULL,
-  `diagnose_name_ar` mediumtext NOT NULL,
-  `description` mediumtext NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
-
---
--- Dumping data for table `diagnoses`
---
-
-INSERT INTO `diagnoses` (`id`, `diagnose_name_en`, `diagnose_name_ar`, `description`) VALUES
-(7, 'Diagnose', 'تشخيص', 'هنا نضع وصف التشخيص'),
-(8, 'VXS', 'تشخيص', 'وصف التشخيص'),
-(9, 'VDT', 'في دي تي', 'وصف التشخيص.');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `diagnose_patient`
---
-
-CREATE TABLE IF NOT EXISTS `diagnose_patient` (
-  `diagnose_patient_id` int(11) NOT NULL AUTO_INCREMENT,
-  `diagnose_id` int(11) NOT NULL,
-  `patient_id` int(11) NOT NULL,
-  `user_id_assign` int(11) NOT NULL,
-  `assign_date` date NOT NULL,
-  `no_of_item` int(11) DEFAULT NULL,
-  `result` mediumtext NOT NULL,
-  `total_cost` decimal(10,0) DEFAULT NULL,
-  `user_id_discharge` int(11) DEFAULT NULL,
-  `discharge_date` int(11) DEFAULT NULL,
-  `memo` mediumtext,
-  PRIMARY KEY (`diagnose_patient_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
-
---
--- Dumping data for table `diagnose_patient`
---
-
-INSERT INTO `diagnose_patient` (`diagnose_patient_id`, `diagnose_id`, `patient_id`, `user_id_assign`, `assign_date`, `no_of_item`, `result`, `total_cost`, `user_id_discharge`, `discharge_date`, `memo`) VALUES
-(1, 7, 1, 1, '0000-00-00', 22, 'rrrr', '0', NULL, NULL, 'mmm'),
-(2, 7, 1, 1, '0000-00-00', 99, '99', '0', NULL, NULL, '99'),
-(3, 8, 1, 1, '0000-00-00', 1, '1', '0', NULL, NULL, '1'),
-(4, 7, 1, 1, '0000-00-00', NULL, '1', NULL, NULL, NULL, NULL),
-(5, 7, 2, 1, '0000-00-00', NULL, '1', NULL, NULL, NULL, NULL),
-(6, 7, 13, 1, '0000-00-00', NULL, '1', NULL, NULL, NULL, NULL),
-(7, 8, 13, 1, '0000-00-00', NULL, '1', NULL, NULL, NULL, NULL),
-(8, 8, 13, 1, '0000-00-00', NULL, '1', NULL, NULL, NULL, NULL),
-(9, 7, 13, 1, '0000-00-00', NULL, '2', NULL, NULL, NULL, NULL),
-(10, 9, 13, 1, '0000-00-00', NULL, '????? ???????', NULL, NULL, NULL, NULL),
-(11, 7, 21, 1, '0000-00-00', NULL, '??? ?????? ?? ???????', NULL, NULL, NULL, NULL),
-(12, 8, 6, 1, '0000-00-00', NULL, '???? ? ', NULL, NULL, NULL, NULL),
-(13, 7, 1, 1, '0000-00-00', NULL, '??? ??? ?', NULL, NULL, NULL, NULL),
-(14, 7, 1, 1, '0000-00-00', NULL, '??? ?? ????? ???????', NULL, NULL, NULL, NULL),
-(15, 7, 1, 1, '0000-00-00', NULL, 'fsd fnsd,mfn s,dfn ,sdmffn, smdnf,msdn,f nsd,fm nsd,fmnsd ,mfsdn ,fmsdnf,m sdnf,msd nf,msdnf,sdmn f,smnf ,sdmnf ,msdnf,msd  fm,sdf ', NULL, NULL, NULL, NULL),
-(16, 7, 19, 1, '0000-00-00', NULL, 'fsdm f sdf;l sdf.sd, .,sdm .,smdf. ,s', NULL, NULL, NULL, NULL),
-(17, 7, 21, 1, '0000-00-00', NULL, 'fsdf sdf sd', NULL, NULL, NULL, NULL),
-(18, 7, 21, 1, '0000-00-00', NULL, 'dasdas', NULL, NULL, NULL, NULL),
-(19, 7, 2, 1, '0000-00-00', NULL, '???? ?? ?? ??? ', NULL, NULL, NULL, NULL),
-(20, 7, 2, 1, '0000-00-00', NULL, 'dasdas', NULL, NULL, NULL, NULL),
-(21, 8, 23, 1, '0000-00-00', NULL, '?????? ????? ???? , ', NULL, NULL, NULL, NULL),
-(22, 7, 25, 1, '0000-00-00', NULL, '??? ???? ?? ?', NULL, NULL, NULL, NULL),
-(23, 7, 25, 1, '0000-00-00', NULL, 'يشسي شسي شس', NULL, NULL, NULL, NULL),
-(24, 8, 21, 1, '0000-00-00', NULL, 'dasdas', NULL, NULL, NULL, NULL),
-(25, 9, 21, 1, '2018-10-01', NULL, 'dasdas', NULL, NULL, NULL, NULL),
-(26, 8, 21, 1, '2018-10-27', NULL, 'dasdas', NULL, NULL, NULL, NULL),
-(27, 7, 25, 1, '2018-10-04', NULL, 'يسش ي سشي شس ', NULL, NULL, NULL, NULL),
-(28, 7, 25, 1, '2018-10-31', NULL, 'يشس يشي شس', NULL, NULL, NULL, NULL),
-(29, 7, 25, 1, '2018-10-28', NULL, 'نتيجة التشخيص', NULL, NULL, NULL, NULL),
-(30, 7, 25, 1, '2018-10-28', NULL, 'التهاب قصبات حاد ', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -777,94 +407,6 @@ INSERT INTO `doctors` (`id`, `name`, `address`, `phone`, `created_date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `drugs`
---
-
-CREATE TABLE IF NOT EXISTS `drugs` (
-  `drug_id` int(11) NOT NULL AUTO_INCREMENT,
-  `drug_name_en` varchar(50) DEFAULT NULL,
-  `drug_name_ar` varchar(50) DEFAULT NULL,
-  `category` varchar(50) DEFAULT NULL,
-  `price` decimal(10,0) NOT NULL,
-  `num` int(11) NOT NULL DEFAULT '0',
-  `memo` text,
-  PRIMARY KEY (`drug_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
-
---
--- Dumping data for table `drugs`
---
-
-INSERT INTO `drugs` (`drug_id`, `drug_name_en`, `drug_name_ar`, `category`, `price`, `num`, `memo`) VALUES
-(5, 'Doplamin', 'دوبلامين', 'حبوب', '2000', 0, 'ملخص عن الدواء lkrjhtv  eit a  aoiwet  oiewt oiewrt oiert reiu osig osdifg soidfg sodifg soifg soifhg soigs osid sofhig osidfg soifdh soihg osig soidh soidh soidfh osifh soifhg sodifhg soidfhg sodifhg soih sodihg soighs oidhg os odigh osidhfg osi oidhg sidhg isdhg soihg sodifgh sod gosihg soifdhgsih s idfhg sifg'),
-(6, 'citamol', 'سيتامول', 'نوع الدواء', '101', 0, 'ملخص عن الدواء');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `drug_patient`
---
-
-CREATE TABLE IF NOT EXISTS `drug_patient` (
-  `drug_patient_id` int(11) NOT NULL AUTO_INCREMENT,
-  `drug_id` int(11) NOT NULL,
-  `patient_id` int(11) NOT NULL,
-  `user_id_assign` int(11) NOT NULL,
-  `assign_date` date NOT NULL,
-  `no_of_item` int(11) NOT NULL DEFAULT '1',
-  `total_cost` decimal(10,0) NOT NULL,
-  `user_id_discharge` int(11) DEFAULT NULL,
-  `discharge_date` int(11) DEFAULT NULL,
-  `memo` text,
-  PRIMARY KEY (`drug_patient_id`),
-  KEY `drug_id` (`drug_id`),
-  KEY `patient_id` (`patient_id`),
-  KEY `user_id_assign` (`user_id_assign`),
-  KEY `user_id_discharge` (`user_id_discharge`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
-
---
--- Dumping data for table `drug_patient`
---
-
-INSERT INTO `drug_patient` (`drug_patient_id`, `drug_id`, `patient_id`, `user_id_assign`, `assign_date`, `no_of_item`, `total_cost`, `user_id_discharge`, `discharge_date`, `memo`) VALUES
-(1, 5, 15, 1, '0000-00-00', 7, '14000', 1, 1539299334, ''),
-(2, 5, 13, 1, '0000-00-00', 11, '22000', 1, 1539281061, ''),
-(4, 5, 11, 1, '0000-00-00', 4, '8000', 1, 1539429309, ''),
-(5, 5, 14, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(6, 5, 15, 1, '0000-00-00', 1, '2000', 1, 1539299331, ''),
-(7, 5, 15, 1, '0000-00-00', 33, '66000', 1, 1539299332, ''),
-(8, 5, 13, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(11, 5, 12, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(12, 5, 18, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(13, 5, 12, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(14, 5, 12, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(15, 5, 8, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(16, 5, 13, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(17, 5, 5, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(18, 5, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(19, 5, 9, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(20, 5, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(21, 5, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(22, 5, 20, 1, '0000-00-00', 99, '198000', NULL, NULL, ''),
-(23, 5, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(24, 5, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(25, 5, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(26, 5, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(27, 5, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(28, 5, 19, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(29, 5, 16, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(30, 5, 1, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(31, 5, 2, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(32, 5, 21, 1, '0000-00-00', 10, '20000', NULL, NULL, ''),
-(33, 5, 23, 1, '0000-00-00', 1, '2000', NULL, NULL, ''),
-(34, 5, 25, 1, '2018-10-01', 99, '198000', NULL, NULL, ''),
-(35, 5, 25, 1, '2018-10-03', 1, '2000', NULL, NULL, ''),
-(36, 5, 25, 1, '2018-10-28', 10, '20000', NULL, NULL, '');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `groups`
 --
 
@@ -874,7 +416,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
   `description` text NOT NULL,
   `roles` bigint(20) unsigned NOT NULL DEFAULT '2',
   PRIMARY KEY (`group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `groups`
@@ -883,236 +425,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
 INSERT INTO `groups` (`group_id`, `name`, `description`, `roles`) VALUES
 (1, 'Administrator', '', 1),
 (2, 'Guest', '', 2),
-(3, 'Doctor', '', 4),
-(4, 'X-Ray Agent', '', 8),
-(5, 'Laboratory Agent', '', 16),
-(6, 'Pharmacy Agent', '', 32),
-(7, 'Receptionist', '', 64),
-(8, 'Patient', '', 128),
-(9, 'اختبار', 'هذه العملية عمليه اختبار', 4);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `incentives`
---
-
-CREATE TABLE IF NOT EXISTS `incentives` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nurse_id` int(11) NOT NULL,
-  `amount` int(11) NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
-
---
--- Dumping data for table `incentives`
---
-
-INSERT INTO `incentives` (`id`, `nurse_id`, `amount`, `date`) VALUES
-(1, 3, 99999, '0000-00-00'),
-(2, 3, 2000, '0000-00-00'),
-(3, 3, 2000, '0000-00-00'),
-(4, 7, 2000, '0000-00-00'),
-(5, 7, 3000, '0000-00-00'),
-(6, 6, 4000, '2018-10-17'),
-(7, 6, 2000, '2018-10-25'),
-(8, 6, 3000, '2018-10-05'),
-(9, 7, 3000, '0000-00-00'),
-(10, 8, 3000, '0000-00-00'),
-(11, 7, 2222, '0000-00-00'),
-(12, 6, 3000, '2018-10-02'),
-(13, 8, 1111, '0000-00-00'),
-(14, 6, 1000, '2018-10-10');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `incomes`
---
-
-CREATE TABLE IF NOT EXISTS `incomes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `doctor_id` int(11) NOT NULL,
-  `patient_id` int(11) NOT NULL,
-  `amount` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `type` enum('static','normal') COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=39 ;
-
---
--- Dumping data for table `incomes`
---
-
-INSERT INTO `incomes` (`id`, `doctor_id`, `patient_id`, `amount`, `date`, `type`) VALUES
-(4, 6, 3, 1000, '2018-09-01', 'static'),
-(5, 4, 4, 1000, '2018-09-05', 'normal'),
-(6, 7, 2, 1000, '2018-09-01', 'normal'),
-(9, 4, 3, 2000, '2018-09-01', 'static'),
-(11, 7, 4, 2000, '2018-09-08', 'normal'),
-(13, 5, 1, 1000, '2018-10-06', 'normal'),
-(14, 5, 3, 4000, '2018-10-05', 'normal'),
-(15, 5, 1, 1050, '2018-10-13', 'normal'),
-(16, 5, 4, 4500, '2018-10-06', 'normal'),
-(17, 4, 1, 1500, '2018-10-05', 'normal'),
-(18, 5, 2, 1000, '2018-10-06', 'normal'),
-(21, 5, 3, 1000, '2018-10-06', 'static'),
-(22, 4, 4, 1000, '2018-10-06', 'normal'),
-(23, 4, 1, 2000, '2018-10-06', 'normal'),
-(24, 5, 2, 1000, '2018-10-06', 'static'),
-(25, 5, 1, 3000, '2018-10-06', 'normal'),
-(26, 4, 2, 2000, '2018-10-06', 'normal'),
-(27, 5, 6, 1000, '2018-10-08', 'static'),
-(28, 5, 1, 3000, '2018-10-08', 'normal'),
-(29, 5, 2, 1500, '2018-10-08', 'normal'),
-(30, 5, 7, 2000, '2018-10-08', 'normal'),
-(31, 5, 4, 500, '2018-10-08', 'static'),
-(32, 5, 1, 3000, '2018-10-06', 'normal'),
-(33, 5, 6, 2000, '2018-10-06', 'normal'),
-(34, 5, 0, 2000, '2018-10-05', 'static'),
-(35, 5, 0, 3000, '2018-10-05', 'static'),
-(36, 7, 0, 99, '2018-10-25', 'static'),
-(37, 4, 0, 2000, '2018-10-28', 'static'),
-(38, 4, 0, 5000, '2018-11-28', 'static');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `lab`
---
-
-CREATE TABLE IF NOT EXISTS `lab` (
-  `test_id` int(11) NOT NULL AUTO_INCREMENT,
-  `test_name_en` varchar(50) DEFAULT NULL,
-  `test_name_ar` varchar(50) DEFAULT NULL,
-  `category` varchar(50) DEFAULT NULL,
-  `price` decimal(10,0) NOT NULL,
-  `memo` text,
-  PRIMARY KEY (`test_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
-
---
--- Dumping data for table `lab`
---
-
-INSERT INTO `lab` (`test_id`, `test_name_en`, `test_name_ar`, `category`, `price`, `memo`) VALUES
-(6, 'Blood analysis', 'تحليل دم', 'نوع التحليل', '2001', 'ملخص عن التحليل'),
-(7, 'cbc', 'تعداد عام وصيغة', '', '1400', ''),
-(8, 'ASLO', 'ASL0', 'hem', '1000', ''),
-(9, 'glocous', 'سكر', '', '1000', 'على الريق\nعشوائي'),
-(10, 'PCR', 'بي سي ار', 'صنف التحليل', '1000', ''),
-(11, 'Pcr test', 'بي سي ار', 'تحليل', '3000', ''),
-(12, 'r', 'll', 'e', '1', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `lab_files`
---
-
-CREATE TABLE IF NOT EXISTS `lab_files` (
-  `lab_file_id` int(11) NOT NULL AUTO_INCREMENT,
-  `lab_patient_id` int(11) NOT NULL,
-  `upload_date` int(11) NOT NULL,
-  `path` text NOT NULL,
-  `memo` text,
-  PRIMARY KEY (`lab_file_id`),
-  KEY `lab_patient_id` (`lab_patient_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `lab_patient`
---
-
-CREATE TABLE IF NOT EXISTS `lab_patient` (
-  `lab_patient_id` int(11) NOT NULL AUTO_INCREMENT,
-  `test_id` int(11) NOT NULL,
-  `patient_id` int(11) NOT NULL,
-  `no_of_item` int(10) DEFAULT NULL,
-  `user_id_assign` int(11) NOT NULL,
-  `assign_date` date NOT NULL,
-  `total_cost` decimal(10,0) DEFAULT NULL,
-  `user_id_discharge` int(11) DEFAULT NULL,
-  `discharge_date` int(11) DEFAULT NULL,
-  `memo` text,
-  `result` text NOT NULL,
-  PRIMARY KEY (`lab_patient_id`),
-  KEY `test_id` (`test_id`),
-  KEY `patient_id` (`patient_id`),
-  KEY `user_id_assign` (`user_id_assign`),
-  KEY `user_id_discharge` (`user_id_discharge`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=66 ;
-
---
--- Dumping data for table `lab_patient`
---
-
-INSERT INTO `lab_patient` (`lab_patient_id`, `test_id`, `patient_id`, `no_of_item`, `user_id_assign`, `assign_date`, `total_cost`, `user_id_discharge`, `discharge_date`, `memo`, `result`) VALUES
-(3, 6, 13, 1, 1, '0000-00-00', '2000', NULL, NULL, '', '1'),
-(4, 8, 13, 1, 1, '0000-00-00', '1000', 1, 1539280222, '', '1'),
-(5, 6, 10, 1, 1, '0000-00-00', '2000', NULL, NULL, '', '1'),
-(6, 7, 2, 1, 1, '0000-00-00', '1400', NULL, NULL, '', '1'),
-(8, 7, 18, 1, 1, '0000-00-00', '1400', NULL, NULL, '', '1'),
-(9, 8, 12, 1, 1, '0000-00-00', '1000', NULL, NULL, '', '1'),
-(10, 9, 12, 1, 1, '0000-00-00', '1000', NULL, NULL, '', '1'),
-(11, 8, 20, 1, 1, '0000-00-00', '1000', NULL, NULL, '', '1'),
-(12, 7, 13, 1, 1, '0000-00-00', '1400', NULL, NULL, '', '1'),
-(13, 6, 5, 1, 1, '0000-00-00', '2000', NULL, NULL, '', '1'),
-(14, 6, 20, 1, 1, '0000-00-00', '1000', 1, 1540036183, '', '1'),
-(15, 6, 20, 1, 1, '0000-00-00', '1000', NULL, NULL, '', '1'),
-(16, 6, 20, 4, 1, '0000-00-00', '2000', 1, 1540036181, 'dasdasda', '1'),
-(17, 6, 20, 99, 1, '0000-00-00', '198000', 1, 1540036181, '', '1'),
-(18, 9, 20, 1, 1, '0000-00-00', '1000', NULL, NULL, '', '1'),
-(19, 8, 20, 99, 1, '0000-00-00', '99000', 1, 1540036179, '', '1'),
-(20, 6, 20, 1, 1, '0000-00-00', '2000', NULL, NULL, '', '1'),
-(21, 8, 20, 1111, 1, '0000-00-00', '1111000', 1, 1540036175, '', '1'),
-(22, 6, 19, 1, 1, '0000-00-00', '2000', 1, 1539810223, '', '1'),
-(23, 7, 19, 1, 1, '0000-00-00', '1400', 1, 1539810224, '', '1'),
-(24, 8, 19, 1, 1, '0000-00-00', '1000', 1, 1539810225, '', '1'),
-(25, 7, 9, 1, 1, '0000-00-00', '1400', NULL, NULL, '', '1'),
-(26, 7, 20, 1, 1, '0000-00-00', '1400', NULL, NULL, '', '1'),
-(27, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', '1'),
-(28, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', '33'),
-(29, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', '99'),
-(30, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', 'هنا نضع نتائج التحليل'),
-(31, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', 'نتيجة تحليل الدم'),
-(32, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', 'يسشيس'),
-(33, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', 'يشسيشسي'),
-(34, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', 'تشيانشتياشسنتي اشنست اينتششنسي شستيشس نتياشسن ياشسن ياشسنتياشسن تياشسنت اي'),
-(35, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', ''),
-(36, 7, 20, 1, 1, '0000-00-00', '1400', NULL, NULL, '', ''),
-(37, 7, 19, 1, 1, '0000-00-00', '1400', 1, 1540052833, '', ''),
-(38, 6, 19, 1, 1, '0000-00-00', '2001', 1, 1540052834, '', ''),
-(39, 8, 19, 1, 1, '0000-00-00', '1000', NULL, NULL, '', 'النتائج المخبرية للتحليل'),
-(40, 9, 19, 1, 1, '0000-00-00', '1000', NULL, NULL, '', ''),
-(41, 7, 19, 1, 1, '0000-00-00', '1400', NULL, NULL, '', ''),
-(42, 6, 19, 1, 1, '0000-00-00', '2001', NULL, NULL, '', ''),
-(43, 7, 19, 1, 1, '0000-00-00', '1400', NULL, NULL, '', ''),
-(44, 6, 19, 1, 1, '0000-00-00', '2001', NULL, NULL, '', ''),
-(45, 6, 16, 1, 1, '0000-00-00', '2001', NULL, NULL, '', 'csdasd as '),
-(46, 6, 15, 1, 1, '0000-00-00', '2001', NULL, NULL, '', 'يسشي شسي شسي'),
-(47, 7, 15, 1, 1, '0000-00-00', '1400', NULL, NULL, '', 'يشسي شسي '),
-(48, 6, 20, 1, 1, '0000-00-00', '2001', NULL, NULL, '', 'يشسيشس يشسي'),
-(49, 9, 1, 1, 1, '0000-00-00', '1000', NULL, NULL, '', ''),
-(50, 6, 2, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, 'نتائج '),
-(51, 6, 13, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, 'نتيجة '),
-(52, 6, 21, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, 'نتيجة لتحليل المخبرية'),
-(53, 6, 1, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, 'hjghjh '),
-(54, 6, 1, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, 'هذه هي نتيجة التحليل '),
-(55, 7, 23, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, 'نتيجة التحليل '),
-(56, 6, 23, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, 'بيس بنيساب تسينتانتبيسا تنانتابيسن نا تسنيبت   بيس '),
-(57, 6, 21, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, ''),
-(58, 6, 25, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, ''),
-(59, 6, 25, NULL, 1, '2018-10-10', NULL, NULL, NULL, NULL, ''),
-(60, 6, 25, NULL, 1, '2018-10-03', NULL, NULL, NULL, NULL, ''),
-(61, 7, 25, NULL, 1, '2018-10-28', NULL, NULL, NULL, NULL, ''),
-(62, 6, 25, NULL, 1, '2018-10-28', NULL, NULL, NULL, NULL, ''),
-(63, 6, 25, NULL, 1, '0000-00-00', NULL, NULL, NULL, NULL, 'النتيجة المخبرية '),
-(64, 6, 25, NULL, 1, '2018-10-28', NULL, NULL, NULL, NULL, 'هذه هي النتيجة المخبرية للتحليل'),
-(65, 6, 25, NULL, 1, '2018-10-28', NULL, NULL, NULL, NULL, 'هذا تحليل جديد');
+(3, 'Doctor', '', 4);
 
 -- --------------------------------------------------------
 
@@ -1128,7 +441,7 @@ CREATE TABLE IF NOT EXISTS `logins` (
   `success` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`login_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=340 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=373 ;
 
 --
 -- Dumping data for table `logins`
@@ -1473,254 +786,40 @@ INSERT INTO `logins` (`login_id`, `ip_address`, `user_id`, `time`, `success`) VA
 (336, 0, 10, '2018-12-03 12:17:05', 1),
 (337, 0, 10, '2018-12-03 13:32:00', 1),
 (338, 0, 10, '2018-12-03 14:13:51', 1),
-(339, 0, 20, '2018-12-03 14:14:07', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `medical12s`
---
-
-CREATE TABLE IF NOT EXISTS `medical12s` (
-  `id` int(11) NOT NULL DEFAULT '0',
-  `diagnose_name_en` mediumtext CHARACTER SET utf8 NOT NULL,
-  `diagnose_name_ar` mediumtext CHARACTER SET utf8 NOT NULL,
-  `description` mediumtext CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `medical12s`
---
-
-INSERT INTO `medical12s` (`id`, `diagnose_name_en`, `diagnose_name_ar`, `description`) VALUES
-(7, 'Diagnose', 'تشخيص', 'هنا نضع وصف التشخيص'),
-(8, 'VXS', 'تشخيص', 'وصف التشخيص'),
-(9, 'VDT', 'في دي تي', 'وصف التشخيص.');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nurses`
---
-
-CREATE TABLE IF NOT EXISTS `nurses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `age` int(11) NOT NULL,
-  `phone` varchar(50) NOT NULL,
-  `address` mediumtext NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
-
---
--- Dumping data for table `nurses`
---
-
-INSERT INTO `nurses` (`id`, `name`, `age`, `phone`, `address`) VALUES
-(6, 'ريم علوش', 22, '094324324', 'دمشق / ركن الدين'),
-(7, 'سامر محمد', 33, '0933232323', 'المزة'),
-(8, 'ماهر محمد', 33, '093232323', 'دمشق');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `patients`
---
-
-CREATE TABLE IF NOT EXISTS `patients` (
-  `patient_id` int(11) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(40) NOT NULL,
-  `last_name` varchar(40) DEFAULT NULL,
-  `fname` varchar(40) DEFAULT NULL,
-  `gender` tinyint(1) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `phone` varchar(15) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `social_id` varchar(12) DEFAULT NULL,
-  `id_type` enum('','Tazkara','Passport','Driver License','Bank ID Card') DEFAULT NULL,
-  `birth_date` int(11) DEFAULT NULL,
-  `create_date` int(11) NOT NULL,
-  `picture` text,
-  `memo` text,
-  PRIMARY KEY (`patient_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
-
---
--- Dumping data for table `patients`
---
-
-INSERT INTO `patients` (`patient_id`, `first_name`, `last_name`, `fname`, `gender`, `email`, `phone`, `address`, `social_id`, `id_type`, `birth_date`, `create_date`, `picture`, `memo`) VALUES
-(1, 'باسم', 'سمير', 'سامر', 1, 'dasd@dsd.com', '03929329', 'Damas', '11', 'Passport', 843177600, 1537459901, NULL, 'ملخص عن حالة المريض'),
-(2, 'ماهر', 'محمود', 'سامر', 1, 'nager@sad.com', '0993623827', 'dimashq', '1', 'Tazkara', 662774400, 1537459901, NULL, ''),
-(3, 'سمير', 'محمود', 'جميل', 1, 'fsd@fdf.com', '0948374643', 'Damascus', '', 'Tazkara', 844128000, 1538429500, NULL, ''),
-(4, 'احمد', 'رمضان', 'خالد', 1, 'm.shbat@gimal.com', '0988766544', 'جديدة عرطوز', '', 'Tazkara', 781315200, 1538743246, NULL, ''),
-(5, 'عمير', 'عامر', 'ماهر', 1, 'fsd@fdf.com', '0932323232', 'تضامن', '1', 'Passport', 497491200, 1538899410, NULL, 'ملخص '),
-(6, 'عمر', 'علي', 'عمير', 1, 'asdasdas@dsd.com', '0943349343', 'دمشق', '11', 'Passport', 497491200, 1538911427, NULL, ''),
-(7, 'سميرة', 'سمير', 'محمود', 0, 'kdjhkjhk@dskj.com', '0974636553', 'حمص', '11', 'Passport', 465955200, 1538912256, NULL, ''),
-(8, 'ياسين', 'محمود', 'نصوح', 1, 'fsd@fdf.com', '094324234', 'دمشق', '22', 'Passport', 497577600, 1539027813, NULL, 'ملخض'),
-(9, 'ناصر', 'الحلبي', 'محمد', 1, 'mon@dsad.com', '0943432423', 'حلب', '1', 'Driver License', 781574400, 1539038474, NULL, ''),
-(10, 'خالد', 'محمد', 'جمال', 1, 'fsd@fdf.com', '0934435347', 'دمشق', '2', 'Driver License', 0, 1539039198, NULL, ''),
-(11, 'امير', 'محمد', 'حامد', 1, 'fsd@fdf.com', '099432342', 'دمشق', '1', 'Passport', 497664000, 1539117629, NULL, ''),
-(12, 'ماجدة', 'محمود', 'جمال', 1, 'fsd@fdf.com', '0939049349', 'sds', '1', 'Tazkara', 0, 1539172465, NULL, ''),
-(13, 'طه', 'علوش', 'عمر', 1, 'emauq@dds.com', '0993623827', 'دمشق', '23', 'Passport', 497750400, 1539204778, NULL, ''),
-(14, 'عمران', 'زياد', 'عامر', 1, 'fsd@fdf.com', '9382382983', 'دمشق', '11', 'Bank ID Card', 150595200, 1539205216, NULL, ''),
-(15, 'عمران', 'زياد', 'عامر', 1, 'fsd@fdf.com', '9382382983', 'دمشق', '11', 'Bank ID Card', 150595200, 1539205283, NULL, ''),
-(16, 'جهاد', 'مصطفى', 'محمد', 1, 'fsd@fdf.com', '0934344554', 'asdas', '2', 'Driver License', 0, 1539278696, NULL, ''),
-(17, 'ياسين', 'محمود', 'عماد', 1, 'fsd@fdf.com', '0943543434', 'dadas', '11', 'Tazkara', -1553385600, 1539278781, NULL, ''),
-(18, 'زيد', 'محمد', 'اسامة', 1, 'fsd@fdf.com', '0434242342', 'حلب', '11', 'Passport', 497836800, 1539293612, NULL, ''),
-(19, 'سامر', 'سمير', 'ماهر', 1, 'fsd@fdf.com', '9382382983', 'eqweqweqwe', '22', 'Tazkara', 844992000, 1539295777, NULL, ''),
-(20, 'ريم', 'محمود', 'عادل', 1, 'fsd@fdf.com', '9382382983', 'eqweqweqwe', '1', 'Passport', 844992000, 1539299217, NULL, ''),
-(21, 'ماهر', 'مطرب', 'سمير', 1, 'mdaskdaslkj@ljda.com', '094324234', 'دمشق', '22', 'Bank ID Card', 498873600, 1540291224, NULL, ''),
-(22, 'مهاب', 'الحسيني', 'جمال', 1, 'sadas@cc.com', '09332323', 'دمشق', '11', 'Passport', 846374400, 1540646403, NULL, ''),
-(23, 'جهاد', 'جميل', 'سامر', 1, 'asdasd@asd.com', '094923423', 'دمشق', NULL, NULL, 499219200, 1540646689, NULL, ''),
-(24, 'ads', 'das d', 'das', 1, 'sadsa@dsdas.com', '321321', 'dasd', NULL, NULL, 499219200, 1540672163, NULL, ''),
-(25, 'عبد الله', 'الحسين', 'علي', 1, '', '0943434343', 'دمشق', '', 'Tazkara', -352771200, 1540727776, NULL, '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `patient_doctor`
---
-
-CREATE TABLE IF NOT EXISTS `patient_doctor` (
-  `patient_doctor_id` int(11) NOT NULL AUTO_INCREMENT,
-  `patient_id` int(11) NOT NULL,
-  `doctor_id` int(11) NOT NULL,
-  `visit_date` int(11) NOT NULL,
-  `status` smallint(6) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`patient_doctor_id`),
-  KEY `patient_id` (`patient_id`),
-  KEY `user_id` (`doctor_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
-
---
--- Dumping data for table `patient_doctor`
---
-
-INSERT INTO `patient_doctor` (`patient_doctor_id`, `patient_id`, `doctor_id`, `visit_date`, `status`) VALUES
-(1, 1, 6, 1540292258, 0),
-(2, 3, 6, 1540208709, 0),
-(3, 10, 4, 1539784979, 2),
-(4, 11, 5, 1539239966, 2),
-(5, 12, 5, 1539785002, 2),
-(6, 9, 4, 1539812225, 2),
-(7, 8, 5, 1539784994, 2),
-(8, 7, 5, 1539288497, 1),
-(9, 6, 5, 1539784987, 2),
-(10, 5, 7, 1539204650, 0),
-(11, 4, 5, 1539292389, 1),
-(12, 2, 5, 1539299373, 2),
-(13, 13, 5, 1539206217, 1),
-(14, 14, 5, 1539250366, 1),
-(15, 15, 4, 1539206070, 1),
-(16, 16, 5, 1539784963, 2),
-(17, 17, 5, 1539784948, 2),
-(18, 18, 5, 1539299458, 1),
-(19, 19, 6, 1539784757, 2),
-(20, 20, 6, 1539784746, 2),
-(21, 21, 7, 1540291224, 0),
-(22, 22, 5, 1540646403, 0),
-(23, 23, 5, 1540646689, 0),
-(24, 24, 6, 1540672163, 0),
-(25, 25, 4, 1540727872, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `purchased_drugs`
---
-
-CREATE TABLE IF NOT EXISTS `purchased_drugs` (
-  `purchased_drug_id` int(11) NOT NULL AUTO_INCREMENT,
-  `drug_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `purchase_date` int(11) NOT NULL,
-  `purchase_price` decimal(10,0) NOT NULL,
-  `no_of_item` int(11) NOT NULL DEFAULT '1',
-  `total_cost` decimal(10,0) NOT NULL,
-  `memo` text,
-  PRIMARY KEY (`purchased_drug_id`),
-  KEY `drug_id` (`drug_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
-
---
--- Dumping data for table `purchased_drugs`
---
-
-INSERT INTO `purchased_drugs` (`purchased_drug_id`, `drug_id`, `user_id`, `purchase_date`, `purchase_price`, `no_of_item`, `total_cost`, `memo`) VALUES
-(1, 4, 1, 1538179200, '11', 1, '11', ''),
-(2, 5, 1, 1539216000, '100', 10, '1000', ''),
-(3, 5, 1, 1539216000, '100', 10, '1000', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `reports`
---
-
-CREATE TABLE IF NOT EXISTS `reports` (
-  `report_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `subject` text,
-  `url` text,
-  `description` text,
-  `create_date` int(11) NOT NULL,
-  PRIMARY KEY (`report_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `returned_drugs`
---
-
-CREATE TABLE IF NOT EXISTS `returned_drugs` (
-  `returned_drug_id` int(11) NOT NULL AUTO_INCREMENT,
-  `drug_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `return_date` int(11) NOT NULL,
-  `no_of_item` int(11) NOT NULL DEFAULT '1',
-  `total_cost` decimal(10,0) NOT NULL,
-  `memo` text,
-  PRIMARY KEY (`returned_drug_id`),
-  KEY `drug_id` (`drug_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `schedule`
---
-
-CREATE TABLE IF NOT EXISTS `schedule` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nurse_id` int(11) NOT NULL,
-  `work_date` date NOT NULL,
-  `work_hours` int(11) NOT NULL,
-  `hour_price` int(11) NOT NULL,
-  `day_fare` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
-
---
--- Dumping data for table `schedule`
---
-
-INSERT INTO `schedule` (`id`, `nurse_id`, `work_date`, `work_hours`, `hour_price`, `day_fare`) VALUES
-(1, 3, '2017-09-01', 10, 145, 0),
-(2, 3, '2018-10-06', 44, 150, 0),
-(3, 4, '2018-10-16', 12, 150, 0),
-(4, 6, '2018-09-05', 10, 150, 1500),
-(5, 6, '2018-10-20', 9, 150, 1350),
-(6, 7, '2018-10-26', 11, 140, 1540),
-(7, 8, '2018-10-26', 11, 194, 2134),
-(8, 9, '2018-10-11', 12, 140, 0),
-(9, 6, '2018-10-27', 10, 150, 1500),
-(10, 6, '2018-10-05', 10, 150, 1500),
-(11, 6, '2018-10-05', 11, 100, 1100);
+(339, 0, 20, '2018-12-03 14:14:07', 1),
+(340, 0, 20, '2018-12-03 15:30:26', 1),
+(341, 0, 10, '2018-12-03 15:31:23', 1),
+(342, 0, 20, '2018-12-03 15:40:35', 1),
+(343, 0, 20, '2018-12-03 15:40:50', 1),
+(344, 0, 10, '2018-12-03 15:42:49', 1),
+(345, 0, 10, '2018-12-03 15:52:41', 1),
+(346, 0, 10, '2018-12-03 16:55:32', 1),
+(347, 0, 20, '2018-12-03 16:59:39', 1),
+(348, 0, 10, '2018-12-04 05:05:53', 1),
+(349, 0, 20, '2018-12-04 05:10:19', 1),
+(350, 0, 10, '2018-12-04 05:11:29', 1),
+(351, 0, 20, '2018-12-04 05:13:38', 1),
+(352, 0, 23, '2018-12-04 05:33:58', 1),
+(353, 0, 10, '2018-12-04 05:34:14', 1),
+(354, 0, 23, '2018-12-04 05:41:32', 1),
+(355, 0, 23, '2018-12-04 05:41:59', 1),
+(356, 0, 10, '2018-12-04 05:42:58', 1),
+(357, 0, 23, '2018-12-04 05:44:23', 1),
+(358, 0, 10, '2018-12-04 06:22:24', 1),
+(359, 0, 20, '2018-12-04 06:23:29', 1),
+(360, 0, 10, '2018-12-04 06:28:18', 1),
+(361, 0, 10, '2018-12-07 03:57:07', 1),
+(362, 0, 20, '2018-12-07 03:59:24', 1),
+(363, 0, 10, '2018-12-07 04:00:38', 1),
+(364, 0, 20, '2018-12-07 06:23:20', 1),
+(365, 0, 24, '2018-12-07 06:24:30', 1),
+(366, 0, 10, '2018-12-07 06:40:55', 1),
+(367, 0, 10, '2018-12-07 07:45:02', 1),
+(368, 0, 10, '2018-12-07 11:40:37', 1),
+(369, 0, 10, '2018-12-07 11:44:10', 1),
+(370, 0, 10, '2018-12-07 11:49:51', 1),
+(371, 0, 10, '2018-12-07 12:02:37', 1),
+(372, 0, 10, '2018-12-07 12:15:53', 1);
 
 -- --------------------------------------------------------
 
@@ -1740,7 +839,7 @@ CREATE TABLE IF NOT EXISTS `userdata` (
   `disease` text NOT NULL,
   PRIMARY KEY (`userdata_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `userdata`
@@ -1763,7 +862,9 @@ INSERT INTO `userdata` (`userdata_id`, `user_id`, `first_name`, `last_name`, `ge
 (14, 19, 'vv', 'vv', 0, 'rhaf@test.com', '5', '2018-12-02', ' cc\r\n                    '),
 (15, 20, 'h', 'h', 0, 'rhaf@test.com', '5', '2018-12-02', ' \r\n                  h  '),
 (16, 21, 'ggg', 'g', 0, 'rhaf@test.com', '5', '2018-12-03', ' \r\n                 gggggggggg    \r\n                     \r\n                     \r\n                     \r\n                     \r\n                     \r\n                     \r\n                     \r\n                     \r\n                     \r\n                     \r\n                    '),
-(17, 22, 'j', 'j', 0, 'rhaf@test.com', '5', '2018-12-03', ' \r\n      j               \r\n                     \r\n                     \r\n                    ');
+(17, 22, 'j', 'j', 0, 'rhaf@test.com', '5', '2018-12-03', ' \r\n      j               \r\n                     \r\n                     \r\n                    '),
+(18, 23, 'doctor', 'd', 0, 'rhaf@test.com', '5', '2018-12-04', ' d\r\n                    '),
+(19, 24, 'رهف', 'علوش', 0, 'rhaf@test.com', '5', '2018-12-07', ' \r\n     ش               ');
 
 -- --------------------------------------------------------
 
@@ -1786,7 +887,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `last_login` datetime NOT NULL,
   `last_login_ip` int(10) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `users`
@@ -1802,15 +903,17 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `password_last_set`, `pa
 (7, 'رهف1', '$2a$08$sYs.D.xcCJ8dxrbTwTTJteIw333roZBshiWWSPdf6Kdwumvv5lTKa', '2018-11-30 07:07:17', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', 0),
 (8, '11', '$2a$08$My4i1HWtB0GsO1heenqCMOvOiH/hIX9EEAuQ3Qn98026oOyW/jbl2', '2018-11-30 07:08:59', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', 0),
 (9, 'f', '$2a$08$M4To2C0JQQILMjxjiAHHDuY23Cm1m7J48PgJdumZHDUKMf1AtG2tC', '2018-11-30 07:12:27', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', 0),
-(10, 'admin2', '$2a$08$GKcUIIOxdJzM.qRHKr.IK.kIKZPb4bio67urYYZhgLXS2XTDAmbsW', '2018-11-30 10:33:03', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-03 16:13:51', 0),
+(10, 'admin2', '$2a$08$GKcUIIOxdJzM.qRHKr.IK.kIKZPb4bio67urYYZhgLXS2XTDAmbsW', '2018-11-30 10:33:03', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-07 14:15:53', 0),
 (11, 'بب', '$2a$08$lBkdBIq.aTrQf.quGwNVn.fdkRZQu7DIOAXx9Jw8sw7mIyiJGYQk.', '2018-11-30 11:54:21', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', 0),
 (12, 'يب', '$2a$08$r7Y6EI2c5C/cr7lraFwVx.RXUFH1jcDYKOsFHlNRpfrGzevUsva1C', '2018-11-30 11:57:51', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', 0),
 (13, 'س', '$2a$08$py03ZK1VUVqb303wIMi3UunfJ0TG1hH9VO.PmIjtHeAwaiEz8abCO', '2018-11-30 11:59:13', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', 0),
 (18, 'qw', '$2a$08$dKQsd9LuaifcOkgT/7jJBuIHutemK53oPbIWSCAgy8Ox7xg.4LOqi', '2018-12-02 11:38:41', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', 0),
 (19, 'vvvvvvv', '$2a$08$zgyGCq0Cdm3Ig5yT9lpbl.gx1Eq6EkilqpCTFrn7sdbnIFm5OftKW', '2018-12-02 12:42:27', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-02 12:42:27', 0),
-(20, 'h', '$2a$08$6ZSFuUoPHunCDpRFPVY/k.Yf3OmK6cKW.WwUK7CK8JibcGPwSwcsK', '2018-12-02 12:49:13', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-03 16:14:07', 0),
+(20, 'h', '$2a$08$6ZSFuUoPHunCDpRFPVY/k.Yf3OmK6cKW.WwUK7CK8JibcGPwSwcsK', '2018-12-02 12:49:13', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-07 08:23:20', 0),
 (21, 'ggggggggggggggggggg', '$2a$08$2kWGxInmFpckaUPKMBus1uXLOzMs29lEcBn.aRMtW2FdZSczGA1Oi', '2018-12-03 13:28:32', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-03 13:28:32', 0),
-(22, 'j', '$2a$08$2GjOcKdf/qdFYP6qcfQP4er31FLJDAA39NWaaj2E9EBmJ8aE77Qje', '2018-12-03 13:31:39', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-03 13:31:39', 0);
+(22, 'j', '$2a$08$2GjOcKdf/qdFYP6qcfQP4er31FLJDAA39NWaaj2E9EBmJ8aE77Qje', '2018-12-03 13:31:39', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-03 13:31:39', 0),
+(23, 'd', '$2a$08$5lWZDsTh.crmQolOVEeeSOwU/eKRbFLgN9v8leF/aKQMFJ8W2DSAe', '2018-12-04 07:33:57', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-04 07:44:23', 0),
+(24, 'ش', '$2a$08$Mur7auGcMccnHoYh24a69OLTor.IDMQNMQcTHKTyDgooU81RA76ky', '2018-12-07 08:24:30', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-07 08:24:30', 0);
 
 -- --------------------------------------------------------
 
@@ -1824,7 +927,7 @@ CREATE TABLE IF NOT EXISTS `user_group` (
   `group_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`assoc_id`),
   KEY `user_id` (`user_id`,`group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `user_group`
@@ -1850,113 +953,9 @@ INSERT INTO `user_group` (`assoc_id`, `user_id`, `group_id`) VALUES
 (20, 19, 2),
 (21, 20, 2),
 (22, 21, 2),
-(23, 22, 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `xrays`
---
-
-CREATE TABLE IF NOT EXISTS `xrays` (
-  `xray_id` int(11) NOT NULL AUTO_INCREMENT,
-  `xray_name_en` varchar(50) DEFAULT NULL,
-  `xray_name_ar` varchar(50) DEFAULT NULL,
-  `category` varchar(50) DEFAULT NULL,
-  `price` decimal(10,0) NOT NULL,
-  `memo` text,
-  PRIMARY KEY (`xray_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `xrays`
---
-
-INSERT INTO `xrays` (`xray_id`, `xray_name_en`, `xray_name_ar`, `category`, `price`, `memo`) VALUES
-(1, 'Backbones', 'صورة للعمود الفقري', 'صنف الصورة', '2001', 'ملخص عن صورة الاشعه'),
-(2, 'chest x-ray', 'صورة الشعه', 'نوع', '2000', 'ملخص عن الصورة');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `xray_files`
---
-
-CREATE TABLE IF NOT EXISTS `xray_files` (
-  `xray_file_id` int(11) NOT NULL AUTO_INCREMENT,
-  `xray_patient_id` int(11) NOT NULL,
-  `upload_date` int(11) NOT NULL,
-  `path` text NOT NULL,
-  `memo` text,
-  PRIMARY KEY (`xray_file_id`),
-  KEY `xray_patient_id` (`xray_patient_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `xray_patient`
---
-
-CREATE TABLE IF NOT EXISTS `xray_patient` (
-  `xray_patient_id` int(11) NOT NULL AUTO_INCREMENT,
-  `xray_id` int(11) NOT NULL,
-  `patient_id` int(11) NOT NULL,
-  `user_id_assign` int(11) NOT NULL,
-  `assign_date` date NOT NULL,
-  `no_of_item` int(11) NOT NULL DEFAULT '1',
-  `total_cost` decimal(10,0) DEFAULT NULL,
-  `user_id_discharge` int(11) DEFAULT NULL,
-  `discharge_date` int(11) DEFAULT NULL,
-  `memo` text,
-  `xresult` text NOT NULL,
-  PRIMARY KEY (`xray_patient_id`),
-  KEY `xray_id` (`xray_id`),
-  KEY `patient_id` (`patient_id`),
-  KEY `user_id_assign` (`user_id_assign`),
-  KEY `user_id_discharge` (`user_id_discharge`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=40 ;
-
---
--- Dumping data for table `xray_patient`
---
-
-INSERT INTO `xray_patient` (`xray_patient_id`, `xray_id`, `patient_id`, `user_id_assign`, `assign_date`, `no_of_item`, `total_cost`, `user_id_discharge`, `discharge_date`, `memo`, `xresult`) VALUES
-(1, 1, 13, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
-(2, 1, 11, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
-(7, 1, 18, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
-(8, 1, 8, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
-(9, 1, 5, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
-(10, 1, 12, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
-(11, 1, 20, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
-(12, 1, 19, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
-(13, 1, 9, 1, '0000-00-00', 1, '2000', NULL, NULL, '', ''),
-(14, 1, 20, 1, '0000-00-00', 1, '2001', NULL, NULL, '', ''),
-(15, 1, 20, 1, '0000-00-00', 1, '2001', NULL, NULL, '', ''),
-(16, 1, 19, 1, '0000-00-00', 1, '2001', NULL, NULL, '', ''),
-(17, 1, 16, 1, '0000-00-00', 9, '18009', NULL, NULL, '', 'Ahmad'),
-(18, 1, 20, 1, '0000-00-00', 1, '2001', NULL, NULL, '', 'بسيبسي'),
-(19, 1, 1, 1, '0000-00-00', 1, '2001', NULL, NULL, '', ''),
-(20, 1, 2, 1, '0000-00-00', 1, '2001', NULL, NULL, '', ''),
-(21, 1, 1, 1, '0000-00-00', 99, '198099', NULL, NULL, '', 'das'),
-(22, 1, 1, 1, '0000-00-00', 1, '2001', NULL, NULL, '', 'dasd'),
-(23, 1, 1, 1, '0000-00-00', 1, '2001', NULL, NULL, '', 'new'),
-(24, 1, 2, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, 'test xx '),
-(25, 1, 13, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, 'نتيجة صورة الاشعة'),
-(26, 2, 21, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, ''),
-(27, 1, 1, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, ''),
-(28, 2, 1, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, ''),
-(29, 2, 1, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, 'نتيجة صورة الاشعه '),
-(30, 1, 23, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, 'يضع الطبيب ملاحظاته '),
-(31, 2, 23, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, 'ملاحظات الطبيب '),
-(32, 1, 21, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, 'يشسي شسي شس '),
-(33, 2, 21, 1, '0000-00-00', 0, NULL, NULL, NULL, NULL, 'يشس يسشي '),
-(34, 1, 21, 1, '2018-10-16', 0, NULL, NULL, NULL, NULL, 'يستن سينبى سةي '),
-(35, 1, 25, 1, '2018-10-09', 0, NULL, NULL, NULL, NULL, 'يشس يش شي س ي س  يس '),
-(36, 1, 25, 1, '2018-10-09', 0, NULL, NULL, NULL, NULL, 'يشس يسشةي ش'),
-(37, 2, 25, 1, '2018-10-17', 0, NULL, NULL, NULL, NULL, 'يسش يسشيلان ش'),
-(38, 1, 25, 1, '2018-10-10', 0, NULL, NULL, NULL, NULL, 'نتيجة صورة الاشعه '),
-(39, 1, 25, 1, '2018-10-28', 0, NULL, NULL, NULL, NULL, 'صورة للعمود الفقري ');
+(23, 22, 2),
+(24, 23, 3),
+(25, 24, 2);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

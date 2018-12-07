@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col col-md-8 well well-sm">
         <?php echo form_open('doctor/new_doctor',array("id"=>"newDoctorForm", "role"=>"form",)); ?>
-        <fieldset>
+        
             <legend>-
                 <?php trP('DoctorInformation')?>:</legend>
             <div>
@@ -19,7 +19,7 @@
                 <div class="col-md-6"><input type="tel" name='phone' id='phone' value="<?php echo $this->input->post('phone');?>" class='form-control' placeholder="<?php trP('Phone')?>" title="<?php trP('Phone')?>" required /></div>
             </div>
             <div class="clearfix"></div>
-        </fieldset>
+       
         <div class="form-group">
             <div class="col-md-6"><input type="submit" name='submit' id='submit' value=<?php trp('Add')?> class="form-control btn btn-info" /></div>
             <div class="col-md-6">

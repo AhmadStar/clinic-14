@@ -52,9 +52,9 @@ article .well-md {
 
 
 .wrapper {
-    background: linear-gradient(to left, #fff1eb 0%, #ace0f9 100%);
+/*    background: linear-gradient(to left, #fff1eb 0%, #ace0f9 100%);*/
     max-width: 1500px;
-    width: 98%;
+    width: 100%;
     margin: 0px auto;
 }
 
@@ -78,7 +78,8 @@ article .well-md {
 }
 
 .navbar-default {
-    border-radius: 10px;
+    background-color: #00649c;
+    border-color: #e7e7e7;
 }
 
 #cPanel a {
@@ -305,4 +306,21 @@ th {
 
 .w3-row-padding img {
     margin-bottom: 20px
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #eee;}
+
+.navbar-default .navbar-nav>.dropdown>a .caret {
+    border-top-color: #eee;
+    border-bottom-color: #777;
+}
+
+.navbar-default .navbar-brand {
+    color: #eee;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #ddd;
+    background-color: transparent;
 }

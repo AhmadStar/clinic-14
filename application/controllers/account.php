@@ -156,7 +156,7 @@ class Account extends CI_Controller
                 
             if($this->bitauth->login($this->input->post('username'), $this->input->post('password')))
                 {
-                var_dump($this->session->userdata('redir'));
+                //var_dump($this->session->userdata('redir'));
                   // Redirect
                   if($redir = $this->session->userdata('redir'))
                   {
@@ -210,6 +210,7 @@ class Account extends CI_Controller
         $data['image'] = $captcha['image'];
     $data['title'] = tr('RegisterUser');    
     $data['id_type_options'] = $this->_id_type_options();
+    $data['current_url']=$this->session->unset_userdata('redir');
     $path='account/add_user';
     
     if(isset($_GET['ajax'])&&$_GET['ajax']==true)
@@ -261,7 +262,7 @@ class Account extends CI_Controller
         array( 'field' => 'disease', 'label' => 'Disease', 'rules' => '', ),
         array( 'field' => 'birth_date', 'label' => 'Birth Date', 'rules' => '', ),
         array( 'field' => 'password', 'label' => 'Password', 'rules' => 'required|bitauth_valid_password', ),
-        array( 'field' => 'password_conf', 'label' => 'Confirm Password', 'rules' => 'required|matches[password]', ), 
+        array( 'field' => 'password_conf', 'label' => 'Confirm Password', 'rules' => 'matches[password]', ), 
       ));
 
       if($this->input->post('password'))
@@ -563,6 +564,7 @@ class Account extends CI_Controller
       $data['group']=$group;
       $data['group_roles']=$role_list;
       $data['users']=$users;
+       
     }else{
       $data['title']= tr('EditGroup');
     }

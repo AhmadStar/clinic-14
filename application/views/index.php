@@ -24,16 +24,25 @@
     </article>
     <aside class="col col-sm-3">
         <?php
+
 //    if(strtolower($title)!='login')
       if ($this->bitauth->logged_in()){
 //        include_once 'account/login.php';
 //      }
 //      else{
           if($this->bitauth->logged_in() && $this->bitauth->is_admin() ){ include_once 'repository/sidebar.php';}
-          elseif($this->bitauth->logged_in() && ($this->uri->segment(1) !='' || $this->uri->segment(1) !='home')){include_once 'repository/sidebar.php';}
-          
+//          elseif($this->bitauth->logged_in() && !$this->bitauth->is_admin() && ($this->uri->segment(1) !='' || $this->uri->segment(1) !='home')){include_once 'repository/sidebar.php';}
+//          
           //if($this->uri->segment(1) ==''){ } 
-          else{}
+          else{
+              
+              if($this->bitauth->logged_in()  && $this->uri->segment(1) !=''  ){
+                  if($this->bitauth->logged_in()  && $this->uri->segment(1) !='home'  ){
+                    include_once 'repository/sidebar.php';
+              }
+              }
+              
+          }
       }
     ?>
     </aside>

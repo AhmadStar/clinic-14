@@ -82,7 +82,7 @@
         <div class="form-group">
             <div class="col-md-6"><input type="submit" name='submit' id='submit' value=<?php trP('Register');?> class="form-control btn btn-info" /></div>
             <div class="col-md-6">
-                <?php echo anchor('account/users',tr('cancel'),array('class'=>'form-control btn btn-info'));?>
+                <?php echo anchor($current_url,tr('cancel'),array('class'=>'form-control btn btn-info'));?>
             </div>
         </div>
 

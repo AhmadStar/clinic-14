@@ -2,7 +2,7 @@
   include 'view_config.php';
 ?>
 <!DOCTYPE html>
-<html lang="ar" xml:lang="ar">
+<html dir="rtl" lang="ar" xml:lang="ar">
 
 <head>
     <title>
@@ -22,8 +22,11 @@
     <link rel="stylesheet" href='<?php echo base_url() ?>content/css/dataTables.bootstrap.min.css' />
     <link rel="stylesheet" href='<?php echo base_url() ?>content/css/iconsstyles.css' />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href='<?php echo base_url() ?>content/css/style.css' />
+ 
+
 
 
 
@@ -101,13 +104,17 @@
 
 </head>
 <!--  <body  dir="rtl" lang="ar" class="AR wrapper">-->
-
+<body dir="rtl" lang="ar" class="AR wrapper" style="<?php if($this->uri->segment(1) =='' || $this->uri->segment(1) =='home') echo 'background-color:white;';
+                                                    else
+                                                    echo 'background-image:url('.base_url().'content/img/'.$this->uri->segment(1).'.jpg)'?>">
+    
+    
 <body dir="rtl" lang="ar" class="AR wrapper" style="background-image: url('<?php echo base_url() ?>content/img/<?php  if($this->uri->segment(1) =='')
                             echo 'home';
                        else
                             echo $this->uri->segment(1);?>.jpg'); background-size: cover">
     <header>
-        <section>
+        <section dir="rtl">
             <?php
             //if($this->bitauth->logged_in()){
               include_once 'repository/nav.php';

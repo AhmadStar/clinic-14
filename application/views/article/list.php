@@ -26,7 +26,7 @@
             </div>
         </div>
     <div class="hidden-print">
-<?php echo anchor('article/new_article', tr('NewArticel'),array('class'=>'btn btn-info'))?>
+<?php echo anchor('article/new_article', tr('NewArticle'),array('class'=>'btn btn-info'))?>
 </div>
   <table id="article_list_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
