@@ -253,16 +253,18 @@ class Account extends CI_Controller
     if($this->input->post())
     {
       $this->form_validation->set_rules(array(
-        array( 'field' => 'username', 'label' => 'User Name', 'rules' => 'required|trim|bitauth_unique_username|has_no_schar', ),
+        array( 'field' => 'username', 'label' => 'User Name', 'rules' => 'required|trim|bitauth_unique_username['.html_escape($user_id).']|has_no_schar', ),
         array( 'field' => 'first_name', 'label' => 'First Name', 'rules' => 'trim|has_no_schar', ),
         array( 'field' => 'last_name', 'label' => 'Last Name', 'rules' => 'trim|has_no_schar', ),
+        array( 'field' => 'gender', 'label' => 'Gender', 'rules' => 'required', ),
         array( 'field' => 'email', 'label' => 'Email', 'rules' => 'required|trim|valid_email', ),
         array( 'field' => 'phone', 'label' => 'Phone', 'rules' => 'required|trim', ),
-        array( 'field' => 'gender', 'label' => 'Gender', 'rules' => 'required', ),
         array( 'field' => 'disease', 'label' => 'Disease', 'rules' => '', ),
         array( 'field' => 'birth_date', 'label' => 'Birth Date', 'rules' => '', ),
-        array( 'field' => 'password', 'label' => 'Password', 'rules' => 'required|bitauth_valid_password', ),
-        array( 'field' => 'password_conf', 'label' => 'Confirm Password', 'rules' => 'matches[password]', ), 
+        array( 'field' => 'active', 'label' => 'Active', 'rules' => '', ),
+        array( 'field' => 'enabled', 'label' => 'Enabled', 'rules' => '', ),
+        array( 'field' => 'password_never_expires', 'label' => 'Password Never Expires', 'rules' => '', ),
+        array( 'field' => 'groups[]', 'label' => 'Groups', 'rules' => '', ),
       ));
 
       if($this->input->post('password'))
@@ -290,31 +292,9 @@ class Account extends CI_Controller
             unset($_POST['active'],$_POST['enabled'],$_POST['password_never_expires'],$_POST['groups[]']);
         }
         //upload picture
-//        if($_FILES['picture']['tmp_name'])
-//        {//check if any picture is selected to upload
-//          $path='uploads/hospital/staff/'.$user_id.'/';
-//          $config['upload_path']='./'.$path;
-//          $config['file_name']=$user_id.'_profile_picture';
-//          $config['overwrite']=TRUE;
-//          $config['allowed_types']='gif|jpg|jpeg|png';
-//          $config['max_size']='100';
-//          $config['max_width'] = '300';
-//          $config['max_height'] = '400';
-//          $this->load->library('upload', $config);
-//          
-//          if ( !$this->upload->do_upload('picture'))
-//          {
-//            $data['error'] = $this->upload->display_errors('<div class="alert alert-danger">','</div>');
-//          }else{
-//            $data['upload_data'] = $this->upload->data();
-//            $_POST['picture']=$path.$data['upload_data']['file_name'];
-//            $_user = $this->bitauth->get_user_by_id($user_id);
-//            if(isset($_user->picture) && !($_user->picture==$_POST['picture']))
-//              unlink('./'.$_user->picture); //delete picture if it is not overwritten
-//          }
-//        }
+        
         $user=$this->input->post();
-        $user['birth_date']=$user['birth_date'];
+        $user['birth_date']=strtotime($user['birth_date']);
         if(!$this->bitauth->is_admin()&&isset($user['password'])&&strlen($user['password']))
         {
             $tmp = $this->bitauth->get_user_by_id($user_id);
@@ -564,7 +544,6 @@ class Account extends CI_Controller
       $data['group']=$group;
       $data['group_roles']=$role_list;
       $data['users']=$users;
-       
     }else{
       $data['title']= tr('EditGroup');
     }

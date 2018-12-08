@@ -7,7 +7,10 @@
     
     <div class="pull-right" title="<?php trP('GotoArticles')?>">
 
-        <?php echo anchor('article/userlist', '<button class="btn btn-return"><span>'.tr('ReturnToArticles').'</span></button>');?>
+        <?php if ($this->bitauth->logged_in() && $this->bitauth->is_admin()){echo anchor('article', '<button class="btn btn-return"><span>'.tr('ReturnToArticles').'</span></button>');}
+                    else
+    echo anchor('home', '<button class="btn btn-return"><span>'.tr('ReturnToHome').'</span></button>');
+        ?>
     </div>
     <?php
 }else{

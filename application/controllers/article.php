@@ -293,7 +293,7 @@ class Article extends CI_Controller {
     }
   } 
     
-    public function userlist()
+    public function userlist($limit = 8,$page = 1)
   {
     //initialize and load header
     $data['title'] = tr('Articles');
@@ -301,6 +301,16 @@ class Article extends CI_Controller {
     $this->load->model('articles','articles');
     $data['articlesCount'] = $this->articles->get_articles_count();
     $data['articles'] = $this->articles->get_all_articles();
+    $data['page'] = (int)$page;
+    $data['per_page'] = (int)$limit;
+    $this->load->library('pagination');
+    $this->load->library('my_pagination');
+    $config['base_url'] = site_url('article/userlist/'.$data['per_page']);
+    $config['total_rows'] = count($data['articles']);
+    $config['per_page'] = $data['per_page'];
+    $this->my_pagination->initialize($config); 
+    $data['pagination']=$this->my_pagination->create_links();
+    $this->load->view('header',$data);
     $path='article/userlist';
     if(isset($_GET['ajax'])&&$_GET['ajax']==true)
     {

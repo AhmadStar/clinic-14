@@ -21,11 +21,12 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/droidarabickufi.css">
     <link rel="stylesheet" href='<?php echo base_url() ?>content/css/dataTables.bootstrap.min.css' />
     <link rel="stylesheet" href='<?php echo base_url() ?>content/css/iconsstyles.css' />
+    <link rel="stylesheet" href='<?php echo base_url() ?>content/css/vanillaCalendar.css' />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href='<?php echo base_url() ?>content/css/style.css' />
- 
+
 
 
 
@@ -92,9 +93,10 @@
     <script src="<?php echo base_url() ?>content/js/dataTables.bootstrap.min.js"></script>
     <script src="<?php echo base_url() ?>content/js/bootstrap-datepicker.js"></script>
     <script src="<?php echo base_url() ?>content/js/bootstrap-datepicker.ar.min.js" charset="UTF-8"></script>
+    <script src="<?php echo base_url() ?>content/js/vanillaCalendar.js" type="text/javascript"></script>
     <script src="<?php echo base_url() ?>content/js/tinymce/tinymce.min.js"></script>
     <script src="<?php echo base_url() ?>content/js/tinymce/jquery.tinymce.min.js"></script>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -104,32 +106,33 @@
 
 </head>
 <!--  <body  dir="rtl" lang="ar" class="AR wrapper">-->
+
 <body dir="rtl" lang="ar" class="AR wrapper" style="<?php if($this->uri->segment(1) =='' || $this->uri->segment(1) =='home') echo 'background-color:white;';
                                                     else
                                                     echo 'background-image:url('.base_url().'content/img/'.$this->uri->segment(1).'.jpg)'?>">
-    
-    
-<body dir="rtl" lang="ar" class="AR wrapper" style="background-image: url('<?php echo base_url() ?>content/img/<?php  if($this->uri->segment(1) =='')
+
+
+    <body dir="rtl" lang="ar" class="AR wrapper" style="background-image: url('<?php echo base_url() ?>content/img/<?php  if($this->uri->segment(1) =='')
                             echo 'home';
                        else
                             echo $this->uri->segment(1);?>.jpg'); background-size: cover">
-    <header>
-        <section dir="rtl">
-            <?php
+        <header>
+            <section dir="rtl">
+                <?php
             //if($this->bitauth->logged_in()){
               include_once 'repository/nav.php';
             //}else{
              // include_once 'repository/logo.php';
            // }
           ?>
-        </section>
-        <div id="fixedNavPadding" style="margin-bottom:72px" class="hidden"></div>
-    </header>
+            </section>
+            <div id="fixedNavPadding" style="margin-bottom:72px" class="hidden"></div>
+        </header>
 
-    <div class="container">
+        <div class="container">
 
-        <div class="content">
-            <?php /*
+            <div class="content">
+                <?php /*
    content will be here by php 
    footer comes after content in footer.php file 
    css will be in head tag and scripts should be in footer script area 

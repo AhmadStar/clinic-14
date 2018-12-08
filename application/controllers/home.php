@@ -22,7 +22,7 @@ class Home extends CI_Controller {
    * this is the index of home page
    * this should load the main panel for user
    */
-  public function index()
+  public function index($limit = 8,$page = 1)
   {
     //initialize and load header
     $data['title'] = 'موقع الاستشارات الطبية';
@@ -35,12 +35,22 @@ class Home extends CI_Controller {
     $data['unAnsweredConsulting'] = $this->consultings->get_Count_un_answered_Consultings();
     $data['articlesCount'] = $this->articles->get_articles_count();
     $data['articles'] = $this->articles->get_all_articles();
+    $data['lessreading']=$this->articles->get_less_article_reading();
     if ($this->bitauth->logged_in() && $this->bitauth->is_admin()){
         $data['includes']=array('home/admin');
     }else{
         $data['includes']=array('home/articlesgallery');
     }
-    
+      
+    $data['page'] = (int)$page;
+    $data['per_page'] = (int)$limit;
+    $this->load->library('pagination');
+    $this->load->library('my_pagination');
+    $config['base_url'] = site_url('home/index/'.$data['per_page']);
+    $config['total_rows'] = count($data['articles']);
+    $config['per_page'] = $data['per_page'];
+    $this->my_pagination->initialize($config); 
+    $data['pagination']=$this->my_pagination->create_links();
     $this->load->view('header',$data);
     $this->load->view('index',$data);
     $this->load->view('footer',$data);
