@@ -101,4 +101,16 @@ class Articles extends MY_Model {
         
     }
     
+    
+    function update_counter($slug) {
+    // return current article views 
+        $this->db->where('id', urldecode($slug));
+        $this->db->select('reading');
+        $count = $this->db->get('articles')->row();
+    // then increase by one 
+        $this->db->where('id', urldecode($slug));
+        $this->db->set('reading', ($count->reading + 1));
+        $this->db->update('articles');
+    }
+    
 }

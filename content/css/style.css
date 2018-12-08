@@ -79,7 +79,11 @@ article .well-md {
 
 .navbar-default {
     background-color: #00649c;
-    border-color: #e7e7e7;
+    border-color: #00649c;
+}
+
+.navbar {
+     border-radius: 0px; 
 }
 
 #cPanel a {

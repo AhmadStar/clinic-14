@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col col-md-12 well well-sm">
-        <?php echo form_open('article/new_article',array("id"=>"newArticleForm", "role"=>"form",)); ?>
+        <?php echo form_open_multipart('article/new_article',array("id"=>"newArticleForm", "role"=>"form",)); ?>
             <legend>-
                 <?php trP('ArticleInformation')?>:</legend>
             <div>
@@ -10,6 +10,8 @@
                     <div class="col-md-12"><input type="text" name='title' id='title' value="<?php echo $this->input->post('title');?>" class='form-control' placeholder="<?php trP('Title')?>" title="<?php trP('Title')?>" required /></div>
 
                     <div class="col-md-12"><input type="date" name='created_date' id='created_date' value="<?php echo set_value('created_date',@$today);?>" class='form-control' placeholder="<?php trP('created_date')?>" title="<?php trP('created_date')?>" required /></div>
+                    
+                    <div class="col-md-12"><input type="file" name='image' id='image' class='form-control' placeholder="<?php trP('image')?>" title="<?php trP('image')?>" required /></div>
 
                 </div>
             </div>

@@ -262,12 +262,35 @@ class Article extends CI_Controller {
         array( 'field' => 'title', 'label' => 'Article Title', 'rules' => 'trim|has_no_schar', ),
         array( 'field' => 'created_date', 'label' => 'Article created date', 'rules' => 'trim|has_no_schar', ),
         array( 'field' => 'body', 'label' => 'Article bode', 'rules' => 'trim', ),
+        array( 'field' => 'image', 'label' => 'Article image', 'rules' => 'trim', ),
       ));
       if($this->form_validation->run() == TRUE)
       {
         
         unset($_POST['submit']);
         $article=$this->input->post();
+          
+        //---image upload ---//
+        $config['upload_path'] = 'uploads/';   
+//        $config['upload_path'] = base_url().'uploads/';   
+//          echo $config["upload_path"];
+//          'img_url'       => base_url().'images/',
+        $config['allowed_types'] = 'gif|jpg|png';
+
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('image')) {
+            $error = array('error' => $this->upload->display_errors());
+            var_dump($error);
+            exit();
+        //            $this->load->view('posts/add', $error);
+        } else {
+            $data =  $this->upload->data();
+            $image = $data['file_name'];
+            $article['image'] = $image;
+        }
+
+        //---End image upload---//  
+          
         $this->load->model('articles');
         foreach($article as $key => $value)
           $this->articles->$key = $value;
@@ -336,7 +359,7 @@ class Article extends CI_Controller {
       )); 
     }
       
-      
+    $this->add_count($article_id);  
     $data['title'] = tr('ShowArticle');
     $data['article']=$this->articles;
     $path='article/show';
@@ -351,6 +374,32 @@ class Article extends CI_Controller {
     }
   }
 
+  // This is the counter function.. 
+    function add_count($slug)
+    {
+    // load cookie helper
+        $this->load->helper('cookie');
+    // this line will return the cookie which has slug name
+      $check_visitor = $this->input->cookie(urldecode($slug), FALSE);
+    // this line will return the visitor ip address
+        $ip = $this->input->ip_address();
+    // if the visitor visit this article for first time then //
+     //set new cookie and update article_views column  ..
+    //you might be notice we used slug for cookie name and ip 
+    //address for value to distinguish between articles  views
+        if ($check_visitor == false) {
+            $cookie = array(
+                "name"   => urldecode($slug),
+                "value"  => "$ip",
+                "expire" =>  time() + 7200,
+                "secure" => false
+            );
+            $this->input->set_cookie($cookie);
+            $this->load->model('articles');
+            $this->articles->update_counter(urldecode($slug));
+        }
+    }    
+    
   public function _no_access()
   {
     $data['title']=tr('UnauthorizedAccess');

@@ -2,19 +2,19 @@
 
     <div class="mySlides fade">
         <div class="numbertext">1 / 3</div>
-        <img src='http://localhost/clinic-14/uploads/a.jpg' style="width:100%; height:400px;">
+        <img src=<?php  echo base_url().'uploads/'.$lessreading[0]['image']?> style="width:100%; height:400px;">
         <div class="text"><?php echo $lessreading[0]['title']?></div>
     </div>
 
     <div class="mySlides fade">
         <div class="numbertext">2 / 3</div>
-        <img src='http://localhost/clinic-14/uploads/Eslimi-s.jpg' style="width:100%; height:400px;">
+        <img src=<?php  echo base_url().'uploads/'.$lessreading[1]['image']?> style="width:100%; height:400px;">
         <div class="text"><?php echo $lessreading[1]['title']?></div>
     </div>
 
     <div class="mySlides fade">
         <div class="numbertext">3 / 3</div>
-        <img src='http://localhost/clinic-14/uploads/a.jpg' style="width:100%; height:400px;">
+        <img src=<?php  echo base_url().'uploads/'.$lessreading[2]['image']?> style="width:100%; height:400px;">
         <div class="text"><?php echo $lessreading[2]['title']?></div>
     </div>
 
@@ -27,8 +27,6 @@
     <span class="dot"></span>
 </div>
 
-<div>
-</div>
 
 <?php $start = ($page-1) * $per_page;
             $p=0;
@@ -48,12 +46,12 @@
                           echo "<div class='content_'>";
                           //echo $articles[$i]['reading'];
                           echo "<h3>"; 
-                            echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
+                            echo "<a href='";echo base_url(); echo 'index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
                               echo $articles[$i]['title']; 
                           echo"</a></h3>";
-                          echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
-                            echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
-                          // echo "<img src='"; echo $articles[$i]['image']; ;echo "' style='width:100%'></a>";
+                          echo "<a href='";echo base_url(); echo 'index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";                            
+                          echo "<img src='";echo base_url(); echo 'uploads/';echo $articles[$i]['image'];echo"'
+                          style='width:100%'>";
                           echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
                           echo "</div>";
                           echo "</div>";
@@ -71,12 +69,12 @@
                           echo "<div class='content_'>";
                           //echo $articles[$i]['reading'];
                           echo "<h3>"; 
-                            echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
+                            echo "<a href='";echo base_url(); echo 'index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
                               echo $articles[$i]['title']; 
                           echo"</a></h3>";
-                          echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
-                            echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
-                          // echo "<img src='"; echo $articles[$i]['image']; ;echo "' style='width:100%'></a>";
+                          echo "<a href='";echo base_url(); echo 'index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
+                            echo "<img src='";echo base_url(); echo 'uploads/';echo $articles[$i]['image'];echo"'
+                          style='width:100%'>";
                           echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
                           echo "</div>";
                           echo "</div>";
@@ -93,12 +91,12 @@
                           echo "<div class='content_'>";
                           //echo $articles[$i]['reading'];
                           echo "<h3>"; 
-                            echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
+                            echo "<a href='";echo base_url(); echo 'index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
                               echo $articles[$i]['title']; 
                           echo"</a></h3>";
-                          echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
-                            echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
-                          // echo "<img src='"; echo $articles[$i]['image']; ;echo "' style='width:100%'></a>";
+                          echo "<a href='";echo base_url(); echo 'index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
+                            echo "<img src='";echo base_url(); echo 'uploads/';echo $articles[$i]['image'];echo"'
+                          style='width:100%'>";
                           echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
                           echo "</div>";
                           echo "</div>";
@@ -115,12 +113,12 @@
                           echo "<div class='content_'>";
                           //echo $articles[$i]['reading'];
                           echo "<h3>"; 
-                            echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
+                            echo "<a href='";echo base_url(); echo 'index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
                               echo $articles[$i]['title']; 
                           echo"</a></h3>";
-                          echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
-                            echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
-                          // echo "<img src='"; echo $articles[$i]['image']; ;echo "' style='width:100%'></a>";
+                          echo "<a href='";echo base_url(); echo 'index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
+                            echo "<img src='";echo base_url(); echo 'uploads/';echo $articles[$i]['image'];echo"'
+                          style='width:100%'>";
                           echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
                           echo "</div>";
                           echo "</div>";
@@ -281,6 +279,12 @@
             font-size: 11px
         }
     }
+    
+    .card:hover{
+    -webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+    box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
+    }
 
 </style>
 
@@ -310,55 +314,27 @@
 
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
 
 <script>
-    //        var myIndex = 0;
-    //        carousel();
-    //    
-    //        function carousel() {
-    //            var i;
-    //            var x = document.getElementsByClassName("mySlides");
-    //            for (i = 0; i < x.length; i++) {
-    //                x[i].style.display = "none";
-    //            }
-    //            myIndex++;
-    //            if (myIndex > x.length) {
-    //                myIndex = 1
-    //            }
-    //            x[myIndex - 1].style.display = "block";
-    //            setTimeout(carousel, 2000); // Change image every 2 seconds
-    //        }
-    //        
+    $(document).ready(function(){
 
-    //    var slideIndex = 1;
-    //    showDivs(slideIndex);
-    //
-    //    function plusDivs(n) {
-    //        showDivs(slideIndex += n);
-    //    }
-    //
-    //    function currentDiv(n) {
-    //        showDivs(slideIndex = n);
-    //    }
-    //
-    //    function showDivs(n) {
-    //        var i;
-    //        var x = document.getElementsByClassName("mySlides");
-    //        var dots = document.getElementsByClassName("demo");
-    //        if (n > x.length) {
-    //            slideIndex = 1
-    //        }
-    //        if (n < 1) {
-    //            slideIndex = x.length
-    //        }
-    //        for (i = 0; i < x.length; i++) {
-    //            x[i].style.display = "none";
-    //        }
-    //        for (i = 0; i < dots.length; i++) {
-    //            dots[i].className = dots[i].className.replace(" w3-white", "");
-    //        }
-    //        x[slideIndex - 1].style.display = "block";
-    //        dots[slideIndex - 1].className += " w3-white";
-    //    }
+        $('.col-4-lg').hover(
+            // trigger when mouse hover
+            function(){
+                $(this).animate({
+                    marginTop: "-=1%",
+                },200);
+            },
 
+            // trigger when mouse out
+            function(){
+                $(this).animate({
+                    marginTop: "0%"
+                },200);
+            }
+        );
+    });
 </script>
