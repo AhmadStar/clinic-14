@@ -316,11 +316,21 @@ th {
     border-bottom-color: #777;
 }
 
+.navbar-default .navbar-nav>.dropdown>a:hover .caret {
+    border-top-color: #cac6c6;
+    border-bottom-color: #777;
+}
+
 .navbar-default .navbar-brand {
     color: #eee;
 }
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
     color: #ddd;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color: #cac6c6;
     background-color: transparent;
 }

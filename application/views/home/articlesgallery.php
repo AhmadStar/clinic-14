@@ -1,21 +1,21 @@
-<div class="slideshow-container" style="width:100%; height:400px;"> 
+<div class="slideshow-container" style="width:100%; height:400px;">
 
     <div class="mySlides fade">
         <div class="numbertext">1 / 3</div>
         <img src='http://localhost/clinic-14/uploads/a.jpg' style="width:100%; height:400px;">
-        <div class="text">Caption Text</div>
+        <div class="text"><?php echo $lessreading[0]['title']?></div>
     </div>
 
     <div class="mySlides fade">
         <div class="numbertext">2 / 3</div>
         <img src='http://localhost/clinic-14/uploads/Eslimi-s.jpg' style="width:100%; height:400px;">
-        <div class="text">Caption Two</div>
+        <div class="text"><?php echo $lessreading[1]['title']?></div>
     </div>
 
     <div class="mySlides fade">
         <div class="numbertext">3 / 3</div>
         <img src='http://localhost/clinic-14/uploads/a.jpg' style="width:100%; height:400px;">
-        <div class="text">Caption Three</div>
+        <div class="text"><?php echo $lessreading[2]['title']?></div>
     </div>
 
 </div>
@@ -27,100 +27,116 @@
     <span class="dot"></span>
 </div>
 
-
-<!--
-<div class="w3-content w3-section" style="width:100%; height:400px;">
-    <img class="mySlides"  style="width:100%; height:100%;">
-    <img class="mySlides"  style="width:100%; height:100%;">
-    <img class="mySlides"  style="width:100%; height:100%;">
-
+<div>
 </div>
--->
 
+<?php $start = ($page-1) * $per_page;
+            $p=0;
+?>
+<div >
+    <div class="row">
+        <div class="w3-content" style="max-width:100%">
 
-<div class="row">
-    <div class="w3-content" style="max-width:100%">
-
-        <!-- Photo Grid -->
-        <div class="w3-row-padding" id="myGrid" style="margin-bottom:128px">
-            <div class="w3-quarter">
-                <?php
+            <!-- Photo Grid -->
+            <div class="w3-row-padding" id="myGrid" style="margin-bottom:128px">
+                <div class="w3-quarter">
+                    <?php
                 
-                  for ($i = 0; $i < $articlesCount; $i=$i + 4) {
-                      echo "<div class='column'>";
-                      echo "<div class='content_'>";
-                      echo "<h3>"; 
-                        echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
-                          echo $articles[$i]['title']; 
-                      echo"</a></h3>";
-                      echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
-                        echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
-                      echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
-                      echo "</div>";
-                      echo "</div>";
-
+                  for ($i = $start; $i < (int)$start+(int)$per_page; $i=$i + 4) {
+                      if($i < $articlesCount){
+                          echo "<div class='column'>";
+                          echo "<div class='content_'>";
+                          //echo $articles[$i]['reading'];
+                          echo "<h3>"; 
+                            echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
+                              echo $articles[$i]['title']; 
+                          echo"</a></h3>";
+                          echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
+                            echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
+                          // echo "<img src='"; echo $articles[$i]['image']; ;echo "' style='width:100%'></a>";
+                          echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
+                          echo "</div>";
+                          echo "</div>";
+                      }
                   } 
                 ?>
-            </div>
+                </div>
 
 
-            <div class="w3-quarter">
-                <?php
-                  for ($i = 1; $i < $articlesCount ; $i=$i + 4) {
-                      echo "<div class='column'>";
-                      echo "<div class='content_'>";
-                      echo "<h3>"; 
-                        echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
-                          echo $articles[$i]['title']; 
-                      echo"</a></h3>";
-                      echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
-                        echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
-                      echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
-                      echo "</div>";
-                      echo "</div>";
+                <div class="w3-quarter">
+                    <?php
+                  for ($i = $start+1; $i < (int)$start+(int)$per_page ; $i=$i + 4) {
+                      if($i < $articlesCount){
+                          echo "<div class='column'>";
+                          echo "<div class='content_'>";
+                          //echo $articles[$i]['reading'];
+                          echo "<h3>"; 
+                            echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
+                              echo $articles[$i]['title']; 
+                          echo"</a></h3>";
+                          echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
+                            echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
+                          // echo "<img src='"; echo $articles[$i]['image']; ;echo "' style='width:100%'></a>";
+                          echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
+                          echo "</div>";
+                          echo "</div>";
+                      }
                   } 
                 ?>
-            </div>
+                </div>
 
-            <div class="w3-quarter">
-                <?php
-                  for ($i = 2; $i < $articlesCount ; $i=$i + 4) {
-                      echo "<div class='column'>";
-                      echo "<div class='content_'>";
-                      echo "<h3>"; 
-                        echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
-                          echo $articles[$i]['title']; 
-                        echo"</a></h3>";
-                      echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
-                        echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
-                      echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
-                      echo "</div>";
-                      echo "</div>";
+                <div class="w3-quarter">
+                    <?php
+                  for ($i = $start+2; $i < (int)$start+(int)$per_page ; $i=$i + 4) {
+                      if($i < $articlesCount){
+                          echo "<div class='column'>";
+                          echo "<div class='content_'>";
+                          //echo $articles[$i]['reading'];
+                          echo "<h3>"; 
+                            echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
+                              echo $articles[$i]['title']; 
+                          echo"</a></h3>";
+                          echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
+                            echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
+                          // echo "<img src='"; echo $articles[$i]['image']; ;echo "' style='width:100%'></a>";
+                          echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
+                          echo "</div>";
+                          echo "</div>";
+                      }
                   } 
                 ?>
-            </div>
+                </div>
 
-            <div class="w3-quarter">
-                <?php
-                  for ($i = 3; $i < $articlesCount ; $i=$i + 4) {
-                      echo "<div class='column'>";
-                      echo "<div class='content_'>";
-                      echo "<h3>"; 
-                        echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
-                          echo $articles[$i]['title']; 
-                      echo"</a></h3>";
-                      echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
-                        echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
-                      echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
-                      echo "</div>";
-                      echo "</div>";
+                <div class="w3-quarter">
+                    <?php
+                  for ($i = $start+3; $i < (int)$start+(int)$per_page ; $i=$i + 4) {
+                      if($i < $articlesCount){
+                          echo "<div class='column'>";
+                          echo "<div class='content_'>";
+                          //echo $articles[$i]['reading'];
+                          echo "<h3>"; 
+                            echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
+                              echo $articles[$i]['title']; 
+                          echo"</a></h3>";
+                          echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
+                            echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
+                          // echo "<img src='"; echo $articles[$i]['image']; ;echo "' style='width:100%'></a>";
+                          echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
+                          echo "</div>";
+                          echo "</div>";
+                      }
                   } 
                 ?>
+                </div>
             </div>
         </div>
-    </div>
+        
+        <div>
+            <?php echo $pagination?>
+        </div>
 
-    <!-- End Page Content -->
+        <!-- End Page Content -->
+    </div>
 </div>
 
 <style>
@@ -199,7 +215,7 @@
     /* Caption text */
     .text {
         color: #black;
-        font-size: 15px;
+        font-size: 25px;
         padding: 8px 12px;
         position: absolute;
         bottom: 8px;
@@ -209,7 +225,7 @@
 
     /* Number text (1/3 etc) */
     .numbertext {
-        color: #f2f2f2;
+        color: #black;
         font-size: 12px;
         padding: 8px 12px;
         position: absolute;

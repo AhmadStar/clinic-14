@@ -41,6 +41,7 @@ class Articles extends MY_Model {
      * @var Date
      */
     public $created_date;
+    public $reading;
     
     
     
@@ -73,7 +74,18 @@ class Articles extends MY_Model {
     public function get_all_articles()
     {
         $this->db->select('*');
+        $this->db->order_by('reading','desc');
         $this->db->from('articles');
+        $query = $this->db->get();
+        
+        return $query->result_array();
+    }
+    
+    public function get_less_article_reading(){
+        $this->db->select('*');
+        $this->db->order_by('reading','asc');
+        $this->db->from('articles');
+        $this->db->limit(3);
         $query = $this->db->get();
         
         return $query->result_array();

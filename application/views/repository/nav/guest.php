@@ -49,9 +49,11 @@
             <li>
                 <?php echo anchor('consulting/new_consulting','<span class="glyphicon glyphicon-off" style="position: relative; top: 5px"></span> '.tr('NewConsulting'));?>
             </li>
+<!--
             <li>
-                <?php echo anchor('article/userlist','<span class="glyphicon glyphicon-off" style="position: relative; top: 5px"></span> '.tr('Articles'));?>
+                <?php //echo anchor('article/userlist','<span class="glyphicon glyphicon-off" style="position: relative; top: 5px"></span> '.tr('Articles'));?>
             </li>
+-->
 
             <li id="navbarLiHome">
                 <?php echo anchor('','<i class="fa fa-hospital-o" style="font-size:24px"></i> '.tr('Home'));?>
