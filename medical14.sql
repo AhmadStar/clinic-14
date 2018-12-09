@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 09, 2018 at 06:09 PM
+-- Generation Time: Dec 09, 2018 at 07:25 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.16
 
@@ -94,25 +94,17 @@ CREATE TABLE IF NOT EXISTS `consulting` (
   `read` tinyint(1) NOT NULL DEFAULT '0',
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=54 ;
 
 --
 -- Dumping data for table `consulting`
 --
 
 INSERT INTO `consulting` (`id`, `user_id`, `doctor_id`, `consulting_title`, `question`, `status`, `answer`, `read`, `date`) VALUES
-(34, 1, 1, '', 'kkkk', 1, 'jjj', 0, '2018-11-28 20:04:31'),
-(35, 1, 23, '', 'vdga', 1, 'fdfgsdg', 0, '2018-11-30 07:18:18'),
-(36, 1, 10, NULL, 'vdga', 1, '', 0, '2018-11-30 07:23:57'),
-(37, 1, NULL, 'sss', 'ssss', 0, NULL, 0, '2018-11-30 07:24:06'),
-(38, 1, NULL, 'sss', 'ssss', 0, NULL, 0, '2018-11-30 07:24:50'),
-(39, 1, 1, 'sss', 'dddd', 1, 'fff', 0, '2018-11-30 07:25:03'),
-(43, 5, NULL, 'تجريب', 'رهف', 0, NULL, 0, '2018-11-30 09:12:44'),
-(44, 20, NULL, 'تجريب', 'lk hh', 0, NULL, 0, '2018-12-02 12:49:43'),
-(45, 20, NULL, 'تجريب', 'lk hh', 0, NULL, 0, '2018-12-02 12:52:43'),
-(46, 20, NULL, 'kkk', 'kkkk', 0, NULL, 0, '2018-12-02 14:27:17'),
-(47, 20, NULL, 'jjj', 'jjjj', 0, NULL, 0, '2018-12-02 16:48:26'),
-(48, 20, NULL, 'jjjjjjjjjjjjjjjjjjjj', 'jjj', 0, NULL, 0, '2018-12-02 17:37:43');
+(49, 20, 23, 'استشارة جديدة 1', 'نص الاستشارة رقم واحد', 1, 'الإجابة هنا على الاستشارة رقم 1', 0, '2018-12-09 19:13:20'),
+(50, 20, NULL, 'استشارة رقم 2', 'نص الاستشارة رقم اثنان', 0, NULL, 0, '2018-12-09 19:14:02'),
+(52, 20, NULL, 'استشارة رقم 3', 'نص الاستشارة رقم 3', 0, NULL, 0, '2018-12-09 19:14:35'),
+(53, 20, NULL, 'استشارة رقم 4', 'نص الاستشارة', 0, NULL, 0, '2018-12-09 19:16:05');
 
 -- --------------------------------------------------------
 
@@ -415,18 +407,6 @@ CREATE TABLE IF NOT EXISTS `doctors` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
---
--- Dumping data for table `doctors`
---
-
-INSERT INTO `doctors` (`id`, `name`, `address`, `phone`, `created_date`) VALUES
-(4, 'د.محمد شباط', 'التضامن', '0994364545', '2018-09-06'),
-(5, 'د.نور شماس', 'دمشق', '0964536453', '2018-10-06'),
-(6, 'د.ماهر ابو صعب', 'دمشق', '09434242342', '2018-10-06'),
-(7, 'د.احمد ابو سرور', 'حلب', '09543534534', '2018-10-20'),
-(8, 'ابراهيم داوود', 'مزة', '09423423443', '2018-10-28'),
-(10, 'ي', 'ي', '5', '2018-12-08');
-
 -- --------------------------------------------------------
 
 --
@@ -504,7 +484,7 @@ CREATE TABLE IF NOT EXISTS `logins` (
   `success` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`login_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=399 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=427 ;
 
 --
 -- Dumping data for table `logins`
@@ -908,7 +888,35 @@ INSERT INTO `logins` (`login_id`, `ip_address`, `user_id`, `time`, `success`) VA
 (395, 0, 20, '2018-12-09 11:48:52', 1),
 (396, 0, 10, '2018-12-09 12:53:35', 1),
 (397, 0, 10, '2018-12-09 15:05:15', 1),
-(398, 0, 10, '2018-12-09 15:13:53', 1);
+(398, 0, 10, '2018-12-09 15:13:53', 1),
+(399, 0, 10, '2018-12-09 16:14:06', 1),
+(400, 0, 20, '2018-12-09 16:29:46', 1),
+(401, 0, NULL, '2018-12-09 16:35:40', 0),
+(402, 0, NULL, '2018-12-09 16:35:49', 0),
+(403, 0, 0, '2018-12-09 16:35:58', 0),
+(404, 0, 0, '2018-12-09 16:36:30', 0),
+(405, 0, 10, '2018-12-09 16:36:38', 1),
+(406, 0, 20, '2018-12-09 16:38:34', 1),
+(407, 0, 10, '2018-12-09 16:39:40', 1),
+(408, 0, 20, '2018-12-09 16:50:46', 1),
+(409, 0, 10, '2018-12-09 16:51:13', 1),
+(410, 0, 20, '2018-12-09 16:52:03', 1),
+(411, 0, 23, '2018-12-09 16:52:30', 1),
+(412, 0, 20, '2018-12-09 16:53:10', 1),
+(413, 0, 23, '2018-12-09 16:54:33', 1),
+(414, 0, 10, '2018-12-09 16:59:58', 1),
+(415, 0, 20, '2018-12-09 17:06:48', 1),
+(416, 0, 20, '2018-12-09 17:07:32', 1),
+(417, 0, 23, '2018-12-09 17:07:51', 1),
+(418, 0, 23, '2018-12-09 17:08:37', 1),
+(419, 0, 10, '2018-12-09 17:09:04', 1),
+(420, 0, 23, '2018-12-09 17:12:02', 1),
+(421, 0, 20, '2018-12-09 17:12:51', 1),
+(422, 0, 20, '2018-12-09 17:16:51', 1),
+(423, 0, 0, '2018-12-09 17:17:14', 0),
+(424, 0, 23, '2018-12-09 17:17:23', 1),
+(425, 0, 20, '2018-12-09 17:18:17', 1),
+(426, 0, 10, '2018-12-09 17:20:56', 1);
 
 -- --------------------------------------------------------
 
@@ -935,25 +943,9 @@ CREATE TABLE IF NOT EXISTS `userdata` (
 --
 
 INSERT INTO `userdata` (`userdata_id`, `user_id`, `first_name`, `last_name`, `gender`, `email`, `phone`, `birth_date`, `disease`) VALUES
-(1, 1, 'د.محمد', 'شباط', 1, 'admin@sdd.com', '032321', '0000-00-00', ''),
-(2, 2, 'د.نور', 'شماس', 1, 'nour@gmail.com', '099392323', '0000-00-00', ''),
-(3, 3, 'مصعب', 'عمير', 1, 'mossab@gmail.com', '0993623827', '0000-00-00', ''),
-(4, 5, 'رهف', 'علوش', 0, 'rhafalloush95@gmail.com', '123456789', '2016-02-02', '            ممنننن        '),
-(5, 6, 'رهف', 'علوش', 0, 'rhafalloush95@gmail.com', '123456789', '0000-00-00', '            ممنننن                            '),
-(6, 7, 'رهف', 'علوش', 0, 'rhafalloush95@gmail.com', '123456789', '0000-00-00', '            ممنننن                          jj                ss      '),
-(7, 8, 'رهف', 'علوش', 1, 'rhaf@test.com', '11', '0000-00-00', '            jjjjh        '),
-(8, 9, 'f', 'f', 1, 'rhaf@test.com', '44', '2018-11-30', '          fffff          '),
-(9, 10, 'رهف', 'علوش', 0, 'rhaf@test.com', '123', '0000-00-00', 'لا يوجد       sss    '),
-(10, 11, 'زائر', 'زز', 0, 'rhaf@test.com', '22', '2018-11-30', '                    بب'),
-(11, 12, 'زائر', 'زز', 0, 'rhaf@test.com', '22', '2018-11-30', '                    بب                    '),
-(12, 13, 'س', 'س', 0, 'rhaf@test.com', '5', '2018-11-30', '         سسس           '),
-(13, 18, 'v', 'v', 0, 'rhaf@test.com', '8', '2018-11-25', ' qw\r\n                     \r\n                     \r\n                    '),
-(14, 19, 'vv', 'vv', 0, 'rhaf@test.com', '5', '2018-12-02', ' cc\r\n                    '),
-(15, 20, 'h', 'h', 0, 'rhaf@test.com', '5', '2018-12-02', ' \r\n                  h  '),
-(16, 21, 'ggg', 'g', 0, 'rhaf@test.com', '5', '2018-12-03', ' \r\n                 gggggggggg    \r\n                     \r\n                     \r\n                     \r\n                     \r\n                     \r\n                     \r\n                     \r\n                     \r\n                     \r\n                     \r\n                    '),
-(17, 22, 'j', 'j', 0, 'rhaf@test.com', '5', '2018-12-03', ' \r\n      j               \r\n                     \r\n                     \r\n                    '),
-(18, 23, 'doctor', 'd', 0, 'rhaf@test.com', '5', '2018-12-04', ' d\r\n                    '),
-(19, 24, 'رهف', 'علوش', 0, 'rhaf@test.com', '5', '2018-12-07', ' \r\n     ش               ');
+(9, 10, 'admin', 'admin', 0, 'rhaf@test.com', '123', '0000-00-00', 'لا يوجد       sss    '),
+(15, 20, 'user', 'user', 0, 'rhaf@test.com', '5', '0000-00-00', ' '),
+(18, 23, 'doctor', 'doctor', 0, 'rhaf@test.com', '5', '0000-00-00', '           ');
 
 -- --------------------------------------------------------
 
@@ -983,26 +975,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `password_last_set`, `password_never_expires`, `remember_me`, `activation_code`, `active`, `forgot_code`, `forgot_generated`, `enabled`, `last_login`, `last_login_ip`) VALUES
-(1, 'admin', '$2a$08$glVINo.dWbH7voqyOzZ4YeyZOUTGSy3jxYXzNLrVPaWJj9ZLesoCy', '2018-09-19 18:00:15', 0, '6878a7fdad4a5aea216f1f66ae1becfac6a62285', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-07 20:19:31', 0),
-(2, 'ahmad', '$2a$08$30kc9L1nLO/sUVG2ExwUs..LqI5C/mMwoVzxPPWk0G1fTeS6T9jhW', '2018-09-19 18:01:15', 0, '6ac3c5aa0002289b0ba7bef6fc38c256869a86c8', '', 1, '', '0000-00-00 00:00:00', 1, '2018-10-02 17:38:48', 83919838),
-(3, 'mossab', '$2a$08$5JnDGg5bCUFvYYVsZSf24uUj/skPcMwferFknI8ar7bBFUDsUESrC', '2018-10-08 10:31:44', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-10-08 10:32:04', 83923213),
-(4, 'admin', '$2a$08$glVINo.dWbH7voqyOzZ4YeyZOUTGSy3jxYXzNLrVPaWJj9ZLesoCy', '2018-09-19 18:00:15', 0, '6878a7fdad4a5aea216f1f66ae1becfac6a62285', '', 1, '', '0000-00-00 00:00:00', 1, '2018-11-02 21:38:14', 0),
-(5, 'رهف', '$2a$08$nM4Sl/zKDx7FuGiaKQopE.b9QpHFvonpr19zX3TAlG2pdQqo6S0xO', '2018-11-30 07:02:14', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-11-30 09:05:34', 0),
-(6, 'رهف12', '$2a$08$O4ioutjBE7v5ha8R0TWUie/95IuK0SBLGsGQ8tGVZCMVMwAoPnVEO', '2018-11-30 07:06:48', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', 0),
-(7, 'رهف1', '$2a$08$sYs.D.xcCJ8dxrbTwTTJteIw333roZBshiWWSPdf6Kdwumvv5lTKa', '2018-11-30 07:07:17', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', 0),
-(8, '11', '$2a$08$My4i1HWtB0GsO1heenqCMOvOiH/hIX9EEAuQ3Qn98026oOyW/jbl2', '2018-11-30 07:08:59', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', 0),
-(9, 'f', '$2a$08$M4To2C0JQQILMjxjiAHHDuY23Cm1m7J48PgJdumZHDUKMf1AtG2tC', '2018-11-30 07:12:27', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', 0),
-(10, 'admin2', '$2a$08$GKcUIIOxdJzM.qRHKr.IK.kIKZPb4bio67urYYZhgLXS2XTDAmbsW', '2018-11-30 10:33:03', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-09 17:13:53', 0),
-(11, 'بب', '$2a$08$lBkdBIq.aTrQf.quGwNVn.fdkRZQu7DIOAXx9Jw8sw7mIyiJGYQk.', '2018-11-30 11:54:21', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', 0),
-(12, 'يب', '$2a$08$r7Y6EI2c5C/cr7lraFwVx.RXUFH1jcDYKOsFHlNRpfrGzevUsva1C', '2018-11-30 11:57:51', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', 0),
-(13, 'س', '$2a$08$py03ZK1VUVqb303wIMi3UunfJ0TG1hH9VO.PmIjtHeAwaiEz8abCO', '2018-11-30 11:59:13', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', 0),
-(18, 'qw', '$2a$08$dKQsd9LuaifcOkgT/7jJBuIHutemK53oPbIWSCAgy8Ox7xg.4LOqi', '2018-12-02 11:38:41', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', 0),
-(19, 'vvvvvvv', '$2a$08$zgyGCq0Cdm3Ig5yT9lpbl.gx1Eq6EkilqpCTFrn7sdbnIFm5OftKW', '2018-12-02 12:42:27', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-02 12:42:27', 0),
-(20, 'h', '$2a$08$6ZSFuUoPHunCDpRFPVY/k.Yf3OmK6cKW.WwUK7CK8JibcGPwSwcsK', '2018-12-02 12:49:13', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-09 13:48:52', 0),
-(21, 'ggggggggggggggggggg', '$2a$08$2kWGxInmFpckaUPKMBus1uXLOzMs29lEcBn.aRMtW2FdZSczGA1Oi', '2018-12-03 13:28:32', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-03 13:28:32', 0),
-(22, 'j', '$2a$08$2GjOcKdf/qdFYP6qcfQP4er31FLJDAA39NWaaj2E9EBmJ8aE77Qje', '2018-12-03 13:31:39', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-03 13:31:39', 0),
-(23, 'd', '$2a$08$5lWZDsTh.crmQolOVEeeSOwU/eKRbFLgN9v8leF/aKQMFJ8W2DSAe', '2018-12-04 07:33:57', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-08 03:59:46', 0),
-(24, 'ش', '$2a$08$Mur7auGcMccnHoYh24a69OLTor.IDMQNMQcTHKTyDgooU81RA76ky', '2018-12-07 08:24:30', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-07 08:24:30', 0);
+(10, 'admin', '$2a$08$GKcUIIOxdJzM.qRHKr.IK.kIKZPb4bio67urYYZhgLXS2XTDAmbsW', '2018-11-30 10:33:03', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-09 19:20:56', 0),
+(20, 'user', '$2a$08$HwOZ42iAVmh9wqcpXWq5mOHj8vCDmrdpOigzikRs8FkQXOhcFX5vG', '2018-12-09 19:07:18', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-09 19:18:17', 0),
+(23, 'doctor', '$2a$08$Pv9X626afo/mOgU8gse5ruQUv4xMeiv4Zx/cN7x0zFj1PnlvMP6Iy', '2018-12-09 19:08:15', 0, '', '', 1, '', '0000-00-00 00:00:00', 1, '2018-12-09 19:17:23', 0);
 
 -- --------------------------------------------------------
 
@@ -1023,28 +998,9 @@ CREATE TABLE IF NOT EXISTS `user_group` (
 --
 
 INSERT INTO `user_group` (`assoc_id`, `user_id`, `group_id`) VALUES
-(3, 1, 1),
-(7, 1, 9),
-(4, 2, 3),
-(8, 2, 9),
-(5, 3, 8),
-(9, 3, 9),
-(10, 5, 2),
-(11, 6, 2),
-(29, 7, 2),
-(13, 8, 2),
-(14, 9, 2),
 (30, 10, 1),
-(16, 11, 2),
-(17, 12, 2),
-(18, 13, 2),
-(19, 18, 2),
-(20, 19, 2),
 (21, 20, 2),
-(22, 21, 2),
-(23, 22, 2),
-(24, 23, 3),
-(25, 24, 2);
+(24, 23, 3);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

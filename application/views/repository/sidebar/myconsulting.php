@@ -24,12 +24,6 @@
                             <?php echo anchor('expert_system',tr('ExpertSystem'));?>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <i class="material-icons materialsidebar md-48">person_add</i>
-                            <?php echo anchor('article/userlist',tr('Articles'));?>
-                        </td>
-                    </tr>
 
                 </tbody>
             </table>
