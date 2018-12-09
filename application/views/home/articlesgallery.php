@@ -52,7 +52,8 @@
                           echo "<a href='";echo base_url(); echo 'index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";                            
                           echo "<img src='";echo base_url(); echo 'uploads/';echo $articles[$i]['image'];echo"'
                           style='width:100%'>";
-                          echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
+                          echo"</a>";
+                          echo "<p>"; echo strip_tags(character_limiter($articles[$i]['body'], 500,'...')); echo"</p></b>";
                           echo "</div>";
                           echo "</div>";
                       }
@@ -75,7 +76,8 @@
                           echo "<a href='";echo base_url(); echo 'index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
                             echo "<img src='";echo base_url(); echo 'uploads/';echo $articles[$i]['image'];echo"'
                           style='width:100%'>";
-                          echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
+                          echo"</a>";
+                          echo "<p>"; echo strip_tags(character_limiter($articles[$i]['body'], 500,'...')); echo"</p></b>";
                           echo "</div>";
                           echo "</div>";
                       }
@@ -97,7 +99,8 @@
                           echo "<a href='";echo base_url(); echo 'index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
                             echo "<img src='";echo base_url(); echo 'uploads/';echo $articles[$i]['image'];echo"'
                           style='width:100%'>";
-                          echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
+                          echo"</a>";
+                          echo "<p>"; echo strip_tags(character_limiter($articles[$i]['body'], 500,'...')); echo"</p></b>";
                           echo "</div>";
                           echo "</div>";
                       }
@@ -119,7 +122,8 @@
                           echo "<a href='";echo base_url(); echo 'index.php/article/show/';echo $articles[$i]['id'];echo "' title='";echo $articles[$i]['title']; echo"'>";
                             echo "<img src='";echo base_url(); echo 'uploads/';echo $articles[$i]['image'];echo"'
                           style='width:100%'>";
-                          echo "<p>"; echo character_limiter($articles[$i]['body'], 500,'...'); echo"</p></b>";
+                          echo"</a>";
+                          echo "<p>"; echo strip_tags(character_limiter($articles[$i]['body'], 500,'...')); echo"</p></b>";
                           echo "</div>";
                           echo "</div>";
                       }

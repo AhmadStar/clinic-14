@@ -190,7 +190,7 @@ class Expert_System_Model extends MY_Model {
         $result = array_keys($category_probs, max($category_probs));
         
         $data['disease'] = $result[0];
-        $insert = $this->db->insert('disease', $data);
+        $insert = $this->db->insert('expert_system', $data);
        
         return array_keys($category_probs, max($category_probs));
 
@@ -211,7 +211,7 @@ class Expert_System_Model extends MY_Model {
         }else{
             $result[]='negative';
         }
-       
+        
         return $result;
     }
      
