@@ -33,8 +33,11 @@ if($consultings)
         
         echo
           '<td>'.html_escape($consulting['consulting_title']).'</td>'.
-          '<td>'.html_escape(character_limiter($consulting['question'], 30,'...')).'</td>'.
-          '<td>'.html_escape(character_limiter($consulting['answer'], 30,'...')).'</td>'.
+          '<td>'.html_escape(character_limiter($consulting['question'], 30,'...')).'</td>';
+        echo'<td>';
+        if ($consulting['answer'] == NULL ) echo trP('NotAnswered').'</td>';
+        else echo html_escape(character_limiter($consulting['answer'], 30,'...')).'</td>';
+        echo
           '<td>'.html_escape($consulting['date']).'</td>'.
           '<td class="hidden-print">'.$actions.'</td>'.
         '</tr>';

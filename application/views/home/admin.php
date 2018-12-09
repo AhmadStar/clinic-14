@@ -193,8 +193,10 @@
                             echo $articles[0]['title'];
                             echo"</a></h4>";
                     echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[0]['id'];echo "' title='" ;echo $articles[0]['title']; echo"'>";
-                        echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
-                    echo "<p>"; echo character_limiter($articles[0]['body'], 250,'...'); echo"</p></b>";
+                        echo "<img src='";echo base_url(); echo 'uploads/';echo $articles[0]['image'];echo"'
+                          style='width:100%'>";
+                          echo"</a>";
+                    echo "<p>"; echo strip_tags(character_limiter($articles[0]['body'], 250,'...')); echo"</p></b>";
                         ?>
                 </div>
             </div>
@@ -206,8 +208,10 @@
                             echo $articles[1]['title'];
                             echo"</a></h4>";
                     echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[1]['id'];echo "' title='" ;echo $articles[1]['title']; echo"'>";
-                        echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
-                    echo "<p>"; echo character_limiter($articles[1]['body'], 250,'...'); echo"</p></b>";
+                       echo "<img src='";echo base_url(); echo 'uploads/';echo $articles[1]['image'];echo"'
+                          style='width:100%'>";
+                          echo"</a>";
+                    echo "<p>"; echo strip_tags(character_limiter($articles[1]['body'], 250,'...')); echo"</p></b>";
                         ?>
                 </div>
             </div>
@@ -219,8 +223,10 @@
                             echo $articles[2]['title'];
                             echo"</a></h4>";
                     echo "<a href='";echo base_url(); echo '/index.php/article/show/';echo $articles[2]['id'];echo "' title='" ;echo $articles[2]['title']; echo"'>";
-                        echo "<img src='http://localhost/clinic-14/uploads/a.jpg' style='width:100%'></a>";
-                    echo "<p>"; echo character_limiter($articles[2]['body'], 250,'...'); echo"</p></b>";
+                        echo "<img src='";echo base_url(); echo 'uploads/';echo $articles[2]['image'];echo"'
+                          style='width:100%'>";
+                          echo"</a>";
+                    echo "<p>"; echo strip_tags(character_limiter($articles[2]['body'], 250,'...')); echo"</p></b>";
                         ?>
                 </div>
             </div>

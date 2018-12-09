@@ -32,6 +32,10 @@
 -->
 
         <li>
+            <?php echo anchor('consulting','<span class="glyphicon glyphicon-off" style="position: relative; top: 5px"></span> '.tr('ConsultingsList'));?>
+        </li>
+        
+        <li>
             <?php echo anchor('expert_system','<span class="glyphicon glyphicon-off" style="position: relative; top: 5px"></span> '.tr('ExpertSystem'));?>
         </li>
 
